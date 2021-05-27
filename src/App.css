@@ -1,38 +1,326 @@
-.App {
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+body {
+  font-family: "Pattaya", sans-serif;
+}
+
+.logo-resize {
+  width: 100px;
+  border-radius: 50%;
+}
+
+.productline {
+  padding-top: 50px;
+}
+.slider-section {
+  margin-bottom: 10px;
+}
+/* .blog-box {
+  margin-top: 50px;
+  background-color: pink;
+}
+.blog-container {
+  margin-top: 30px;
+  background-color: pink;
+} */
+.blog-card {
+  margin-top: 50px;
+  background-color: pink;
+  padding-top: 30px;
+}
+.flex-packg {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  border: orange solid 6px;
+  background-color: orange;
+}
+
+.registerForm {
+  background-image: url(https://colorlib.com/etc/regform/colorlib-regform-18/images/bg-registration-form-2.jpg);
+}
+.img-register {
+  width: 500px;
+  height: 700px;
+  padding-top: 50px;
+  padding-left: 50px;
+  padding-bottom: 10px;
+}
+.form-regis {
+  width: 500px;
+  height: 700px;
+  padding-top: 100px;
+  padding-left: 50px;
+}
+.legend {
+  font-size: 30px;
+  font-weight: bold;
+  font-style: italic;
+}
+.login-form {
+  width: 500px;
+  height: 700px;
+  padding-top: 100px;
+  padding-left: 50px;
+}
+.product-img {
+  width: 350px;
+  height: 350px;
+}
+
+.thumb1 {
+  width: 100px;
+  height: 100px;
+}
+.slide-div {
+  background-image: repeating-linear-gradient("../images/thumb1.jpg");
+}
+.before-after {
+  width: 550px;
+  height: 350px;
+}
+.blog-img {
+  width: 350px;
+  height: 350px;
+}
+
+.img-package {
+  width: 350px;
+  height: 350px;
+  margin-top: 40px;
+  border: green solid 3px;
+}
+.packageConatiner {
+  margin-top: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  font-family: "Pattaya", sans-serif;
+  background-color: rgba(255, 166, 0, 0.592);
+}
+/* .productContainer {
+  border: solid 6px yellowgreen;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+} */
+.body {
+  color: #373b69;
+  max-width: fit-content;
+  max-height: auto;
+}
+.productContainer {
+  margin: 0;
+  /* background-color: paleturquoise; */
+  color: #373b69;
+  font-family: "Pattaya", sans-serif;
+}
+.product-card {
+  margin: 1rem;
+  background-color: #373b69;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.product-content {
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: pink;
+  color: #373b69;
+  position: absolute;
+  padding: 2rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  max-height: 100%;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+}
+.product-card:hover .product-content {
+  transform: translateY(0%);
+}
+.publicNavbar {
+  background-color: pink;
+  height: 50%;
+}
+.blog-content-div {
+  margin-right: 50px;
+}
+.title-pkg-containe {
+  color: #373b69;
+  font-family: "Pattaya", sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.reviewForm {
+  margin-top: 66px;
+  margin-bottom: 66px;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.re-size-img-single {
+  width: 400px;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.product-card-detail {
+  margin: 1rem;
+  border-radius: 10px;
+  /* box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1); */
+  overflow: hidden;
+  position: relative;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.product-container-detail {
+  margin: 5rem;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: paleturquoise;
+}
+.packages-row {
+  margin: 1rem;
+  background-color: pink;
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.package-content {
+  border-radius: 10px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 166, 0, 0.626);
+  color: #373b69;
+  position: absolute;
+  padding: 2rem;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  max-height: 100%;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+}
+.packages-row .package-content {
+  transform: translateY(0%);
+}
+
+/* FOOTER  */
+footer {
+  background: var(--black);
+  padding: 60px 0;
+}
+
+footer .box {
+  display: flex;
+}
+
+footer .logo {
+  padding-right: 80px;
+}
+
+footer .logo img {
+  width: 100%;
+  max-width: 130px;
+}
+
+footer .directory {
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+footer .directory li:not(:last-child) {
+  padding-right: 80px;
+}
+
+footer .directory li p {
+  color: var(--light-grey);
+  font-size: 12px;
+  font-weight: 900;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+footer .directory li a {
+  display: inline-block;
+  padding: 3px 0 15px;
+}
+
+footer .social {
+  display: flex;
+  align-items: flex-start;
+}
+
+footer .social a {
+  background: var(--grey);
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  position: relative;
 }
 
-.App-link {
-  color: #61dafb;
+footer .social a::before {
+  content: "";
+  position: absolute;
+  background: var(--green);
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  transition: all 0.3s ease-out;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+footer .social a:hover::before {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+footer .social a img {
+  width: 30px;
+  position: relative;
+}
+
+footer .container-right {
+  align-items: center;
+  justify-content: flex-end;
+  padding: 30px 0;
+}
+
+footer .container-right span {
+  color: var(--white);
+  padding-right: 8px;
+}
+
+footer .container-right img {
+  width: 100%;
+  max-width: 20px;
+}
+
+footer .about-us a {
+  font-size: 12px;
+}
+
+footer .about-us a:not(:last-child) {
+  margin-right: 20px;
+}
+
+footer .copyright {
+  color: var(--light-grey);
+  font-size: 12px;
 }
