@@ -26,7 +26,7 @@ const SideMenuUser = () => {
             Orders
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link
             as={NavLink}
             to="/user/orders/payments"
@@ -55,7 +55,7 @@ const SideMenuUser = () => {
           >
             Messenger
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
       </div>
     </Nav>
   );

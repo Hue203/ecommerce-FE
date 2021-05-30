@@ -54,6 +54,25 @@ const RegisterPage = () => {
     }
   }, [dispatch, history, redirectTo]);
 
+  const uploadWidget = () => {
+    window.cloudinary.openUploadWidget(
+      {
+        cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
+        upload_preset: process.env.REACT_APP_CLOUDINARY_PRESET,
+        multiple: false,
+      },
+      function (error, result) {
+        if (!error) {
+          console.log("resultimgAvatar", result);
+          if (result.event === "success") {
+            setFormData({ ...formData, avatarUrl: result.info.url });
+          }
+        } else {
+          console.log(error);
+        }
+      }
+    );
+  };
   return (
     <Container className="registerForm">
       <Row>
@@ -69,13 +88,18 @@ const RegisterPage = () => {
           </div>
           <Form onSubmit={handleSubmit}>
             <Form.Group>
-              <Form.Control
+              {/* <Form.Control
                 type="image"
                 placeholder="Avatar"
                 name="avatarUrl"
                 value={formData.avatarUrl}
                 onChange={handleChange}
-              />
+              /> */}
+
+              <Col>
+                <Form.Label>Avatar</Form.Label>
+                <Button onClick={() => uploadWidget()}>Upload</Button>
+              </Col>
             </Form.Group>
             <Form.Group>
               <Form.Control

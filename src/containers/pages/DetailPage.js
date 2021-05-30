@@ -5,33 +5,33 @@ import { productActions } from "../../redux/actions/product.actions";
 import { reviewActions } from "../../redux/actions/review.action";
 import { Button } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
-import { Col, Row, Container } from "react-bootstrap";
+import { Col, Row, Container, Form } from "react-bootstrap";
 import ReviewForm from "../../components/ReviewForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewList from "../../components/ReviewList";
+
+import { userActions } from "../../redux/actions/user.actions";
 
 const DetailPage = () => {
   const params = useParams();
   const dispatch = useDispatch();
   const singleProduct = useSelector((state) => state.product.selectedProduct);
+
   const loading = useSelector((state) => state.product.loading);
   const history = useHistory();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const submitLoading = useSelector((state) => state.product.submitLoading);
   const [reviewText, setReviewText] = useState("");
+  const [addQuantity, setAddQuantity] = useState(1);
+
   const reviewList = useSelector((state) => state.review.reviews);
-  const reviewLoading = useSelector((state) => state.review.loading);
 
   useEffect(() => {
     if (params?.id) {
       dispatch(productActions.getSingleProduct(params.id));
-      // dispatch(reviewActions.reviewsRequest(params.id));
     }
   }, [dispatch, params]);
 
-  const handleGoBackClick = (e) => {
-    history.goBack();
-  };
   const handleInputChange = (e) => {
     setReviewText(e.target.value);
   };
@@ -43,14 +43,21 @@ const DetailPage = () => {
   const handleOnClickReview = (id) => {
     history.push(`/reviews/${id}`);
   };
+  const handleChangeQuantity = (e) => {
+    setAddQuantity(e.target.value);
+  };
+  const handleAddToCart = () => {
+    dispatch(
+      userActions.addCartRequest({
+        productId: params.id,
+        quantity: addQuantity,
+      })
+    );
+  };
+
   return (
     <>
       <Container className="product-container-detail">
-        {/* <div className="d-flex justify-content-between">
-          <Button onClick={handleGoBackClick}>
-            <FontAwesomeIcon icon="chevron-left" size="1x" /> Back
-          </Button>
-        </div> */}
         {loading ? (
           <div className="text-center">
             <ClipLoader color="#FFD700" size={150} loading={loading} />
@@ -85,20 +92,44 @@ const DetailPage = () => {
                       </div>
                       <div>
                         <ul>
-                          {
-                            <strong>
-                              <h5>{`Quantity: ${singleProduct.quantity}`}</h5>
-                            </strong>
-                          }
+                          Status:{" "}
+                          {singleProduct.quantity > 0
+                            ? "In Stock"
+                            : "Unavailable."}
+                        </ul>
+
+                        <ul>
+                          Quantity:{" "}
+                          <select
+                            type="number"
+                            name="quantity"
+                            value={addQuantity}
+                            onChange={handleChangeQuantity}
+                          >
+                            {[...Array(singleProduct.quantity).keys()].map(
+                              (x) => (
+                                <option key={x + 1} value={x + 1}>
+                                  {x + 1}
+                                </option>
+                              )
+                            )}
+                          </select>
                         </ul>
                       </div>
 
-                      <div>
-                        <ul>
-                          {<p>{`Price: $ ${singleProduct.price}`}</p>}
+                      <li>
+                        {singleProduct.quantity > 0 && (
+                          <button
+                            onClick={handleAddToCart}
+                            className="button primary"
+                          >
+                            Add to Cart
+                          </button>
+                        )}
+                      </li>
 
-                          <Button variant="warning"> Add to Card </Button>
-                        </ul>
+                      <div>
+                        <ul>{<p>{`Price: $ ${singleProduct.price}`}</p>}</ul>
                       </div>
                       <div>
                         <ul>

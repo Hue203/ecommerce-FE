@@ -27,7 +27,7 @@ const SideMenuAdmin = () => {
             Orders
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link
             as={NavLink}
             to="/admin/payment"
@@ -36,7 +36,7 @@ const SideMenuAdmin = () => {
           >
             Payments
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         <Nav.Item>
           <Nav.Link
             as={NavLink}
@@ -57,7 +57,7 @@ const SideMenuAdmin = () => {
             Blogs
           </Nav.Link>
         </Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link
             as={NavLink}
             to="/admin/messenger"
@@ -66,7 +66,7 @@ const SideMenuAdmin = () => {
           >
             Messenger
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
       </div>
     </Nav>
   );

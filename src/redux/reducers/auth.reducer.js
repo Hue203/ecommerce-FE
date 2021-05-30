@@ -16,10 +16,12 @@ const authReducer = (state = initialState, action) => {
     case types.REGISTER_REQUEST:
     case types.LOGIN_REQUEST:
     case types.GET_CURRENT_USER_REQUEST:
+    case types.UPDATE_PROFILE_REQUEST:
       return { ...state, loading: true };
     case types.REGISTER_SUCCESS:
       return { ...state, loading: false };
     case types.LOGIN_SUCCESS:
+    case types.UPDATE_PROFILE_SUCCESS:
       return {
         ...state,
         user: payload.user,
@@ -40,6 +42,7 @@ const authReducer = (state = initialState, action) => {
     case types.REGISTER_FAILURE:
     case types.LOGIN_FAILURE:
     case types.GET_CURRENT_USER_FAILURE:
+    case types.UPDATE_PROFILE_FAILURE:
       return { ...state, loading: false };
     case types.LOGOUT:
       return {

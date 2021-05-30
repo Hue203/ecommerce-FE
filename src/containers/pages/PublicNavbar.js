@@ -22,8 +22,8 @@ const PublicNavbar = () => {
         <FontAwesomeIcon icon="user" size="sm" /> Account
       </Nav.Link>
 
-      <Nav.Link as={Link} to="/admin/profile">
-        <FontAwesomeIcon icon="shopping-cart" size="sm" /> Orders
+      <Nav.Link as={Link} to="/cart/checkout">
+        <FontAwesomeIcon icon="shopping-cart" size="sm" /> Carts
         <i class="fas fa-shopping-cart"></i>
       </Nav.Link>
       <Nav.Link onClick={handleLogout}>

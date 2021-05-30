@@ -75,6 +75,7 @@ const updateProduct = (productId, formData) => async (dispatch) => {
     toast.success("The product has been updated!");
   } catch (err) {
     dispatch({ type: types.UPDATE_PRODUCT_FAILURE, payload: err });
+    toast.error("Something went wrong");
   }
 };
 
@@ -92,6 +93,7 @@ const deleteProduct =
       toast.success("The product has been Deleted");
     } catch (err) {
       dispatch({ type: types.DELETE_PRODUCT_FAILURE, payload: err });
+      toast.error("Something went wrong");
     }
   };
 const createReview = (productId, reviewText) => async (dispatch) => {
@@ -104,9 +106,11 @@ const createReview = (productId, reviewText) => async (dispatch) => {
       type: types.CREATE_REVIEW_SUCCESS,
       payload: res.data.data,
     });
+    toast.success("You just review product");
   } catch (error) {
     console.log(error);
     dispatch({ type: types.CREATE_REVIEW_FAILURE, payload: error });
+    toast.error("Something went wrong");
   }
 };
 

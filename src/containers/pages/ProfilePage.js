@@ -1,193 +1,176 @@
-// import React, { useState } from "react";
-// import { useDispatch, useSelector } from "react-redux";
-// import { userActions } from "../redux/actions/user.actions";
-// import Breadcrumb from "../components/Breadcrumb";
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  Container,
+  Row,
+  Col,
+  Button,
+  Form,
+  ButtonGroup,
+} from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { authActions } from "../../redux/actions/auth.actions";
+import { ClipLoader } from "react-spinners";
+import { userActions } from "../../redux/actions/user.actions";
 
-// const ProfilePage = () => {
-//   const dispatch = useDispatch();
-//   const currentUser = useSelector((state) => state.user.currentUser.data);
-//   const loading = useSelector((state) => state.user.loading);
+const ProfilePage = () => {
+  const currentUser = useSelector((state) => state.auth.user);
+  const loading = useSelector((state) => state.auth.loading);
+  const [editable, setEditable] = useState(false);
+  const [formData, setFormData] = useState({
+    name: currentUser && currentUser.name,
+    email: currentUser && currentUser.email,
+    avatarUrl: currentUser && currentUser.avatarUrl,
+  });
+  const dispatch = useDispatch();
 
-//   const [someBoolean, setSomeBoolean] = useState(true);
-//   const [form, setForm] = useState({
-//     username: currentUser && currentUser.data.username,
-//     avatar: currentUser && currentUser.data.avatar,
-//   });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-//   const handleEditAvatar = (e) => {
-//     e.preventDefault();
-//     window.cloudinary.openUploadWidget(
-//       {
-//         cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
-//         upload_preset: process.env.REACT_APP_CLOUDINARY_PRESET,
-//         multiple: false,
-//       },
-//       function (error, result) {
-//         if (!error) {
-//           if (result.event === "success") {
-//             setForm({ ...form, avatar: result.info.url });
-//           }
-//         } else {
-//           console.log(error);
-//         }
-//       }
-//     );
-//   };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const { name, avatarUrl } = formData;
+    dispatch(authActions.updateProfile(name, avatarUrl));
+    setEditable(false);
+  };
 
-//   const handleEdit = (e) => {
-//     e.preventDefault();
-//     setSomeBoolean(false);
-//   };
+  const handleCancel = () => {
+    setEditable(false);
+  };
 
-//   const handleCancle = (e) => {
-//     e.preventDefault();
-//     setSomeBoolean(true);
-//   };
+  const uploadWidget = () => {
+    window.cloudinary.openUploadWidget(
+      {
+        cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
+        upload_preset: process.env.REACT_APP_CLOUDINARY_PRESET,
+        tags: ["userAvatar"],
+      },
+      function (error, result) {
+        if (!error) {
+          console.log("resultimgblog", result);
+          if (result.event === "success") {
+            setFormData({ ...formData, avatarUrl: result.info.url });
+          }
+        } else {
+          console.log(error);
+        }
+      }
+    );
+  };
 
-//   const handleChange = (e) => {
-//     setForm({ ...form, [e.target.name]: e.target.value });
-//   };
+  return (
+    <Container fluid>
+      <br />
+      <Row>
+        <Col>
+          <h4>Profile Page</h4>
+        </Col>
+        <Col className="d-flex justify-content-end align-items-start">
+          <Button variant="primary" onClick={() => setEditable(true)}>
+            <FontAwesomeIcon icon="edit" size="1x" /> Edit
+          </Button>
+        </Col>
+      </Row>
+      <br />
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const { username, avatar } = form;
-//     dispatch(userActions.updateCurrentUser({ username, avatar }));
-//     setSomeBoolean(true);
-//   };
+      <Row>
+        <Col md={{ span: 8, offset: 2 }}>
+          {loading ? (
+            <div className="d-flex justify-content-center align-items-center">
+              <ClipLoader color="#f86c6b" size={150} loading={true} />
+            </div>
+          ) : (
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <div className="text-center">
+                  {formData.avatarUrl && (
+                    <div className="mb-3">
+                      <img
+                        src={formData.avatarUrl}
+                        className="avatar-lg"
+                        alt="avatar"
+                      />
+                    </div>
+                  )}
+                  <Button
+                    variant="info"
+                    // className="btn-block w-50 "
+                    onClick={uploadWidget}
+                    disabled={!editable}
+                  >
+                    Edit avatar
+                  </Button>
+                </div>
+              </Form.Group>
+              <Form.Group as={Row}>
+                <Form.Label column sm="2">
+                  Name
+                </Form.Label>
+                <Col>
+                  <Form.Control
+                    type="text"
+                    required
+                    placeholder="Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    disabled={!editable}
+                  />
+                </Col>
+              </Form.Group>
+              <Form.Group as={Row}>
+                <Form.Label column sm="2">
+                  Email
+                </Form.Label>
+                <Col>
+                  <Form.Control
+                    type="email"
+                    required
+                    placeholder="Email"
+                    name="email"
+                    value={formData.email}
+                    disabled={true}
+                  />
+                </Col>
+              </Form.Group>
+              <br />
+              {editable && (
+                <ButtonGroup className="d-flex mb-3">
+                  {loading ? (
+                    <Button
+                      className="mr-3"
+                      variant="primary"
+                      type="button"
+                      disabled
+                    >
+                      <span
+                        className="spinner-border spinner-border-sm"
+                        role="status"
+                        aria-hidden="true"
+                      ></span>
+                      Submitting...
+                    </Button>
+                  ) : (
+                    <Button className="mr-3" type="submit" variant="primary">
+                      Submit
+                    </Button>
+                  )}
+                  <Button
+                    variant="light"
+                    onClick={handleCancel}
+                    disabled={loading}
+                  >
+                    Cancel
+                  </Button>
+                </ButtonGroup>
+              )}
+            </Form>
+          )}
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
-//   return (
-//     <div id="profile" className="profile">
-//       <Breadcrumb leaf="profile" />
-//       <div className="profile__area">
-//         {loading ? (
-//           <div className="loader"></div>
-//         ) : (
-//           <div className="container">
-//             <h3 className="profile__title">Profile Page</h3>
-//             <form className="profile__form" onSubmit={handleSubmit}>
-//               <div className="group">
-//                 <svg
-//                   aria-hidden="true"
-//                   focusable="false"
-//                   data-prefix="fas"
-//                   data-icon="user"
-//                   className="svg-inline--fa fa-user fa-w-14"
-//                   role="img"
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   viewBox="0 0 448 512"
-//                 >
-//                   <path
-//                     fill="currentColor"
-//                     d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"
-//                   ></path>
-//                 </svg>
-//                 <input
-//                   type="text"
-//                   name="username"
-//                   placeholder="Username"
-//                   disabled={someBoolean ? true : false}
-//                   value={
-//                     someBoolean
-//                       ? (currentUser && currentUser.data.username) || ""
-//                       : null
-//                   }
-//                   onChange={handleChange}
-//                 />
-//               </div>
-//               <button
-//                 type="button"
-//                 className={`${form.avatar ? "active" : ""} ${
-//                   someBoolean ? "disabled" : ""
-//                 }`}
-//                 onClick={handleEditAvatar}
-//                 disabled={someBoolean ? true : false}
-//               >
-//                 {form.avatar ? (
-//                   <svg
-//                     aria-hidden="true"
-//                     focusable="false"
-//                     data-prefix="far"
-//                     data-icon="smile"
-//                     className="svg-inline--fa fa-smile fa-w-16"
-//                     role="img"
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     viewBox="0 0 496 512"
-//                   >
-//                     <path
-//                       fill="currentColor"
-//                       d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160 0c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm4 72.6c-20.8 25-51.5 39.4-84 39.4s-63.2-14.3-84-39.4c-8.5-10.2-23.7-11.5-33.8-3.1-10.2 8.5-11.5 23.6-3.1 33.8 30 36 74.1 56.6 120.9 56.6s90.9-20.6 120.9-56.6c8.5-10.2 7.1-25.3-3.1-33.8-10.1-8.4-25.3-7.1-33.8 3.1z"
-//                     ></path>
-//                   </svg>
-//                 ) : (
-//                   <svg
-//                     aria-hidden="true"
-//                     focusable="false"
-//                     data-prefix="far"
-//                     data-icon="frown"
-//                     className="svg-inline--fa fa-frown fa-w-16"
-//                     role="img"
-//                     xmlns="http://www.w3.org/2000/svg"
-//                     viewBox="0 0 496 512"
-//                   >
-//                     <path
-//                       fill="currentColor"
-//                       d="M248 8C111 8 0 119 0 256s111 248 248 248 248-111 248-248S385 8 248 8zm0 448c-110.3 0-200-89.7-200-200S137.7 56 248 56s200 89.7 200 200-89.7 200-200 200zm-80-216c17.7 0 32-14.3 32-32s-14.3-32-32-32-32 14.3-32 32 14.3 32 32 32zm160-64c-17.7 0-32 14.3-32 32s14.3 32 32 32 32-14.3 32-32-14.3-32-32-32zm-80 128c-40.2 0-78 17.7-103.8 48.6-8.5 10.2-7.1 25.3 3.1 33.8 10.2 8.4 25.3 7.1 33.8-3.1 16.6-19.9 41-31.4 66.9-31.4s50.3 11.4 66.9 31.4c8.1 9.7 23.1 11.9 33.8 3.1 10.2-8.5 11.5-23.6 3.1-33.8C326 321.7 288.2 304 248 304z"
-//                     ></path>
-//                   </svg>
-//                 )}
-//               </button>
-//               <div className="group group--textarea group--full">
-//                 <svg
-//                   aria-hidden="true"
-//                   focusable="false"
-//                   data-prefix="fas"
-//                   data-icon="envelope"
-//                   className="svg-inline--fa fa-envelope fa-w-16"
-//                   role="img"
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   viewBox="0 0 512 512"
-//                 >
-//                   <path
-//                     fill="currentColor"
-//                     d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
-//                   ></path>
-//                 </svg>
-//                 <input
-//                   type="email"
-//                   name="email"
-//                   placeholder="Email"
-//                   disabled
-//                   value={(currentUser && currentUser.data.email) || ""}
-//                 />
-//               </div>
-//               {someBoolean ? (
-//                 <div className="group group--full">
-//                   <button className="edit" onClick={handleEdit}>
-//                     Edit
-//                   </button>
-//                 </div>
-//               ) : (
-//                 <div className="group group--btn">
-//                   {loading ? (
-//                     <button type="submit">Pending...</button>
-//                   ) : (
-//                     <button type="submit">Update</button>
-//                   )}
-//                   <button
-//                     type="cancle"
-//                     onClick={handleCancle}
-//                     className="cancel"
-//                   >
-//                     Cancel
-//                   </button>
-//                 </div>
-//               )}
-//             </form>
-//           </div>
-//         )}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default ProfilePage;
+export default ProfilePage;

@@ -43,49 +43,49 @@ const HomePage = () => {
   };
 
   return (
-    <div className="body">
-      <div className="body">
-        <section className="slider-section">
-          <ProductSlider />
-        </section>
+    <>
+      <section className="slider-section">
+        <ProductSlider />
+      </section>
 
-        {loading ? (
-          <div className="text-center">
-            <ClipLoader color="#f86c6b" size={150} loading={loading} />
-          </div>
-        ) : (
-          <>
-            <section>
-              <Container className="productContainer">
-                <h2>Popular Detox</h2>
-                {products?.length ? (
-                  <div className="product-card">
-                    {products.map((product) => (
-                      <ProductCard
-                        product={product}
-                        key={product._id}
-                        handleClick={handleClickOnProduct}
-                      />
-                    ))}
-                  </div>
-                ) : (
-                  <p>There are no Products</p>
-                )}
-              </Container>
-            </section>
-            <section>
-              <Container className="blog-box">
-                {blogs.map((blog) => (
-                  <BlogCard
-                    blog={blog}
-                    handleClick={handleClickOnBlog}
-                    key={blog._id}
-                  />
-                ))}
-              </Container>
-            </section>
+      {loading ? (
+        <div className="text-center">
+          <ClipLoader color="#f86c6b" size={150} loading={loading} />
+        </div>
+      ) : (
+        <>
+          <section>
+            <Container className="productContainer">
+              <h2>Popular Detox</h2>
+              {products?.length ? (
+                <div className="product-card">
+                  {products.map((product) => (
+                    <ProductCard
+                      product={product}
+                      key={product._id}
+                      handleClick={handleClickOnProduct}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <p>There are no Products</p>
+              )}
+            </Container>
+          </section>
+          <section>
+            <Container className="blog-box">
+              {blogs.map((blog) => (
+                <BlogCard
+                  blog={blog}
+                  handleClick={handleClickOnBlog}
+                  key={blog._id}
+                />
+              ))}
+            </Container>
+          </section>
 
-            <section>
+          <section>
+            <Container className="packageSection">
               <div className="title-pkg-container">
                 Let's choose your package
               </div>
@@ -101,17 +101,17 @@ const HomePage = () => {
                   </Row>
                 ))}
               </Container>
-            </section>
-            <section>
-              <Container>Daily Drink</Container>
-            </section>
-            {/* <section>
+            </Container>
+          </section>
+          <section>
+            <Container>Daily Drink</Container>
+          </section>
+          {/* <section>
               <FooterComponent />
             </section> */}
-          </>
-        )}
-      </div>
-    </div>
+        </>
+      )}
+    </>
   );
 };
 

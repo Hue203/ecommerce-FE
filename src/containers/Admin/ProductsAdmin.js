@@ -13,6 +13,7 @@ const ProductsAdmin = () => {
   const [showDeleted, setshowDeleted] = useState(false);
   const loading = useSelector((state) => state.product.loading);
   const products = useSelector((state) => state.product.products);
+  console.log("products", products);
 
   const dispatch = useDispatch();
 

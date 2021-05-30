@@ -23,6 +23,7 @@ const loginRequest = (email, password) => async (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST, payload: null });
   try {
     const res = await api.post("/auth/login", { email, password });
+    console.log("resauth", res);
     const name = res.data.data.user.name;
     localStorage.setItem("role", res.data.data.user.role);
     localStorage.setItem("accessToken", res.data.data.token);
@@ -53,4 +54,26 @@ const getCurrentUser = (token) => async (dispatch) => {
     dispatch({ type: types.GET_CURRENT_USER_FAILURE, payload: err });
   }
 };
-export const authActions = { register, loginRequest, logout, getCurrentUser };
+
+const updateProfile = (name, avatarUrl) => async (dispatch) => {
+  try {
+    const res = await api.put(`/users`, { name, avatarUrl });
+    dispatch({
+      type: types.UPDATE_PROFILE_SUCCESS,
+      payload: res.data.data,
+    });
+    toast.success(`Your profile has been updated.`);
+  } catch (err) {
+    dispatch({
+      type: types.UPDATE_PROFILE_FAILURE,
+      payload: err,
+    });
+  }
+};
+export const authActions = {
+  register,
+  loginRequest,
+  logout,
+  getCurrentUser,
+  updateProfile,
+};

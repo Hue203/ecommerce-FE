@@ -4,39 +4,35 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../redux/actions/product.actions";
 
-const ModalEditProduct = ({ showModal, setShowModal }) => {
+const ModalEdditOrder = ({ showModal, setShowModal }) => {
   const handleClose = () => setShowModal(false);
 
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.product.loading);
-  const selectedProduct = useSelector((state) => state.product.selectedProduct);
+  const loading = useSelector((state) => state.order.loading);
+  const selectedOrder = useSelector((state) => state.product.selectedOrder);
 
   const [formData, setFormData] = useState({
-    name: "",
-    catagories: "fresh",
-    ingredients: "",
-    description: "",
-    price: 1,
-    quantity: 1,
-    images: [],
-    service: "fixed-drink",
+    productList: [],
+    statusOrder: "",
+    shippingFee: 0,
+    totalPrice: 0,
+    discount: 0,
+    totalProduct: 0,
   });
 
   useEffect(() => {
-    if (selectedProduct) {
+    if (selectedOrder) {
       setFormData((formData) => ({
         ...formData,
-        name: selectedProduct.name,
-        catagories: selectedProduct.catagories,
-        ingredients: selectedProduct.ingredients,
-        description: selectedProduct.description,
-        price: selectedProduct.price,
-        quantity: selectedProduct.quantity,
-        images: selectedProduct.images,
-        service: selectedProduct.service,
+        productList: selectedOrder.productList,
+        statusOrder: selectedOrder.statusOrder,
+        shippingFee: selectedOrder.shippingFee,
+        totalPrice: selectedOrder.totalPrice,
+        discount: selectedOrder.discount,
+        totalProduct: selectedOrder.totalProduct,
       }));
     }
-  }, [selectedProduct, dispatch]);
+  }, [selectedOrder, dispatch]);
 
   const handleChange = (e) => {
     if (e.target.name === "images") {
@@ -48,31 +44,10 @@ const ModalEditProduct = ({ showModal, setShowModal }) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(productActions.updateProduct(selectedProduct._id, formData));
+    dispatch(productActions.updateProduct(selectedOrder._id, formData));
     handleClose();
   };
 
-  const uploadWidget = () => {
-    window.cloudinary.openUploadWidget(
-      {
-        cloud_name: process.env.REACT_APP_CLOUDINARY_CLOUD_NAME,
-        upload_preset: process.env.REACT_APP_CLOUDINARY_PRESET,
-        multiple: true,
-        tags: ["productImages"],
-      },
-      function (error, result) {
-        if (!error) {
-          if (result && result.length && !error) {
-            const arr = formData.images;
-            arr.push({ imageUrl: result.info.url });
-            setFormData({ ...formData, images: arr });
-          }
-        } else {
-          console.log(error);
-        }
-      }
-    );
-  };
   return (
     <div>
       <Modal show={showModal} onHide={handleClose}>
@@ -85,73 +60,59 @@ const ModalEditProduct = ({ showModal, setShowModal }) => {
               <Col>
                 <Form.Label>Product Name</Form.Label>
                 <Form.Control
-                  required
                   type="text"
                   name="name"
-                  value={formData.name}
+                  value={formData.productList}
                   onChange={handleChange}
                 />
               </Col>
               <Col>
-                <Form.Label>Ingredients</Form.Label>
+                <Form.Label>Status Order</Form.Label>
                 <Form.Control
-                  required
                   type="text"
-                  name="ingredients"
-                  value={formData.ingredients}
+                  as="select"
+                  name="statusOrder"
+                  value={formData.statusOrder}
+                  onChange={handleChange}
+                >
+                  <option>Cancel</option>
+                  <option>Delivery</option>
+                  <option>Paid</option>
+                </Form.Control>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <Form.Label>Shipping Fee</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="shippingFee"
+                  value={formData.shippingFee}
+                  onChange={handleChange}
+                />
+              </Col>
+              <Col>
+                <Form.Label>Amount</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="totalPrice"
+                  value={formData.totalPrice}
                   onChange={handleChange}
                 />
               </Col>
             </Row>
             <Row>
-              <Col>
-                <Form.Label>Description</Form.Label>
-                <Form.Control
-                  required
-                  type="text"
-                  name="description"
-                  value={formData.description}
-                  onChange={handleChange}
-                />
-              </Col>
               <Col>
                 <Form.Label>Quantity</Form.Label>
                 <Form.Control
-                  required
-                  type="number"
-                  name="quantity"
-                  value={formData.quantity}
+                  name="totalProduct"
                   onChange={handleChange}
-                />
-              </Col>
-              <Col>
-                <Form.Label>Price</Form.Label>
-                <Form.Control
-                  required
-                  type="number"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleChange}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Label>Service Type</Form.Label>
-                <Form.Control
-                  required
-                  as="select"
-                  name="service"
-                  onChange={handleChange}
-                >
-                  <option>fixed-drink</option>
-                  <option>make-your-own</option>
-                </Form.Control>
+                  value={formData.totalProduct}
+                ></Form.Control>
               </Col>
               <Col>
                 <Form.Label>Catagories</Form.Label>
                 <Form.Control
-                  required
                   as="select"
                   name="catagories"
                   value={formData.catagories}
@@ -161,10 +122,6 @@ const ModalEditProduct = ({ showModal, setShowModal }) => {
                   <option>dried</option>
                   <option>cereal</option>
                 </Form.Control>
-              </Col>
-              <Col>
-                <Form.Label>Images</Form.Label>
-                <Button onClick={() => uploadWidget()}>Upload</Button>
               </Col>
             </Row>
           </Modal.Body>
@@ -198,4 +155,4 @@ const ModalEditProduct = ({ showModal, setShowModal }) => {
   );
 };
 
-export default ModalEditProduct;
+export default ModalEdditOrder;

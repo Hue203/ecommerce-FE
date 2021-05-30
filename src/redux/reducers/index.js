@@ -6,6 +6,7 @@ import routeReducer from "./route.reducer";
 import userReducer from "./user.reducer";
 import packageReducer from "./package.reducer";
 import reviewReducer from "./review.reducer";
+import orderReducer from "./order.reducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -15,4 +16,5 @@ export default combineReducers({
   blog: blogReducer,
   package: packageReducer,
   review: reviewReducer,
+  order: orderReducer,
 });

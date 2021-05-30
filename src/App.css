@@ -90,6 +90,7 @@ body {
   border: green solid 3px;
 }
 .packageConatiner {
+  padding-top: 30px;
   margin-top: 30px;
   display: flex;
   flex-wrap: wrap;
@@ -174,7 +175,7 @@ body {
   justify-content: center;
 }
 .product-container-detail {
-  margin: 5rem;
+  margin: 1rem;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -185,7 +186,7 @@ body {
   background-color: paleturquoise;
 }
 .packages-row {
-  margin: 1rem;
+  margin: 30px;
   background-color: pink;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
@@ -195,10 +196,10 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
-.package-content {
-  border-radius: 10px;
+/* .package-content {
+  /* border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 166, 0, 0.626);
+  background-color: lightgray;
   color: #373b69;
   position: absolute;
   padding: 2rem;
@@ -208,12 +209,21 @@ body {
   overflow: auto;
   max-height: 100%;
   transform: translateX(100%);
-  transition: transform 0.4s ease-in-out;
-}
-.packages-row .package-content {
+  transition: transform 0.4s ease-in-out;} */
+*/ .packages-row .package-content {
   transform: translateY(0%);
 }
-
+.packageSection {
+  margin-top: 30px;
+  align-items: center;
+  font-family: "Pattaya", sans-serif;
+}
+.title-pkg-container {
+  margin-top: 30px;
+  align-items: center;
+  text-align: center;
+  font-family: "Pattaya", sans-serif;
+}
 /* FOOTER  */
 footer {
   background: var(--black);
@@ -323,4 +333,9 @@ footer .about-us a:not(:last-child) {
 footer .copyright {
   color: var(--light-grey);
   font-size: 12px;
+}
+.cart-row {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
 }
