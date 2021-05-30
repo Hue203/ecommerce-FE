@@ -53,7 +53,7 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
       <Modal show={showModal} onHide={handleClose}>
         <Form onSubmit={handleSubmit}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Product</Modal.Title>
+            <Modal.Title>Edit Order</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Row>
@@ -62,7 +62,9 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
                 <Form.Control
                   type="text"
                   name="name"
-                  value={formData.productList}
+                  value={formData.productList.map(
+                    (product) => product.productId.name
+                  )}
                   onChange={handleChange}
                 />
               </Col>
@@ -75,6 +77,7 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
                   value={formData.statusOrder}
                   onChange={handleChange}
                 >
+                  <option>Pending</option>
                   <option>Cancel</option>
                   <option>Delivery</option>
                   <option>Paid</option>
@@ -134,14 +137,14 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
               type="submit"
               disabled={
                 !(
-                  formData.name &&
-                  formData.ingredients &&
-                  formData.description &&
-                  formData.quantity &&
-                  formData.price &&
-                  formData.images &&
-                  formData.service &&
-                  formData.catagories
+                  formData.name ||
+                  (formData.ingredients &&
+                    formData.description &&
+                    formData.quantity &&
+                    formData.price &&
+                    formData.images &&
+                    formData.service &&
+                    formData.catagories)
                 )
               }
               className="add_product_btn"

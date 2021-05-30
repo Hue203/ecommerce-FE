@@ -12,6 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { authActions } from "../../redux/actions/auth.actions";
 import { ClipLoader } from "react-spinners";
 import { userActions } from "../../redux/actions/user.actions";
+import SideMenuUser from "../../components/SideMenuUser";
 
 const ProfilePage = () => {
   const currentUser = useSelector((state) => state.auth.user);
@@ -61,6 +62,7 @@ const ProfilePage = () => {
 
   return (
     <Container fluid>
+      <SideMenuUser />
       <br />
       <Row>
         <Col>

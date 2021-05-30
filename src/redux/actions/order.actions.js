@@ -74,7 +74,7 @@ const updateOrder =
 
       dispatch({
         type: types.UPDATE_ORDER_SUCCESS,
-        payload: res.data.data,
+        payload: res.data.data.orders,
       });
     } catch (err) {
       dispatch({
@@ -90,7 +90,7 @@ const getSingleOrder = (orderId) => async (dispatch) => {
     const res = await api.get(`/orders/${orderId}`);
     dispatch({
       type: types.GET_SINGLE_ORDER_REQUEST_SUCCESS,
-      payload: res.data.data,
+      payload: res.data.data.orders,
     });
   } catch (err) {
     dispatch({
@@ -117,10 +117,26 @@ const deleteOrder =
       toast.error("Something went wrong");
     }
   };
+
+const getCurrentUserOrder = () => async (dispatch) => {
+  try {
+    dispatch({ type: types.CURRENT_USER_ORDER_REQUEST, payload: null });
+    const res = await api.get(`/orders/mine`);
+    dispatch({
+      type: types.CURRENT_USER_ORDER_SUCCESS,
+      payload: res.data.data.orders,
+    });
+  } catch (err) {
+    dispatch({ type: types.CURRENT_USER_ORDER_FAILURE, payload: err });
+    toast.error("Something went wrong");
+  }
+};
+
 export const orderActions = {
   createOrder,
   updateOrder,
   getAllOrders,
   getSingleOrder,
   deleteOrder,
+  getCurrentUserOrder,
 };

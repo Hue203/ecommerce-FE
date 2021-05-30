@@ -7,7 +7,7 @@ import NotFoundPage from "../../../components/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage";
 import LoginPage from "../../pages/LoginPage";
 import DetailPage from "../../pages/DetailPage";
-import UserDashBoard from "../../pages/UserDashboard";
+
 import ProtectedRoute from "../ProtectedRoute";
 import PakagesDetailPage from "../../pages/PakagesDetailPage";
 import BlogDetailPage from "../../pages/BlogDetailPage";
@@ -15,9 +15,10 @@ import ProductsPage from "../../pages/ProductsPage";
 import CartPage from "../../pages/CartPage";
 import OrderDetailPage from "../../pages/OrderDetailPage";
 import ShippingInfor from "../../pages/ShippingInfor";
-import ReviewOrder from "../../pages/ReviewOrder";
+
 import ProfilePage from "../../pages/ProfilePage";
 import HistoryOrder from "../../pages/HistoryOrder";
+import ThankYouPage from "../../pages/ThankYouPage";
 
 const PublicLayout = () => {
   return (
@@ -35,12 +36,16 @@ const PublicLayout = () => {
         <Route exact path="/packages/:id" component={PakagesDetailPage} />
         <Route exact path="/blogs/:id" component={BlogDetailPage} />
         <ProtectedRoute exact path="/shipping" component={ShippingInfor} />
-        <ProtectedRoute exact path="/orders/review" component={ReviewOrder} />
         <ProtectedRoute
+          exact
+          path="/orders/thankyou"
+          component={ThankYouPage}
+        />
+        {/* <ProtectedRoute
           exact
           path="/user/dashboard"
           component={UserDashBoard}
-        />
+        /> */}
         <ProtectedRoute exact path="/user/profile" component={ProfilePage} />
         <ProtectedRoute exact path="/cart/:id?" component={CartPage} />
         <ProtectedRoute exact path="/user/orders" component={HistoryOrder} />

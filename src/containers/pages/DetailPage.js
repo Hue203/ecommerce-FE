@@ -5,7 +5,7 @@ import { productActions } from "../../redux/actions/product.actions";
 import { reviewActions } from "../../redux/actions/review.action";
 import { Button } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
-import { Col, Row, Container, Form } from "react-bootstrap";
+import { Col, Row, Container } from "react-bootstrap";
 import ReviewForm from "../../components/ReviewForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ReviewList from "../../components/ReviewList";
@@ -117,16 +117,17 @@ const DetailPage = () => {
                         </ul>
                       </div>
 
-                      <li>
+                      <ul>
                         {singleProduct.quantity > 0 && (
-                          <button
+                          <Button
+                            variant="success"
                             onClick={handleAddToCart}
                             className="button primary"
                           >
                             Add to Cart
-                          </button>
+                          </Button>
                         )}
-                      </li>
+                      </ul>
 
                       <div>
                         <ul>{<p>{`Price: $ ${singleProduct.price}`}</p>}</ul>

@@ -1,14 +1,16 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router";
 import { packageActions } from "../../redux/actions/package.action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ClipLoader } from "react-spinners";
-import { Button, Col, Row } from "react-bootstrap";
+import { Button, Col, Row, Form } from "react-bootstrap";
+import { userActions } from "../../redux/actions/user.actions";
 
 const PakagesDetailPage = () => {
   const params = useParams();
   const dispatch = useDispatch();
+  const [addQuantity, setAddQuantity] = useState(1);
   const singlePackage = useSelector((state) => state.package.selectedPackage);
   const loading = useSelector((state) => state.package.loading);
   const history = useHistory();
@@ -20,6 +22,18 @@ const PakagesDetailPage = () => {
   }, [dispatch, params]);
   const handleGoBackClick = (e) => {
     history.goBack();
+  };
+
+  const handleChangeQuantity = (e) => {
+    setAddQuantity(e.target.value);
+  };
+  const handleAddToCart = () => {
+    dispatch(
+      userActions.addCartRequest({
+        productId: params.id,
+        quantity: addQuantity,
+      })
+    );
   };
   return (
     <>
@@ -79,7 +93,12 @@ const PakagesDetailPage = () => {
                         <ul>
                           {
                             <strong>
-                              <h5>{`Quantity: ${singlePackage.quantity}`}</h5>
+                              <Form.Control
+                                name="totalProduct"
+                                onChange={handleChangeQuantity}
+                                value={addQuantity}
+                              ></Form.Control>
+                              {/* <h5>{`Quantity: ${singlePackage.quantity}`}</h5> */}
                             </strong>
                           }
                         </ul>
@@ -87,9 +106,12 @@ const PakagesDetailPage = () => {
 
                       <div>
                         <ul>
-                          {<p>{`Price: $ ${singlePackage.totalPrice}`}</p>}
+                          {<p>{`Price: $ ${singlePackage.price}`}</p>}
 
-                          <Button variant="warning"> Add to Card </Button>
+                          <Button variant="warning" onClick={handleAddToCart}>
+                            {" "}
+                            Add to Card{" "}
+                          </Button>
                         </ul>
                       </div>
                       <div>

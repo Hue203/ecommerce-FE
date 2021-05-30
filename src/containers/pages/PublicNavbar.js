@@ -18,9 +18,23 @@ const PublicNavbar = () => {
 
   const authLinks = (
     <Nav bg="dark">
-      <Nav.Link as={Link} to="/user/dashboard">
+      {/* <Nav.Link as={Link} to="/user/profile">
         <FontAwesomeIcon icon="user" size="sm" /> Account
-      </Nav.Link>
+      </Nav.Link> */}
+
+      <NavDropdown
+        id="nav-dropdown-dark-example"
+        title="Account"
+        menuVariant="dark"
+      >
+        <NavDropdown.Item as={Link} to="/user/profile">
+          {" "}
+          <FontAwesomeIcon icon="user" size="sm" /> My Account
+        </NavDropdown.Item>
+        <NavDropdown.Item as={Link} to="/user/orders">
+          My Orders
+        </NavDropdown.Item>
+      </NavDropdown>
 
       <Nav.Link as={Link} to="/cart/checkout">
         <FontAwesomeIcon icon="shopping-cart" size="sm" /> Carts

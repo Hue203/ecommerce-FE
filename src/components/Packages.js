@@ -29,9 +29,7 @@ const Packages = ({ packageProduct, handleClick }) => {
                     </div>
                     <div>
                       <ul>
-                        {
-                          <p>{`Price: $ ${packageProduct.totalPrice} - Packages`}</p>
-                        }
+                        {<p>{`Price: $ ${packageProduct.price} - Packages`}</p>}
                       </ul>
                       <ul>
                         {<p>{`Cyle for ${packageProduct.cycle} - plan`}</p>}

@@ -58,7 +58,7 @@ const CartPage = () => {
     e.preventDefault();
     dispatch(userActions.updateBillingAddress(formData));
     dispatch(orderActions.createOrder(totalAmount));
-    history.push(`/orders/reviews`);
+    history.push(`/orders/thankyou`);
   };
 
   useEffect(() => {

@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Table, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import ModalEditProduct from "../../components/ModalEditProduct";
+import ModalEditOrder from "../../components/ModalEdditOrder";
 import { orderActions } from "../../redux/actions/order.actions";
-
-import ModalDeleteProduct from "../../components/ModalDeleteProduct";
 import { ClipLoader } from "react-spinners";
+import ModalDeleteOrder from "../../components/ModalDeleteOrder";
 
 const OrdersAdmin = () => {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showDeleted, setshowDeleted] = useState(false);
   const loading = useSelector((state) => state.order.loading);
   const orders = useSelector((state) => state.order.orders);
-  console.log("order???????", orders);
-
+  console.log("order???", orders);
   const dispatch = useDispatch();
 
   const handleOnclickEdit = (orderId) => {
@@ -27,7 +25,7 @@ const OrdersAdmin = () => {
   };
   useEffect(() => {
     dispatch(orderActions.getAllOrders());
-  }, []);
+  }, [dispatch]);
 
   return (
     <>
@@ -50,6 +48,7 @@ const OrdersAdmin = () => {
                       <th>Total Amount</th>
                       <th>Discount</th>
                       <th>Catagories</th>
+                      <th>DATE</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -58,13 +57,22 @@ const OrdersAdmin = () => {
                       <>
                         {orders.map((item) => (
                           <tr key={item._id}>
-                            <td>{item.userId}</td>
-                            <td>productList</td>
+                            <td>{` UserId ${item.userId}}`}</td>
+                            <td>
+                              {item.productList.map(
+                                (product) => product.productId.name
+                              )}
+                            </td>
                             <td>{item.totalProduct}</td>
                             <td>{item.statusOrder}</td>
                             <td>{item.totalPrice}</td>
                             <td>{item.discount}</td>
-                            <td>Something</td>
+                            <td>
+                              {item.productList.map(
+                                (product) => product.productId.catagories
+                              )}
+                            </td>
+                            <td>{item.createdAt.substring(0, 10)}</td>
                             <th>
                               <span>
                                 <Button
@@ -91,11 +99,11 @@ const OrdersAdmin = () => {
                 </Table>
               </Row>
 
-              <ModalEditProduct
+              <ModalEditOrder
                 showModal={showModalEdit}
                 setShowModal={setShowModalEdit}
               />
-              <ModalDeleteProduct
+              <ModalDeleteOrder
                 showDeleted={showDeleted}
                 setShowDelete={setshowDeleted}
               />
