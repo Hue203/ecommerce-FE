@@ -24,6 +24,7 @@ const addCartRequest =
       toast.error("Something went wrong");
     }
   };
+
 const getCartRequest = () => async (dispatch) => {
   dispatch({ type: types.GET_CURRENT_CART_REQUEST, payload: null });
   try {

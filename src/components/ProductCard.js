@@ -16,6 +16,8 @@ const ProductCard = ({ product, handleClick }) => {
           <div data-toggle="tooltip">
             {
               <img
+                width="600"
+                height="766"
                 src={product.images[0].imageUrl}
                 alt="product-img"
                 className="product-img"

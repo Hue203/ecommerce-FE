@@ -6,7 +6,7 @@ import { productActions } from "../../redux/actions/product.actions";
 import ModalAddProduct from "../../components/ModalAddProduct";
 import ModalDeleteProduct from "../../components/ModalDeleteProduct";
 import { ClipLoader } from "react-spinners";
-
+import PaginationBar from "../../components/PaginationBar";
 const ProductsAdmin = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
@@ -109,6 +109,8 @@ const ProductsAdmin = () => {
           />
         </Container>
       )}
+
+      <PaginationBar />
     </>
   );
 };

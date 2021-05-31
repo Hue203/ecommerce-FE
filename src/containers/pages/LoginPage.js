@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Redirect, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../redux/actions/auth.actions";
-import login from "../../images/slide9.png";
+import login from "../../images/watermelon.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const LoginPage = () => {

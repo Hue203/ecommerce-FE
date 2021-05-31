@@ -12,6 +12,8 @@ const Packages = ({ packageProduct, handleClick }) => {
                 <div data-toggle="tooltip">
                   {
                     <img
+                      width="600"
+                      height="766"
                       src={packageProduct.images[0].imageUrl}
                       alt="package-img"
                       className="img-package"

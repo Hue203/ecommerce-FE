@@ -6,15 +6,15 @@ import { routeActions } from "./route.actions";
 const createOrder = (totalAmount) => async (dispatch) => {
   dispatch({ type: types.CREATE_ORDER_REQUEST, payload: null });
   try {
-    /* const res = await api.post(`/orders`, { totalAmount }); */
-    const res = await fetch("http://localhost:5000/api/orders", {
+    const res = await api.post(`/orders`, { totalAmount });
+    /* const res = await fetch("http://localhost:5000/api/orders", {
       method: "post",
       headers: new Headers({
         Authorization: "Bearer " + localStorage.getItem("accessToken"),
         "Content-Type": "application/json",
       }),
       body: JSON.stringify({ totalAmount }),
-    });
+    }); */
     console.log("createOrder", res);
     dispatch({
       type: types.CREATE_ORDER_SUCCESS,
@@ -58,31 +58,24 @@ const getAllOrders =
       dispatch({ type: types.GET_ORDERS_FAILURE, payload: err });
     }
   };
-const updateOrder =
-  (productList, statusOrder, shippingFee, totalPrice, discount, totalProduct) =>
-  async (dispatch) => {
-    dispatch({ type: types.UPDATE_ORDER_REQUEST, payload: null });
-    try {
-      const res = await api.put(`/orders`, {
-        productList,
-        statusOrder,
-        shippingFee,
-        totalPrice,
-        discount,
-        totalProduct,
-      });
+const updateOrder = (orderId, formData) => async (dispatch) => {
+  dispatch({ type: types.UPDATE_ORDER_REQUEST, payload: null });
+  try {
+    const res = await api.put(`/orders/${orderId}`, {
+      formData,
+    });
 
-      dispatch({
-        type: types.UPDATE_ORDER_SUCCESS,
-        payload: res.data.data.orders,
-      });
-    } catch (err) {
-      dispatch({
-        type: types.UPDATE_ORDER_FAILURE,
-        payload: err,
-      });
-    }
-  };
+    dispatch({
+      type: types.UPDATE_ORDER_SUCCESS,
+      payload: res.data.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: types.UPDATE_ORDER_FAILURE,
+      payload: err,
+    });
+  }
+};
 
 const getSingleOrder = (orderId) => async (dispatch) => {
   dispatch({ type: types.GET_SINGLE_ORDER_REQUEST, payload: null });
@@ -90,7 +83,7 @@ const getSingleOrder = (orderId) => async (dispatch) => {
     const res = await api.get(`/orders/${orderId}`);
     dispatch({
       type: types.GET_SINGLE_ORDER_REQUEST_SUCCESS,
-      payload: res.data.data.orders,
+      payload: res.data.data,
     });
   } catch (err) {
     dispatch({

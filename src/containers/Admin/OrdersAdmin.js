@@ -1,31 +1,55 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Table, Button } from "react-bootstrap";
+import { Container, Row, Table, Button, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import ModalEditOrder from "../../components/ModalEdditOrder";
 import { orderActions } from "../../redux/actions/order.actions";
 import { ClipLoader } from "react-spinners";
 import ModalDeleteOrder from "../../components/ModalDeleteOrder";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import PaginationBar from "../../components/PaginationBar";
+import SearchItem from "../../components/SearchItem";
 const OrdersAdmin = () => {
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showDeleted, setshowDeleted] = useState(false);
+  const [pageNum, setPageNum] = useState(1);
   const loading = useSelector((state) => state.order.loading);
+  const [searchInput, setSearchInput] = useState("");
+  const [query, setQuery] = useState("");
+  const [sortBy, setSortBy] = useState({ key: "", ascending: -1 });
   const orders = useSelector((state) => state.order.orders);
+  const totalPageNum = useSelector((state) => state.blog.totalPageNum);
   console.log("order???", orders);
   const dispatch = useDispatch();
 
+  const handleSort = (key) => {
+    if (!loading) {
+      setSortBy((sortBy) => ({
+        key,
+        ascending: -sortBy.ascending,
+      }));
+    }
+  };
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    setPageNum(1);
+    setQuery(searchInput);
+    // dispatch(blogActions.blogsRequest(1));
+  };
   const handleOnclickEdit = (orderId) => {
     setShowModalEdit(true);
     dispatch(orderActions.getSingleOrder(orderId));
   };
-
-  const handleOnclickDelete = (orderId) => {
+  console.log("orderId", handleOnclickEdit);
+  const handleOnclickDelete = () => {
     setshowDeleted(true);
-    dispatch(orderActions.deleteOrder(orderId));
+    dispatch(orderActions.deleteOrder());
   };
   useEffect(() => {
-    dispatch(orderActions.getAllOrders());
-  }, [dispatch]);
+    dispatch(orderActions.getAllOrders(pageNum, sortBy));
+  }, [dispatch, pageNum, sortBy, query]);
 
   return (
     <>
@@ -38,17 +62,65 @@ const OrdersAdmin = () => {
           {orders && (
             <>
               <Row>
+                <Col md={4}>
+                  <SearchItem
+                    searchInput={searchInput}
+                    handleInputChange={handleInputChange}
+                    handleSubmit={handleSubmitSearch}
+                    loading={loading}
+                  />
+                </Col>
                 <Table striped bordered hover>
                   <thead>
                     <tr>
-                      <th>Customer</th>
-                      <th>Product Name</th>
-                      <th>Quantity</th>
-                      <th>Status Order</th>
-                      <th>Total Amount</th>
-                      <th>Discount</th>
-                      <th>Catagories</th>
-                      <th>DATE</th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("userId")}
+                      >
+                        Customer <FontAwesomeIcon icon="sort" size="sm" />
+                      </th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("productId")}
+                      >
+                        Product Name <FontAwesomeIcon icon="sort" size="sm" />
+                      </th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("totalProduct")}
+                      >
+                        Quantity <FontAwesomeIcon icon="sort" size="sm" />
+                      </th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("statusOrder")}
+                      >
+                        Status Order <FontAwesomeIcon icon="sort" size="sm" />
+                      </th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("totalPrice")}
+                      >
+                        Total Amount <FontAwesomeIcon icon="sort" size="sm" />
+                      </th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("discount")}
+                      >
+                        Discount <FontAwesomeIcon icon="sort" size="sm" />
+                      </th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("catagories")}
+                      >
+                        Catagories <FontAwesomeIcon icon="sort" size="sm" />
+                      </th>
+                      <th
+                        className="mouse-hover"
+                        onClick={() => handleSort("createdAt")}
+                      >
+                        DATE
+                      </th>
                       <th>Actions</th>
                     </tr>
                   </thead>
@@ -57,7 +129,7 @@ const OrdersAdmin = () => {
                       <>
                         {orders.map((item) => (
                           <tr key={item._id}>
-                            <td>{` UserId ${item.userId}}`}</td>
+                            <td>{` UserId ${item.userId}`}</td>
                             <td>
                               {item.productList.map(
                                 (product) => product.productId.name
@@ -111,6 +183,14 @@ const OrdersAdmin = () => {
           )}
         </Container>
       )}
+      <Col>
+        <PaginationBar
+          pageNum={pageNum}
+          setPageNum={setPageNum}
+          totalPageNum={totalPageNum}
+          loading={loading}
+        />
+      </Col>
     </>
   );
 };

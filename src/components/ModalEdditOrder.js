@@ -6,7 +6,6 @@ import { productActions } from "../redux/actions/product.actions";
 
 const ModalEdditOrder = ({ showModal, setShowModal }) => {
   const handleClose = () => setShowModal(false);
-
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.order.loading);
   const selectedOrder = useSelector((state) => state.product.selectedOrder);
@@ -35,12 +34,7 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
   }, [selectedOrder, dispatch]);
 
   const handleChange = (e) => {
-    if (e.target.name === "images") {
-      console.log(e.target.files);
-      setFormData({ ...formData, images: e.target.files });
-    } else {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();

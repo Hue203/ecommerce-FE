@@ -3,9 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { productActions } from "../../redux/actions/product.actions";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Tabs, Tab } from "react-bootstrap";
 import ProductCard from "../../components/ProductCard";
-import FooterComponent from "../../components/FooterComponent";
 import Packages from "../../components/Packages";
 import ProductSlider from "../../components/ProductSlider";
 import BlogCard from "../../components/BlogCard";
@@ -56,24 +55,6 @@ const HomePage = () => {
       ) : (
         <>
           <section>
-            <Container className="productContainer">
-              <h2>Popular Detox</h2>
-              {products?.length ? (
-                <div className="product-card">
-                  {products.map((product) => (
-                    <ProductCard
-                      product={product}
-                      key={product._id}
-                      handleClick={handleClickOnProduct}
-                    />
-                  ))}
-                </div>
-              ) : (
-                <p>There are no Products</p>
-              )}
-            </Container>
-          </section>
-          <section>
             <Container className="blog-box">
               {blogs.map((blog) => (
                 <BlogCard
@@ -86,28 +67,61 @@ const HomePage = () => {
           </section>
 
           <section>
-            <Container className="packageSection">
-              <div className="title-pkg-container">
-                Let's choose your package
-              </div>
-              <Container className="packageConatiner">
-                {packages.map((packageItem) => (
-                  <Row>
-                    <Col className="packages-row">
-                      <Packages
-                        packageProduct={packageItem}
-                        handleClick={handleClickOnPackage}
-                      />
-                    </Col>
-                  </Row>
-                ))}
-              </Container>
+            <Container className="product-tab">
+              <Tabs
+                defaultActiveKey="product"
+                id="uncontrolled-tab-example"
+                className="tab-product"
+              >
+                <Tab eventKey="product" title="Popular Product">
+                  <Container className="productContainer">
+                    {products?.length ? (
+                      <>
+                        <div className="title-pkg-container">
+                          Popular Detox Drink
+                        </div>
+                        <div className="product-card">
+                          {products.map((product) => (
+                            <ProductCard
+                              product={product}
+                              key={product._id}
+                              handleClick={handleClickOnProduct}
+                            />
+                          ))}
+                        </div>
+                      </>
+                    ) : (
+                      <p>There are no Products</p>
+                    )}
+                  </Container>
+                </Tab>
+                <Tab eventKey="packages" title="Detox Plan">
+                  <Container className="packageSection">
+                    <div className="title-pkg-container">
+                      Let's choose your package for Detox Plan
+                    </div>
+                    <Container className="packageConatiner">
+                      {packages.map((packageItem) => (
+                        <Row>
+                          <Col className="packages-row">
+                            <Packages
+                              packageProduct={packageItem}
+                              handleClick={handleClickOnPackage}
+                            />
+                          </Col>
+                        </Row>
+                      ))}
+                    </Container>
+                  </Container>
+                </Tab>
+              </Tabs>
             </Container>
           </section>
-          <section>
+
+          {/* <section>
             <Container>Daily Drink</Container>
-          </section>
-          <section>
+          </section> */}
+          <section className="footer-section">
             <FooterPublic />
           </section>
         </>

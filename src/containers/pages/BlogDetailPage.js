@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
 import { Col, Row } from "react-bootstrap";
 
@@ -40,42 +40,43 @@ const BlogDetailPage = () => {
       ) : (
         <>
           {singleBlog && (
-            <>
+            <Card className="product-card">
               <Row>
                 <Col>
-                  <div className="product-card" data-toggle="tooltip">
+                  <div data-toggle="tooltip">
                     <img
                       src={singleBlog.blogImage}
                       alt="product-img"
                       className="re-size-img-single"
                     />
-
-                    <div className="content">
-                      <div>
-                        <ul>
-                          {
-                            <strong>
-                              <p>
-                                <h1>{singleBlog.title}</h1>
-                              </p>
-                            </strong>
-                          }
-                        </ul>
-                      </div>
-                      <div>
-                        <ul>
-                          {
-                            <strong>
-                              <h5>{`Ingredients: ${singleBlog.content}`}</h5>
-                            </strong>
-                          }
-                        </ul>
-                      </div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="content">
+                    <div>
+                      <ul>
+                        {
+                          <strong>
+                            <p>
+                              <h1>{singleBlog.title}</h1>
+                            </p>
+                          </strong>
+                        }
+                      </ul>
+                    </div>
+                    <div>
+                      <ul>
+                        {
+                          <strong>
+                            <h5>{`Ingredients: ${singleBlog.content}`}</h5>
+                          </strong>
+                        }
+                      </ul>
                     </div>
                   </div>
                 </Col>
               </Row>
-            </>
+            </Card>
           )}
         </>
       )}

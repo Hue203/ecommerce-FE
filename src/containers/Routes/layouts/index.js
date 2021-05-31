@@ -8,11 +8,7 @@ import { useSelector } from "react-redux";
 const Routes = () => {
   const role = useSelector((state) => state.auth.role);
   const history = useHistory();
-  if (role) {
-    if (role === "user") {
-      history.push("/");
-    }
-  }
+
   return (
     <Switch>
       <ProtectedRoute path="/admin" component={AdminLayout} />

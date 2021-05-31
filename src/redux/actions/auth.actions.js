@@ -58,6 +58,7 @@ const getCurrentUser = (token) => async (dispatch) => {
 const updateProfile = (name, avatarUrl) => async (dispatch) => {
   try {
     const res = await api.put(`/users`, { name, avatarUrl });
+    localStorage.setItem("updateProfile", res.data.data);
     dispatch({
       type: types.UPDATE_PROFILE_SUCCESS,
       payload: res.data.data,

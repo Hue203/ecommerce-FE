@@ -18,7 +18,7 @@ import { orderActions } from "../../redux/actions/order.actions";
 const CartPage = () => {
   const loading = useSelector((state) => state.user.loading);
   const selectedUser = useSelector((state) => state.user.selectedUser);
-  const orders = useSelector((state) => state.order.orders);
+
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -73,56 +73,54 @@ const CartPage = () => {
       setFormData((formData) => ({
         ...formData,
         fullname: selectedUser.fullname,
-
         address1: selectedUser.address1,
-
         address2: selectedUser.address2,
-
         phone: selectedUser.phone,
-
         city: selectedUser.city,
       }));
     }
   }, [selectedUser, dispatch]);
 
   return (
-    <>
+    <div className="cart-page">
       {loading ? (
         <div className="text-center">
           <ClipLoader color="#FFD700" size={150} loading={loading} />
         </div>
       ) : (
-        <section>
+        <section className="cart-part">
           <h2>{`SHOPPING CART `}</h2>
 
           <Container fluid>
             {selectedUser && (
               <Row>
                 <Col>
-                  <Table striped bordered hover>
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {selectedUser.cart?.length ? (
-                        <>
-                          {selectedUser.cart.map((product) => (
-                            <tr key={product._id}>
-                              <td>{product.productId.name}</td>
-                              <td>{`$ ${product.productId.price}`}</td>
-                              <td>{product.quantity}</td>
-                            </tr>
-                          ))}
-                        </>
-                      ) : (
-                        <p>There are no Products in cart</p>
-                      )}
-                    </tbody>
-                  </Table>
+                  <Row>
+                    <Table striped bordered hover>
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                          <th>Price</th>
+                          <th>Quantity</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {selectedUser.cart?.length ? (
+                          <>
+                            {selectedUser.cart.map((product) => (
+                              <tr key={product._id}>
+                                <td>{product.productId.name}</td>
+                                <td>{`$ ${product.productId.price}`}</td>
+                                <td>{product.quantity}</td>
+                              </tr>
+                            ))}
+                          </>
+                        ) : (
+                          <p>There are no Products in cart</p>
+                        )}
+                      </tbody>
+                    </Table>
+                  </Row>
                 </Col>
 
                 <Col>
@@ -142,16 +140,6 @@ const CartPage = () => {
                       </Row>
                     </Card.Body>
                   </Card>
-
-                  {/* <span>
-                    <Button
-                      onClick={checkoutHandler}
-                      className="primary block"
-                      disabled={selectedUser.length === 0}
-                    >
-                      Proceed Order
-                    </Button>
-                  </span> */}
                 </Col>
               </Row>
             )}
@@ -220,13 +208,15 @@ const CartPage = () => {
                 />
               </Form.Group>
 
-              <Form.Group>
+              <Form>
                 <Form.Label>Payment Method</Form.Label>
-                <Form.Control as="select" name="paymentMethod">
-                  <option>COD</option>
-                  <option>...</option>
-                </Form.Control>
-              </Form.Group>
+                <Form.Check
+                  type="radio"
+                  label="COD"
+                  defaultChecked
+                  name="paymentMethod"
+                ></Form.Check>
+              </Form>
               <p>Shipping Fee : 0</p>
 
               {loading ? (
@@ -256,7 +246,7 @@ const CartPage = () => {
           </Card.Body>
         </Card>
       </Container>
-    </>
+    </div>
   );
 };
 

@@ -1,5 +1,12 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  NavDropdown,
+  Form,
+  Button,
+  FormControl,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../images/simpleBlen-logo.png";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,23 +25,9 @@ const PublicNavbar = () => {
 
   const authLinks = (
     <Nav bg="dark">
-      {/* <Nav.Link as={Link} to="/user/profile">
+      <Nav.Link as={Link} to="/user/profile">
         <FontAwesomeIcon icon="user" size="sm" /> Account
-      </Nav.Link> */}
-
-      <NavDropdown
-        id="nav-dropdown-dark-example"
-        title="Account"
-        menuVariant="dark"
-      >
-        <NavDropdown.Item as={Link} to="/user/profile">
-          {" "}
-          <FontAwesomeIcon icon="user" size="sm" /> My Account
-        </NavDropdown.Item>
-        <NavDropdown.Item as={Link} to="/user/orders">
-          My Orders
-        </NavDropdown.Item>
-      </NavDropdown>
+      </Nav.Link>
 
       <Nav.Link as={Link} to="/cart/checkout">
         <FontAwesomeIcon icon="shopping-cart" size="sm" /> Carts
@@ -77,7 +70,7 @@ const PublicNavbar = () => {
             <NavDropdown
               id="nav-dropdown-dark-example"
               title="Catagories"
-              menuVariant="dark"
+              menuvariant="dark"
             >
               <NavDropdown.Item>
                 {" "}
@@ -92,16 +85,26 @@ const PublicNavbar = () => {
                 Mixed Cereals
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
+              <NavDropdown.Item as={Link} to="/packages">
                 Regular Drink
               </NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Blogs</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/blogs">
+                Blogs
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar.Brand>
-
+      <Form className="d-flex">
+        <FormControl
+          type="search"
+          placeholder="Search"
+          className="mr-2"
+          aria-label="Search"
+        />
+        <Button variant="outline-success">Search</Button>
+      </Form>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
       <Nav className="mr-auto"></Nav>

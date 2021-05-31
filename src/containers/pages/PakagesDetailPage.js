@@ -4,7 +4,7 @@ import { useHistory, useParams } from "react-router";
 import { packageActions } from "../../redux/actions/package.action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ClipLoader } from "react-spinners";
-import { Button, Col, Row, Form } from "react-bootstrap";
+import { Button, Col, Row, Form, Card, Container } from "react-bootstrap";
 import { userActions } from "../../redux/actions/user.actions";
 
 const PakagesDetailPage = () => {
@@ -37,28 +37,31 @@ const PakagesDetailPage = () => {
   };
   return (
     <>
-      <div className="d-flex justify-content-between">
-        <Button onClick={handleGoBackClick}>
-          <FontAwesomeIcon icon="chevron-left" size="1x" /> Back
-        </Button>
-      </div>
-      {loading ? (
-        <div className="text-center">
-          <ClipLoader color="#FFD700" size={150} loading={loading} />
-        </div>
-      ) : (
-        <>
-          {singlePackage && (
-            <>
-              <Row>
-                <Col>
-                  <div className="product-card" data-toggle="tooltip">
-                    <img
-                      src={singlePackage.images[0].imageUrl}
-                      alt="product-img"
-                      className="re-size-img-single"
-                    />
-
+      <Container>
+        {/* <div className="d-flex justify-content-between">
+          <Button onClick={handleGoBackClick}>
+            <FontAwesomeIcon icon="chevron-left" size="1x" /> Back
+          </Button>
+        </div> */}
+        {loading ? (
+          <div className="text-center">
+            <ClipLoader color="#FFD700" size={150} loading={loading} />
+          </div>
+        ) : (
+          <>
+            {singlePackage && (
+              <Card className="card-package">
+                <Row>
+                  <Col>
+                    <div className="product-card" data-toggle="tooltip">
+                      <img
+                        src={singlePackage.images[0].imageUrl}
+                        alt="product-img"
+                        className="re-size-img-single"
+                      />
+                    </div>
+                  </Col>
+                  <Col>
                     <div className="content">
                       <div>
                         <ul>
@@ -75,7 +78,7 @@ const PakagesDetailPage = () => {
                         <ul>
                           {
                             <strong>
-                              <h5>{`cycle: ${singlePackage.cycle}`}</h5>
+                              <h5>{`Cycle for you: ${singlePackage.cycle}`}</h5>
                             </strong>
                           }
                         </ul>
@@ -124,13 +127,13 @@ const PakagesDetailPage = () => {
                         </ul>
                       </div>
                     </div>
-                  </div>
-                </Col>
-              </Row>
-            </>
-          )}
-        </>
-      )}
+                  </Col>
+                </Row>
+              </Card>
+            )}
+          </>
+        )}
+      </Container>
     </>
   );
 };
