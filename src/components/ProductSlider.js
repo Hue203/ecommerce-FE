@@ -73,6 +73,9 @@ const ProductSlider = () => {
           <Carousel.Caption>
             <h3>Fresh your day</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <a href="/products" className="btn-arrow white">
+              Shop now
+            </a>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>

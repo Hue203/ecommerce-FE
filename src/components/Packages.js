@@ -12,29 +12,32 @@ const Packages = ({ packageProduct, handleClick }) => {
                 <div data-toggle="tooltip">
                   {
                     <img
-                      width="600"
-                      height="766"
+                      width="250"
+                      height="350"
                       src={packageProduct.images[0].imageUrl}
                       alt="package-img"
                       className="img-package"
                     />
                   }
-                  <div className="package-content">
+                  <div>
+                    <ul>
+                      {
+                        <strong>
+                          <h4 className="package-content">
+                            {packageProduct.name}
+                          </h4>
+                        </strong>
+                      }
+                    </ul>
+
                     <div>
                       <ul>
                         {
-                          <strong>
-                            <h4>{packageProduct.name}</h4>
-                          </strong>
+                          <p>{`Only £ ${packageProduct.price} for a Package`}</p>
                         }
                       </ul>
-                    </div>
-                    <div>
                       <ul>
-                        {<p>{`Price: $ ${packageProduct.price} - Packages`}</p>}
-                      </ul>
-                      <ul>
-                        {<p>{`Cyle for ${packageProduct.cycle} - plan`}</p>}
+                        {<p>{`Cyle for ${packageProduct.cycle} plan`}</p>}
                       </ul>
                     </div>
                   </div>

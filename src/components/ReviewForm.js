@@ -23,7 +23,7 @@ const ReviewForm = ({
         </Col>
         <Col>
           {loading ? (
-            <Button variant="primary" type="button" disabled>
+            <Button variant="warning" type="button" disabled>
               <span
                 className="spinner-border spinner-border-sm"
                 role="status"
@@ -32,7 +32,7 @@ const ReviewForm = ({
               Submitting...
             </Button>
           ) : (
-            <Button type="submit" disabled={!reviewText}>
+            <Button variant="warning" type="submit" disabled={!reviewText}>
               Submit
             </Button>
           )}

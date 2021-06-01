@@ -1,14 +1,7 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  Button,
-  FormControl,
-} from "react-bootstrap";
+import { Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logo from "../../images/simpleBlen-logo.png";
+import logo from "../../images/logonavbar.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../redux/actions/auth.actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -96,15 +89,7 @@ const PublicNavbar = () => {
           </Nav>
         </Navbar.Collapse>
       </Navbar.Brand>
-      <Form className="d-flex">
-        <FormControl
-          type="search"
-          placeholder="Search"
-          className="mr-2"
-          aria-label="Search"
-        />
-        <Button variant="outline-success">Search</Button>
-      </Form>
+
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
       <Nav className="mr-auto"></Nav>

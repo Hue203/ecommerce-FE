@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
+
 import {
-  Container,
   Row,
   Col,
   Button,
@@ -23,8 +22,6 @@ const ProfilePage = () => {
   const loading = useSelector((state) => state.auth.loading);
   const loadingOrder = useSelector((state) => state.order.loading);
   const currentUserOrder = useSelector((state) => state.order.orders);
-
-  const selectedOrder = useSelector((state) => state.order.selectedOrder);
   const [editable, setEditable] = useState(false);
   const [formData, setFormData] = useState({
     name: currentUser && currentUser.name,
@@ -33,7 +30,6 @@ const ProfilePage = () => {
   });
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -50,10 +46,10 @@ const ProfilePage = () => {
     setEditable(false);
   };
 
-  const handleOnClick = (id) => {
-    // setShowModal(true);
-    // dispatch(orderActions.getSingleOrder(orderId));
-    history.push(`/orders/${id}`);
+  const handleOnClick = (orderId) => {
+    setShowModal(true);
+    dispatch(orderActions.getSingleOrder(orderId));
+    // history.push(`/orders/${id}`);
   };
   useEffect(() => {
     dispatch(authActions.getCurrentUser());
@@ -80,7 +76,7 @@ const ProfilePage = () => {
   };
 
   return (
-    <div className="profile-container">
+    <section className="profile-container">
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
           <Col sm={3}>
@@ -144,6 +140,7 @@ const ProfilePage = () => {
                             />
                           </Col>
                         </Form.Group>
+                        <br />
                         <Form.Group as={Row}>
                           <Form.Label column sm="2">
                             Email
@@ -238,11 +235,11 @@ const ProfilePage = () => {
                       <tbody>
                         {currentUserOrder !== undefined &&
                           currentUserOrder &&
-                          currentUserOrder.map((order) => (
+                          currentUserOrder?.map((order) => (
                             <tr key={order._id}>
-                              <td>{`#${order._id}`}</td>
-                              <td>{order.createdAt.substring(0, 10)}</td>
-                              <td>{order.totalPrice.toFixed(2)}</td>
+                              <td>{`#${order?._id}`}</td>
+                              <td>{order?.createdAt.substring(0, 10)}</td>
+                              <td>{order?.totalPrice?.toFixed(2)}</td>
                               <td>
                                 {order.statusOrder
                                   ? order.statusOrder.substring(0, 10)
@@ -270,17 +267,17 @@ const ProfilePage = () => {
                     </table>
                   )}
 
-                  {/* <ModalOrderPage
+                  <ModalOrderPage
                     showModal={showModal}
                     setShowModal={setShowModal}
-                  /> */}
+                  />
                 </div>
               </Tab.Pane>
             </Tab.Content>
           </Col>
         </Row>
       </Tab.Container>
-    </div>
+    </section>
   );
 };
 

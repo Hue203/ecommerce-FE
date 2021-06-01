@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ClipLoader } from "react-spinners";
 import { Button, Col, Row, Form, Card, Container } from "react-bootstrap";
 import { userActions } from "../../redux/actions/user.actions";
-
+import SliderProductPage from "../../components/SliderProductPage";
 const PakagesDetailPage = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -37,7 +37,8 @@ const PakagesDetailPage = () => {
   };
   return (
     <>
-      <Container>
+      <SliderProductPage />
+      <Container className="package-detail-container">
         {/* <div className="d-flex justify-content-between">
           <Button onClick={handleGoBackClick}>
             <FontAwesomeIcon icon="chevron-left" size="1x" /> Back
@@ -50,86 +51,76 @@ const PakagesDetailPage = () => {
         ) : (
           <>
             {singlePackage && (
-              <Card className="card-package">
-                <Row>
-                  <Col>
-                    <div className="product-card" data-toggle="tooltip">
-                      <img
-                        src={singlePackage.images[0].imageUrl}
-                        alt="product-img"
-                        className="re-size-img-single"
-                      />
+              <Row>
+                <Col>
+                  <div className="product-card" data-toggle="tooltip">
+                    <img
+                      src={singlePackage.images[0].imageUrl}
+                      alt="product-img"
+                      className="re-size-img-single"
+                    />
+                  </div>
+                </Col>
+                <Col>
+                  <div className="content">
+                    <div>
+                      <ul>
+                        {
+                          <strong>
+                            <p>
+                              <h1>{singlePackage.name}</h1>
+                            </p>
+                          </strong>
+                        }
+                      </ul>
                     </div>
-                  </Col>
-                  <Col>
-                    <div className="content">
-                      <div>
-                        <ul>
-                          {
-                            <strong>
-                              <p>
-                                <h1>{singlePackage.name}</h1>
-                              </p>
-                            </strong>
-                          }
-                        </ul>
-                      </div>
-                      <div>
-                        <ul>
-                          {
-                            <strong>
-                              <h5>{`Cycle for you: ${singlePackage.cycle}`}</h5>
-                            </strong>
-                          }
-                        </ul>
-                      </div>
-                      <div>
-                        <ul>
-                          {
-                            <strong>
-                              <h5>{`packageType: ${singlePackage.packageType}`}</h5>
-                            </strong>
-                          }
-                        </ul>
-                      </div>
-                      <div>
-                        <ul>
-                          {
-                            <strong>
-                              <Form.Control
-                                name="totalProduct"
-                                onChange={handleChangeQuantity}
-                                value={addQuantity}
-                              ></Form.Control>
-                              {/* <h5>{`Quantity: ${singlePackage.quantity}`}</h5> */}
-                            </strong>
-                          }
-                        </ul>
-                      </div>
 
-                      <div>
-                        <ul>
-                          {<p>{`Price: $ ${singlePackage.price}`}</p>}
-
-                          <Button variant="warning" onClick={handleAddToCart}>
-                            {" "}
-                            Add to Card{" "}
-                          </Button>
-                        </ul>
-                      </div>
-                      <div>
-                        <ul>
-                          {
-                            <strong>
-                              <h5>{`Review : ${singlePackage.reviewsCount} review `}</h5>
-                            </strong>
-                          }
-                        </ul>
-                      </div>
+                    <div>
+                      <ul>
+                        {
+                          <strong>
+                            <h5>{`Package: ${singlePackage.packageType} for ${singlePackage.cycle}`}</h5>
+                          </strong>
+                        }
+                      </ul>
                     </div>
-                  </Col>
-                </Row>
-              </Card>
+                    <div>
+                      <ul>
+                        {
+                          <strong>
+                            <Form.Control
+                              name="totalProduct"
+                              onChange={handleChangeQuantity}
+                              value={addQuantity}
+                            ></Form.Control>
+                            {/* <h5>{`Quantity: ${singlePackage.quantity}`}</h5> */}
+                          </strong>
+                        }
+                      </ul>
+                    </div>
+
+                    <div>
+                      <ul>
+                        {<p>{`with £${singlePackage.price} only`}</p>}
+
+                        <Button variant="warning" onClick={handleAddToCart}>
+                          {" "}
+                          Add to Card{" "}
+                        </Button>
+                      </ul>
+                    </div>
+                    <div>
+                      <ul>
+                        {
+                          <strong>
+                            <h5>{`Review : ${singlePackage.reviewsCount} review `}</h5>
+                          </strong>
+                        }
+                      </ul>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
             )}
           </>
         )}

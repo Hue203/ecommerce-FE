@@ -29,15 +29,17 @@ const OrdersAdmin = () => {
       }));
     }
   };
-  const handleInputChange = (e) => {
-    setSearchInput(e.target.value);
-  };
-  const handleSubmitSearch = (e) => {
-    e.preventDefault();
-    setPageNum(1);
-    setQuery(searchInput);
-    // dispatch(blogActions.blogsRequest(1));
-  };
+
+  console.log("sort", sortBy);
+
+  // const handleInputChange = (e) => {
+  //   setSearchInput(e.target.value);
+  // };
+  // const handleSubmitSearch = (e) => {
+  //   e.preventDefault();
+  //   setPageNum(1);
+  //   setQuery(searchInput);
+  // };
   const handleOnclickEdit = (orderId) => {
     setShowModalEdit(true);
     dispatch(orderActions.getSingleOrder(orderId));
@@ -48,8 +50,8 @@ const OrdersAdmin = () => {
     dispatch(orderActions.deleteOrder());
   };
   useEffect(() => {
-    dispatch(orderActions.getAllOrders(pageNum, sortBy));
-  }, [dispatch, pageNum, sortBy, query]);
+    dispatch(orderActions.getAllOrders({ pageNum, sortBy }));
+  }, [dispatch, pageNum, sortBy]);
 
   return (
     <>
@@ -63,12 +65,12 @@ const OrdersAdmin = () => {
             <>
               <Row>
                 <Col md={4}>
-                  <SearchItem
+                  {/* <SearchItem
                     searchInput={searchInput}
                     handleInputChange={handleInputChange}
                     handleSubmit={handleSubmitSearch}
                     loading={loading}
-                  />
+                  /> */}
                 </Col>
                 <Table striped bordered hover>
                   <thead>
@@ -129,9 +131,9 @@ const OrdersAdmin = () => {
                       <>
                         {orders.map((item) => (
                           <tr key={item._id}>
-                            <td>{` UserId ${item.userId}`}</td>
+                            <td>{` OrderId ${item._id}`}</td>
                             <td>
-                              {item.productList.map(
+                              {item?.productList?.map(
                                 (product) => product.productId.name
                               )}
                             </td>
@@ -140,11 +142,11 @@ const OrdersAdmin = () => {
                             <td>{item.totalPrice}</td>
                             <td>{item.discount}</td>
                             <td>
-                              {item.productList.map(
+                              {item?.productList?.map(
                                 (product) => product.productId.catagories
                               )}
                             </td>
-                            <td>{item.createdAt.substring(0, 10)}</td>
+                            <td>{item?.createdAt.substring(0, 10)}</td>
                             <th>
                               <span>
                                 <Button

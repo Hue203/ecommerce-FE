@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { Modal, Col, Row, Form, Button } from "react-bootstrap";
+import { Modal, Col, Row, Form, Button, Table } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../redux/actions/product.actions";
+import { ClipLoader } from "react-spinners";
+import { orderActions } from "../redux/actions/order.actions";
 
 const ModalEdditOrder = ({ showModal, setShowModal }) => {
   const handleClose = () => setShowModal(false);
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.order.loading);
-  const selectedOrder = useSelector((state) => state.product.selectedOrder);
+  const selectedOrder = useSelector((state) => state.order.selectedOrder);
 
   const [formData, setFormData] = useState({
     productList: [],
@@ -33,15 +35,16 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
     }
   }, [selectedOrder, dispatch]);
 
+  console.log(formData);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(productActions.updateProduct(selectedOrder._id, formData));
+    dispatch(orderActions.updateOrder(selectedOrder._id, formData));
     handleClose();
   };
-
+  console.log(selectedOrder);
   return (
     <div>
       <Modal show={showModal} onHide={handleClose}>
@@ -50,20 +53,36 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
             <Modal.Title>Edit Order</Modal.Title>
           </Modal.Header>
           <Modal.Body>
+            {loading ? (
+              <div className="text-center">
+                <ClipLoader color="#f86c6b" size={150} loading={loading} />
+              </div>
+            ) : (
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Service</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectedOrder?.productList?.map((order) => {
+                    return (
+                      <tr>
+                        <td>{order.productId.name}</td>
+                        <td>{order.productId.price}</td>
+                        <td>{order.productId.service}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+            )}
             <Row>
+              <Col>Status</Col>
+              <Col>{selectedOrder.statusOrder}</Col>
               <Col>
-                <Form.Label>Product Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  value={formData.productList.map(
-                    (product) => product.productId.name
-                  )}
-                  onChange={handleChange}
-                />
-              </Col>
-              <Col>
-                <Form.Label>Status Order</Form.Label>
                 <Form.Control
                   type="text"
                   as="select"
@@ -78,71 +97,9 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
                 </Form.Control>
               </Col>
             </Row>
-            <Row>
-              <Col>
-                <Form.Label>Shipping Fee</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="shippingFee"
-                  value={formData.shippingFee}
-                  onChange={handleChange}
-                />
-              </Col>
-              <Col>
-                <Form.Label>Amount</Form.Label>
-                <Form.Control
-                  type="number"
-                  name="totalPrice"
-                  value={formData.totalPrice}
-                  onChange={handleChange}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Label>Quantity</Form.Label>
-                <Form.Control
-                  name="totalProduct"
-                  onChange={handleChange}
-                  value={formData.totalProduct}
-                ></Form.Control>
-              </Col>
-              <Col>
-                <Form.Label>Catagories</Form.Label>
-                <Form.Control
-                  as="select"
-                  name="catagories"
-                  value={formData.catagories}
-                  onChange={handleChange}
-                >
-                  <option>fresh</option>
-                  <option>dried</option>
-                  <option>cereal</option>
-                </Form.Control>
-              </Col>
-            </Row>
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="danger" onClick={handleClose}>
-              Close
-            </Button>
-            <Button
-              variant="primary"
-              type="submit"
-              disabled={
-                !(
-                  formData.name ||
-                  (formData.ingredients &&
-                    formData.description &&
-                    formData.quantity &&
-                    formData.price &&
-                    formData.images &&
-                    formData.service &&
-                    formData.catagories)
-                )
-              }
-              className="add_product_btn"
-            >
+            <Button variant="primary" type="submit" className="add_product_btn">
               Save
             </Button>
           </Modal.Footer>

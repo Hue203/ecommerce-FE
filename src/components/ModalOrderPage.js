@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import { Modal, Col, Row, Form, Button } from "react-bootstrap";
+import { Modal, Col, Row, Form, Button, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "../redux/actions/order.actions";
-
+import { ClipLoader } from "react-spinners";
 const ModalOrderPage = ({ showModal, setShowModal, product }) => {
   const dispatch = useDispatch();
   const loading = useSelector((state) => state.order.loading);
@@ -22,21 +22,32 @@ const ModalOrderPage = ({ showModal, setShowModal, product }) => {
           <Modal.Title>Order Detail</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          {selectedOrder !== undefined && selectedOrder && (
-            <>
-              <Col>Product </Col>
-              {product.productList.map((product) => {
-                <h1>{product.productId.name}</h1>;
-              })}
-
-              <Col>Price </Col>
-              <Col>Quantity</Col>
-              <Col>Discount</Col>
-              <Col>Amount</Col>
-              <Row>
-                <Col>Total</Col>
-              </Row>
-            </>
+          {loading ? (
+            <div className="text-center">
+              <ClipLoader color="#f86c6b" size={150} loading={loading} />
+            </div>
+          ) : (
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Service</th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedOrder?.productList?.map((order) => {
+                  return (
+                    <tr>
+                      <td>{order.productId.name}</td>
+                      <td>{order.productId.price}</td>
+                      <td>{order.productId.service}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+              <Col>{`Amount: $${selectedOrder.totalPrice}`}</Col>
+            </Table>
           )}
         </Modal.Body>
         <Modal.Footer>

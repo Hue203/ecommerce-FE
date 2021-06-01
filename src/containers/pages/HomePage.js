@@ -10,6 +10,7 @@ import ProductSlider from "../../components/ProductSlider";
 import BlogCard from "../../components/BlogCard";
 import { blogActions } from "../../redux/actions/blog.action";
 import { packageActions } from "../../redux/actions/package.action";
+import Slider from "react-slick";
 import FooterPublic from "../../components/FooterPublic";
 
 const HomePage = () => {
@@ -54,17 +55,13 @@ const HomePage = () => {
         </div>
       ) : (
         <>
-          <section>
-            <Container className="blog-box">
-              {blogs.map((blog) => (
-                <BlogCard
-                  blog={blog}
-                  handleClick={handleClickOnBlog}
-                  key={blog._id}
-                />
-              ))}
-            </Container>
-          </section>
+          {blogs.map((blog) => (
+            <BlogCard
+              blog={blog}
+              handleClick={handleClickOnBlog}
+              key={blog._id}
+            />
+          ))}
 
           <section>
             <Container className="product-tab">
@@ -98,7 +95,7 @@ const HomePage = () => {
                 <Tab eventKey="packages" title="Detox Plan">
                   <Container className="packageSection">
                     <div className="title-pkg-container">
-                      Let's choose your package for Detox Plan
+                      Regular Drink with Detox Box
                     </div>
                     <Container className="packageConatiner">
                       {packages.map((packageItem) => (
@@ -118,12 +115,7 @@ const HomePage = () => {
             </Container>
           </section>
 
-          {/* <section>
-            <Container>Daily Drink</Container>
-          </section> */}
-          <section className="footer-section">
-            <FooterPublic />
-          </section>
+          <FooterPublic />
         </>
       )}
     </>

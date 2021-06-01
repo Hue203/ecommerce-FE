@@ -11,8 +11,8 @@ const BeforeAfter = () => {
       <BeforeAfterSlider
         before={before}
         after={after}
-        width={1800}
-        height={730}
+        width={1600}
+        height={400}
         className="before-after"
       />
     </div>

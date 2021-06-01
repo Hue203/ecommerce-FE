@@ -77,7 +77,11 @@ const RegisterPage = () => {
     <Container className="registerForm">
       <Row>
         <Col>
-          <img src={imgregister} alt="img-register" className="img-register" />
+          <img
+            src="https://i.pinimg.com/originals/c2/5c/76/c25c768acd2fe3b66d76efdee6ec932a.jpg"
+            alt="img-register"
+            className="img-register"
+          />
         </Col>
         <Col className="form-regis">
           <div className="text-center mb-3">
@@ -98,8 +102,10 @@ const RegisterPage = () => {
 
               <Col>
                 <Form.Label>Avatar</Form.Label>
+                <br />
                 <Button onClick={() => uploadWidget()}>Upload</Button>
               </Col>
+              <br />
             </Form.Group>
             <Form.Group>
               <Form.Control
@@ -113,6 +119,7 @@ const RegisterPage = () => {
                 <small className="form-text text-danger">{errors.name}</small>
               )}
             </Form.Group>
+            <br />
             <Form.Group>
               <Form.Control
                 type="email"
@@ -125,6 +132,7 @@ const RegisterPage = () => {
                 <small className="form-text text-danger">{errors.email}</small>
               )}
             </Form.Group>
+            <br />
             <Form.Group>
               <Form.Control
                 type="password"
@@ -139,6 +147,7 @@ const RegisterPage = () => {
                 </small>
               )}
             </Form.Group>
+            <br />
             <Form.Group>
               <Form.Control
                 type="password"
@@ -148,7 +157,7 @@ const RegisterPage = () => {
                 onChange={handleChange}
               />
             </Form.Group>
-
+            <br />
             {loading ? (
               <Button
                 className="btn-block"

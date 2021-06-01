@@ -1,30 +1,23 @@
 import React from "react";
-import { Row, Col, Container } from "react-bootstrap";
-import Slider from "react-slick";
+import { Row, Col, Container, Card } from "react-bootstrap";
+
 const ProductCard = ({ product, handleClick }) => {
-  let settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
   return (
     <>
       <div onClick={() => handleClick(product._id)}>
-        <Col className="product-card">
-          <div data-toggle="tooltip">
+        <Card className="product-cart">
+          <div className="item-product">
             {
               <img
-                width="600"
-                height="766"
+                width="250"
+                height="250"
                 src={product.images[0].imageUrl}
                 alt="product-img"
                 className="product-img"
               />
             }
-            <div className="product-content">
-              <div>
+            <div className="product-info">
+              <h3 className="product-title">
                 <ul>
                   {
                     <strong>
@@ -32,13 +25,33 @@ const ProductCard = ({ product, handleClick }) => {
                     </strong>
                   }
                 </ul>
-              </div>
-              <div>
-                <ul>{<p>{`Price: $ ${product.price} - Bottle`}</p>}</ul>
+              </h3>
+              <div className="product-price">
+                <span className="price">
+                  <del>
+                    <span className="woocommerce-Price-amount amount">
+                      <span className="woocommerce-Price-currencySymbol">
+                        £
+                      </span>
+                      {`Old Price: ${product.price} `}
+                    </span>
+                  </del>{" "}
+                  <span>
+                    <br />
+                    <ins>
+                      <span className="woocommerce-Price-amount amount">
+                        <span className="woocommerce-Price-currencySymbol">
+                          £
+                        </span>
+                        {` ${product.price}- Bottle only`}
+                      </span>
+                    </ins>
+                  </span>
+                </span>
               </div>
             </div>
           </div>
-        </Col>
+        </Card>
       </div>
     </>
   );

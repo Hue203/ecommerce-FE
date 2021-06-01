@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Container } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
 import { Col, Row } from "react-bootstrap";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { blogActions } from "../../redux/actions/blog.action";
+import SearchItem from "../../components/SearchItem";
+import Moment from "react-moment";
 
 const BlogDetailPage = () => {
   const params = useParams();
@@ -28,58 +28,55 @@ const BlogDetailPage = () => {
 
   return (
     <>
-      <div className="d-flex justify-content-between">
-        <Button onClick={handleGoBackClick}>
-          <FontAwesomeIcon icon="chevron-left" size="1x" /> Back
-        </Button>
-      </div>
-      {loading ? (
-        <div className="text-center">
-          <ClipLoader color="#FFD700" size={150} loading={loading} />
-        </div>
-      ) : (
-        <>
-          {singleBlog && (
-            <Card className="product-card">
-              <Row>
-                <Col>
-                  <div data-toggle="tooltip">
-                    <img
-                      src={singleBlog.blogImage}
-                      alt="product-img"
-                      className="re-size-img-single"
-                    />
-                  </div>
-                </Col>
-                <Col>
-                  <div className="content">
-                    <div>
-                      <ul>
-                        {
-                          <strong>
-                            <p>
-                              <h1>{singleBlog.title}</h1>
-                            </p>
-                          </strong>
-                        }
-                      </ul>
-                    </div>
-                    <div>
-                      <ul>
-                        {
-                          <strong>
-                            <h5>{`Ingredients: ${singleBlog.content}`}</h5>
-                          </strong>
-                        }
-                      </ul>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Card>
-          )}
-        </>
-      )}
+      <Container>
+        <Row>
+          <Col>
+            {loading ? (
+              <div className="text-center">
+                <ClipLoader color="#FFD700" size={150} loading={loading} />
+              </div>
+            ) : (
+              <>
+                {singleBlog && (
+                  <Card>
+                    <Row>
+                      <Col>
+                        <div data-toggle="tooltip">
+                          <img
+                            className="blog-img-single"
+                            src={singleBlog.blogImage}
+                            alt="product-img"
+                          />
+                        </div>
+                      </Col>
+                      <Card.Body>
+                        <Col>
+                          <div className="content">
+                            <ul>{<h3>{singleBlog.title}</h3>}</ul>
+
+                            <div>
+                              <ul>
+                                {
+                                  <h5>{`Ingredients: ${singleBlog.content}`}</h5>
+                                }
+                              </ul>
+                            </div>
+                          </div>
+                        </Col>
+                      </Card.Body>
+                    </Row>
+                    <Card.Title>
+                      <p className="posted-blog">
+                        Posted:<Moment fromNow>{singleBlog.createdAt}</Moment>
+                      </p>
+                    </Card.Title>
+                  </Card>
+                )}
+              </>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };

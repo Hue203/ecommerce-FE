@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "../../redux/actions/order.actions";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 
 const OrderDetailPage = () => {

@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import { Redirect, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../redux/actions/auth.actions";
-import login from "../../images/watermelon.png";
+import login from "../../images/logo1.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const LoginPage = () => {
@@ -44,6 +44,7 @@ const LoginPage = () => {
                 <FontAwesomeIcon icon="user" size="1x" /> Sign Into Your Account
               </p>
             </div>
+            <br />
             <Form.Group>
               <Form.Control
                 type="email"
@@ -57,6 +58,7 @@ const LoginPage = () => {
                 <small className="form-text text-danger">{errors.email}</small>
               )}
             </Form.Group>
+            <br />
             <Form.Group>
               <Form.Control
                 type="password"
@@ -72,7 +74,7 @@ const LoginPage = () => {
                 </small>
               )}
             </Form.Group>
-
+            <br />
             {loading ? (
               <Button
                 className="btn-block"
@@ -93,7 +95,7 @@ const LoginPage = () => {
               </Button>
             )}
             <hr />
-
+            <br />
             <p>
               Don't have an account? <Link to="/register">Sign Up</Link>
             </p>

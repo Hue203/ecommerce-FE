@@ -11,7 +11,7 @@ const packagesRequest =
       let queryString = "";
 
       if (query) {
-        queryString = `&title[$regex]=${query}&title[$options]=i`;
+        queryString = `&name[$regex]=${query}&name[$options]=i`;
       }
 
       let sortByString = "";

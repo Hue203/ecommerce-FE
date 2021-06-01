@@ -1,7 +1,5 @@
 import * as types from "../constants/review.constants";
 import api from "../api";
-import { routeActions } from "./route.actions";
-import { toast } from "react-toastify";
 
 const reviewsRequest =
   (pageNum = 1, limit = 6, query = null, sortBy = null) =>

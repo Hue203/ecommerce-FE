@@ -15,6 +15,7 @@ const orderReducer = (state = initialState, action) => {
     case types.UPDATE_ORDER_REQUEST:
     case types.GET_ORDERS_REQUEST:
     case types.CURRENT_USER_ORDER_REQUEST:
+    case types.GET_SINGLE_ORDER_REQUEST:
       return { ...state, loading: true };
 
     case types.CREATE_ORDER_SUCCESS:
@@ -32,10 +33,17 @@ const orderReducer = (state = initialState, action) => {
         selectedOrder: payload,
         loading: false,
       };
+    case types.GET_SINGLE_ORDER_REQUEST_SUCCESS:
+      return {
+        ...state,
+        selectedOrder: payload,
+        loading: false,
+      };
     case types.CURRENT_USER_ORDER_FAILURE:
     case types.GET_ORDERS_FAILURE:
     case types.CREATE_ORDER_FAILURE:
     case types.UPDATE_ORDER_FAILURE:
+    case types.GET_SINGLE_ORDER_REQUEST_FAILURE:
       return { ...state, loading: false };
     default:
       return state;

@@ -30,14 +30,15 @@ const createOrder = (totalAmount) => async (dispatch) => {
 };
 
 const getAllOrders =
-  (pageNum = 1, limit = 6, query = null, sortBy = null) =>
+  ({ pageNum = 1, limit = 6, query = null, sortBy = null }) =>
   async (dispatch) => {
     dispatch({ type: types.GET_ORDERS_REQUEST, payload: null });
     try {
+      console.log("limit", limit);
       let queryString = "";
-
+      console.log(pageNum, limit, query);
       if (query) {
-        queryString = `&title[$regex]=${query}&title[$options]=i`;
+        queryString = `&_id[$regex]=${query}&_id[$options]=i`;
       }
 
       let sortByString = "";
@@ -61,14 +62,13 @@ const getAllOrders =
 const updateOrder = (orderId, formData) => async (dispatch) => {
   dispatch({ type: types.UPDATE_ORDER_REQUEST, payload: null });
   try {
-    const res = await api.put(`/orders/${orderId}`, {
-      formData,
-    });
+    const res = await api.put(`/orders/${orderId}`, formData);
 
     dispatch({
       type: types.UPDATE_ORDER_SUCCESS,
       payload: res.data.data,
     });
+    dispatch(orderActions.getAllOrders({ pageNum: 1 }));
   } catch (err) {
     dispatch({
       type: types.UPDATE_ORDER_FAILURE,

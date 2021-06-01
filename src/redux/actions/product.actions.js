@@ -11,8 +11,9 @@ const productsRequest =
       let queryString = "";
 
       if (query) {
-        queryString = `&title[$regex]=${query}&title[$options]=i`;
+        queryString = `&name[$regex]=${query}&name[$options]=i`;
       }
+      console.log(pageNum, limit, query);
 
       let sortByString = "";
       if (sortBy?.key) {

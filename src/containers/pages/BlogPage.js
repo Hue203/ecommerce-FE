@@ -7,7 +7,7 @@ import { blogActions } from "../../redux/actions/blog.action";
 import BeforeAfter from "../../components/BeforeAfter";
 import { ClipLoader } from "react-spinners";
 import PaginationBar from "../../components/PaginationBar";
-
+import CardTest from "../../components/CartTest";
 const BlogPage = () => {
   const [pageNum, setPageNum] = useState(1);
   const loading = useSelector((state) => state.product.loading);
@@ -24,14 +24,14 @@ const BlogPage = () => {
     history.push(`/blogs/${id}`);
   };
   return (
-    <>
+    <div>
       {loading ? (
         <div className="text-center">
           <ClipLoader color="#f86c6b" size={150} loading={loading} />
         </div>
       ) : (
-        <div className="beforeafteCompo">
-          <BeforeAfter />
+        <div>
+          <BeforeAfter className="beforeafteCompo" />
           <Container className="blog-box">
             {blogs?.length ? (
               <>
@@ -49,13 +49,14 @@ const BlogPage = () => {
           </Container>
         </div>
       )}
+
       <PaginationBar
         pageNum={pageNum}
         setPageNum={setPageNum}
         totalPageNum={totalPageNum}
         loading={loading}
       />
-    </>
+    </div>
   );
 };
 

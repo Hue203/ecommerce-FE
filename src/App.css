@@ -23,7 +23,10 @@ body {
   border-radius: 70%;
 }
 .cart-page {
-  background-color: wheat;
+  background-image: url(https://image.freepik.com/free-photo/bottle-detox-water-with-mint-lemon-grey-background-citrus-lemonade-summer-fruit-infused-water_80743-2117.jpg);
+}
+.cart-table {
+  color: #50bd4d;
 }
 .cart-part {
   padding-top: 50px;
@@ -35,6 +38,9 @@ body {
 }
 .slider-section {
   margin-bottom: 10px;
+}
+.shipping-cart {
+  padding: 30px;
 }
 /* .blog-box {
   margin-top: 50px;
@@ -57,11 +63,10 @@ body {
   margin-top: 50px;
   display: flex;
   justify-content: center;
-  border: orange solid 6px;
-  background-color: orange;
 }
 
 .registerForm {
+  width: 1100vh;
   background-image: url(https://colorlib.com/etc/regform/colorlib-regform-18/images/bg-registration-form-2.jpg);
 }
 .img-register {
@@ -72,9 +77,9 @@ body {
   padding-bottom: 10px;
 }
 .form-regis {
-  width: 500px;
+  width: 700px;
   height: 700px;
-  padding-top: 100px;
+  padding-top: 50px;
   padding-left: 50px;
 }
 .legend {
@@ -112,7 +117,6 @@ body {
   padding: 10px;
   width: 550px;
   height: 550px;
-  background-color: khaki;
 }
 .img-package {
   width: 350px;
@@ -126,8 +130,6 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  font-family: "Pattaya", sans-serif;
-  background-color: rgba(255, 166, 0, 0.592);
 }
 /* .productContainer {
   border: solid 6px yellowgreen;
@@ -135,20 +137,13 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 } */
-.body {
-  color: #373b69;
-  max-width: fit-content;
-  max-height: auto;
-}
+
 .productContainer {
   margin: 0;
   /* background-color: paleturquoise; */
-  color: #373b69;
-  font-family: "Pattaya", sans-serif;
 }
 .product-card {
   margin: 1rem;
-  background-color: #4a4f8a;
 
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
@@ -162,9 +157,9 @@ body {
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   background-color: pink;
-  color: #373b69;
+  color: Black;
   position: absolute;
-  padding: 2rem;
+  padding: 0.5rem;
   bottom: 0;
   left: 0;
   right: 0;
@@ -176,24 +171,33 @@ body {
 .product-card:hover .product-content {
   transform: translateY(0%);
 }
-.publicNavbar {
-  background-color: pink;
-  height: 50%;
-}
+
 .blog-content-div {
   margin-right: 50px;
 }
+.blog-content {
+  padding: 50px;
+}
+.readmore-btn {
+  border-radius: 5px;
+  padding-left: 80px;
+}
+.text-muted {
+  margin-left: 20px;
+  padding: 20px;
+}
 .title-pkg-containe {
-  color: #373b69;
-  font-family: "Pattaya", sans-serif;
   text-align: center;
 }
-
+.packages-title {
+  text-align: center;
+}
 .reviewForm {
   margin-top: 66px;
   margin-bottom: 66px;
 }
 .re-size-img-single {
+  padding: 30px;
   width: 400px;
 }
 .product-card-detail {
@@ -219,7 +223,6 @@ body {
 }
 .packages-row {
   margin: 30px;
-  background-color: pink;
   border-radius: 10px;
   box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -227,68 +230,59 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  animation-name: example;
-  animation-duration: 4s;
 }
 
 .packages-row .package-content {
-  transform: translateY(0%);
+  padding: 30px;
+}
+
+.package-detail-container {
+  margin-top: 80px;
+}
+.package-content {
+  padding-top: 30px;
 }
 .packageSection {
   margin-top: 30px;
   align-items: center;
-  font-family: "Pattaya", sans-serif;
 }
 .title-pkg-container {
   margin-top: 30px;
   align-items: center;
   text-align: center;
-  font-family: "Pattaya", sans-serif;
+
   font-size: 40px;
 }
 
 /* FOOTER  */
 footer {
-  background-image: linear-gradient(pink, rgb(0, 255, 251));
+  background-color: #ffc68f;
 }
 
-@keyframes example {
-  0% {
-    background-color: pink;
-  }
-  100% {
-    background-color: rgba(255, 166, 0, 0.592);
-  }
-  50% {
-    background-color: rgb(90, 182, 90);
-  }
-  50% {
-    background-color: rgb(139, 182, 90);
-  }
-}
 .readmore-btn {
   margin: 20px;
 }
 
 .blog-title {
-  margin-bottom: 30px;
-  font-family: "Pattaya", sans-serif;
+  padding: 50px;
 }
-.blog-content {
-  margin-top: 50px;
-}
+
 .card-package {
   margin-top: 50px;
 }
 
 .packages-title {
   margin-top: 30px;
-  font-family: "Pattaya", sans-serif;
   font-size: 40px;
-  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 .beforeafteCompo {
   margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 50px;
 }
 
 .footer-section {
@@ -672,23 +666,342 @@ element.style {
   perspective-origin: 364.5px center;
 }
 
-.owl-carousel .owl-wrapper {
-  display: none;
-  position: relative;
-  -webkit-transform: translate3d(0, 0, 0);
-}
-
 .blog-content-div {
   background-image: url(https://nutritous.7uptheme.net/wp-content/uploads/2018/07/adv2.jpg?id=630) !important;
 }
 .product-tab {
   margin-top: 70px;
-  border: solid 5px rgba(255, 196, 0, 0.857);
 }
 .tab-product {
   margin-top: 30px;
 }
 .mouse-hover:hover {
-  color: #007bff;
+  color: #00ff22;
   cursor: pointer;
+}
+.banner-info {
+  height: 250px;
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+  -webkit-animation-duration: 0.75s;
+  animation-duration: 0.75s;
+}
+
+.bounceIn {
+  -webkit-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@keyframes bounceIn {
+  0%,
+  20%,
+  40%,
+  60%,
+  80%,
+  100% {
+    -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+  20% {
+    -webkit-transform: scale3d(1.1, 1.1, 1.1);
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+  40% {
+    -webkit-transform: scale3d(0.9, 0.9, 0.9);
+    transform: scale3d(0.9, 0.9, 0.9);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(1.03, 1.03, 1.03);
+    transform: scale3d(1.03, 1.03, 1.03);
+  }
+  80% {
+    -webkit-transform: scale3d(0.97, 0.97, 0.97);
+    transform: scale3d(0.97, 0.97, 0.97);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+.btn-arrow.white {
+  color: #fff;
+  border: 2px solid #fff;
+  line-height: 38px;
+}
+.btn-arrow {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 30px;
+  text-transform: uppercase;
+  border-radius: 20px;
+  position: relative;
+  background: transparent;
+  transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 0.5s ease-out 0s;
+}
+.btn-arrow::after,
+.post-control-prev .btn-arrow::before {
+  content: "\f3d6";
+  font-family: "Ionicons";
+  margin-left: 10px;
+}
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+.footer-public-section {
+  padding-top: 50px;
+}
+.title30 {
+  font-size: 30px;
+}
+.title120 {
+  font-size: 120px;
+  color: #f8ff09;
+}
+.font-bold {
+  font-weight: 700;
+}
+
+.flash {
+  -webkit-animation-name: flash;
+  animation-name: flash;
+}
+@keyframes flash {
+  0%,
+  50%,
+  100% {
+    opacity: 1;
+  }
+  25%,
+  75% {
+    opacity: 0;
+  }
+}
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-center {
+  text-align: center;
+}
+.titlestay {
+  display: flex;
+  justify-content: center;
+  color: #f8ff09;
+  font-size: 40px;
+  font-weight: 700;
+}
+.product-detail-page {
+  font-size: 20px;
+  margin-top: 50px;
+}
+.relatedproduct-title {
+  display: flex;
+  justify-content: center;
+  color: black;
+  font-size: 200px;
+  font-weight: 700;
+}
+.thankyoutitle {
+  color: #00ff22;
+  font-size: 90px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 350px;
+}
+.relatedProduct-container {
+  margin-top: 50px;
+}
+
+.startRating {
+  width: 10px;
+  height: 10px;
+}
+.item-product1::after {
+  border: 1px solid #e5e5e5;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.15);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 0.5s ease-out 0s;
+}
+.item-product {
+  padding: 10px;
+  position: relative;
+  transition: all 0.5s ease-out 0s;
+  -webkit-transition: all 0.5s ease-out 0s;
+}
+.item-product1 > * {
+  position: relative;
+  z-index: 1;
+}
+
+.blog-container {
+  position: relative;
+  width: 1100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px;
+}
+.card-blog {
+  position: relative;
+  max-width: 300px;
+  height: 420px;
+  margin: 30px 10px;
+  padding: 20px 15px;
+  display: flex;
+  background: #fff;
+  box-shadow: 0 5px 202px rgba(0, 0, 0, 0, 5);
+  transition: 0.3s ease-in-out;
+}
+
+.card-blog :hover {
+  height: 420px;
+}
+.imgBx {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  top: -60px;
+  left: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0, 0.2);
+}
+.blog-img {
+  max-width: 100%;
+  border-radius: 4px;
+}
+.content-blog {
+  position: relative;
+  margin-top: -140px;
+  padding: 10px;
+  text-align: center;
+  color: #111;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.card-blog :hover .content-blog {
+  visibility: visible;
+  opacity: 1;
+  margin-top: -40px;
+  transition-delay: 0.3s;
+}
+.product-cart {
+  margin: 20px;
+}
+.item-product {
+  padding: 40px;
+}
+.product-info {
+  margin-top: 10px;
+}
+.product-title {
+  padding-top: 20px;
+}
+.product-price {
+  align-items: center;
+  padding-left: 20px;
+  color: #66cc33;
+  font-size: 18px;
+  margin: 0 -2px 7px;
+}
+.reviewlist {
+  padding: 10px;
+  margin-left: 30px;
+  background-image: url(https://image.freepik.com/free-photo/water-detox-with-lemon-lime-mint-blue-background-detox-drink-with-copy-space_106006-2846.jpg);
+}
+.description-card {
+  font-weight: 500;
+  font-size: 30px;
+  background-image: url(https://www.photocase.com/photos/3431339-berries-detox-fruit-infused-water-in-mason-jar-flavored-with-herb-leaves-on-table-at-sunny-turquoise-blue-background-summer-mood-drinks-and-lifestyle-healthy-background-photocase-stock-photo-large.jpeg);
+}
+.andro_btn-custom {
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  position: relative;
+  background-color: #50bd4d;
+  border: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 12px 30px;
+  transition: 0.3s;
+  text-transform: uppercase;
+  border-radius: 25px;
+  z-index: 1;
+  box-shadow: 0 3px 24px rgba(0, 0, 0, 0.1);
+}
+a,
+a:focus,
+a:hover {
+  text-decoration: none;
+}
+.qty {
+  display: flex;
+}
+.quantity-slect {
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #f0f2f3;
+  font-size: 20px;
+  background-color: #fff;
+  transition: 0.3s;
+}
+.singleProduct-name {
+  padding: 30px;
+}
+.slideStayhealth {
+  margin-bottom: 150px;
+}
+.blog-img-single {
+  padding: 30px;
+  height: 550px;
+  width: 550px;
+  margin-top: 50px;
+}
+.content-blog {
+  margin-top: 10px;
+}
+.posted-blog {
+  padding: 20px;
+}
+.profile-container {
+  padding: 30px;
+  background-image: url(https://img.freepik.com/free-photo/body-detoxification-healthy-diet-concept-green-natural-fresh-apple-word-detox-from-white-letters_75163-1965.jpg?size=626&ext=jpg);
+}
+.publicNavbar {
+  position: fixed;
 }

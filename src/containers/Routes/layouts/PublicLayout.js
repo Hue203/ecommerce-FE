@@ -7,21 +7,18 @@ import NotFoundPage from "../../../components/NotFoundPage";
 import RegisterPage from "../../pages/RegisterPage";
 import LoginPage from "../../pages/LoginPage";
 import DetailPage from "../../pages/DetailPage";
-
 import ProtectedRoute from "../ProtectedRoute";
 import PakagesDetailPage from "../../pages/PakagesDetailPage";
 import BlogDetailPage from "../../pages/BlogDetailPage";
 import ProductsPage from "../../pages/ProductsPage";
 import CartPage from "../../pages/CartPage";
-
 import ShippingInfor from "../../pages/ShippingInfor";
-
 import ProfilePage from "../../pages/ProfilePage";
-
 import ThankYouPage from "../../pages/ThankYouPage";
 import BlogPage from "../../pages/BlogPage";
 import PackagePage from "../../pages/PackagePage";
 import OrderDetailPage from "../../pages/OrderDetailPage";
+import FooterPublic from "../../../components/FooterPublic";
 
 const PublicLayout = () => {
   return (
@@ -53,6 +50,9 @@ const PublicLayout = () => {
         <ProtectedRoute exact path="/orders/:id" component={OrderDetailPage} />
         <Route component={NotFoundPage} />
       </Switch>
+      {/* <section className="footer-public-section">
+        <FooterPublic />
+      </section> */}
     </>
   );
 };

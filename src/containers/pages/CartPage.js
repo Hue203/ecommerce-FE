@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useParams } from "react-router";
+
 import { userActions } from "../../redux/actions/user.actions";
 import { useHistory } from "react-router-dom";
 import {
@@ -96,9 +96,9 @@ const CartPage = () => {
               <Row>
                 <Col>
                   <Row>
-                    <Table striped bordered hover>
+                    <Table className="cart-table" striped bordered hover>
                       <thead>
-                        <tr>
+                        <tr className="cart-table">
                           <th>Name</th>
                           <th>Price</th>
                           <th>Quantity</th>
@@ -149,7 +149,7 @@ const CartPage = () => {
 
       <Container>
         <Card>
-          <Card.Title>Shipping Detail</Card.Title>
+          <Card.Title className="shipping-cart">Shipping Detail</Card.Title>
           <Card.Body>
             <Form onSubmit={handleSubmit}>
               <Row className="mb-3">
@@ -222,7 +222,7 @@ const CartPage = () => {
               {loading ? (
                 <Button
                   className="btn-block"
-                  variant="primary"
+                  variant="success"
                   type="button"
                   disabled
                 >
@@ -237,7 +237,7 @@ const CartPage = () => {
                 <Button
                   className="btn-Continue"
                   type="submit"
-                  variant="primary"
+                  variant="success"
                 >
                   Continue
                 </Button>

@@ -6,46 +6,80 @@ import Moment from "react-moment";
 const BlogCard = ({ blog, handleClick }) => {
   return (
     <>
-      <Container className="blog-container">
-        <Card onClick={() => handleClick(blog._id)} className="blog-card">
-          <Row className="blog-row">
-            <Col>
-              <div className="blog-div">
-                <img
-                  className="blog-img "
-                  variant="top"
-                  src={blog?.blogImage ? blog.blogImage : "holder.js/300px160"}
-                  alt="blog-img"
-                />
-              </div>
-            </Col>
-            <Col className="blog-content-div">
-              <Card.Title className="blog-title">{blog.title}</Card.Title>
+      {/* <div className="blog-container">
+        <div className="card-blog" onClick={() => handleClick(blog._id)}>
+          <div className="imgBx">
+            <img
+              className="blog-img "
+              variant="top"
+              src={blog?.blogImage ? blog.blogImage : "holder.js/300px160"}
+              alt="blog-img"
+            />
+          </div>
+        </div>
+        <div className="content-blog">
+          <h2>{blog.title}</h2>
+          <p>
+            {" "}
+            {blog?.content?.length <= 150 && blog.content !== undefined
+              ? blog.content
+              : blog.content.slice(0, 150) + "..."}
+          </p>
+        </div>
 
-              <Card.Text className="blog-content">
-                {blog?.content?.length <= 350 && blog.content !== undefined
-                  ? blog.content
-                  : blog.content.slice(0, 350) + "..."}
-              </Card.Text>
-              <Button
-                className="readmore-btn"
-                variant="success"
-                onClick={() => handleClick(blog._id)}
-              >
-                Read More
-              </Button>
-            </Col>
+        <Button
+          className="readmore-btn"
+          variant="success"
+          onClick={() => handleClick(blog._id)}
+        >
+          Read More
+        </Button>
 
-            <small className="text-muted">
-              <span className="text-muted">
-                <p>
-                  Posted:<Moment fromNow>{blog.createdAt}</Moment>
-                </p>
-              </span>
-            </small>
-          </Row>
-        </Card>
-      </Container>
+        <small className="text-muted">
+          <span className="text-muted">
+            <p>
+              Posted:<Moment fromNow>{blog.createdAt}</Moment>
+            </p>
+          </span>
+        </small> */}
+      <Card onClick={() => handleClick(blog._id)} className="blog-card">
+        <Row className="blog-row">
+          <Col>
+            <div className="blog-div">
+              <img
+                className="blog-img"
+                variant="top"
+                src={blog?.blogImage ? blog.blogImage : "holder.js/300px160"}
+                alt="blog-img"
+              />
+            </div>
+          </Col>
+          <Col className="blog-content-div">
+            <Card.Title className="blog-title">{blog.title}</Card.Title>
+
+            <Card.Text className="blog-content">
+              {blog?.content?.length <= 150 && blog.content !== undefined
+                ? blog.content
+                : blog.content.slice(0, 150) + "..."}
+            </Card.Text>
+            <Button
+              className="readmore-btn"
+              variant="success"
+              onClick={() => handleClick(blog._id)}
+            >
+              Read More
+            </Button>
+          </Col>
+
+          <small className="text-muted">
+            <span className="text-muted">
+              <p>
+                Posted:<Moment fromNow>{blog.createdAt}</Moment>
+              </p>
+            </span>
+          </small>
+        </Row>
+      </Card>
     </>
   );
 };

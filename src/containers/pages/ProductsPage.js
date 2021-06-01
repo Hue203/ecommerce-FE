@@ -7,7 +7,7 @@ import { productActions } from "../../redux/actions/product.actions";
 import { Container, Col, Row } from "react-bootstrap";
 import ProductCard from "../../components/ProductCard";
 import PaginationBar from "../../components/PaginationBar";
-import BeforeAfter from "../../components/BeforeAfter";
+import SliderProductPage from "../../components/SliderProductPage";
 
 const ProductsPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -15,12 +15,11 @@ const ProductsPage = () => {
   const [query, setQuery] = useState("");
   const [pageNum, setPageNum] = useState(1);
   const loading = useSelector((state) => state.product.loading);
-
   const products = useSelector((state) => state.product.products);
-
   const totalPageNum = useSelector((state) => state.product.totalPageNum);
   const dispatch = useDispatch();
   const history = useHistory();
+
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
@@ -47,32 +46,38 @@ const ProductsPage = () => {
         </div>
       ) : (
         <>
-          <BeforeAfter />
+          <SliderProductPage />
           <br />
-          <Col md={4}>
-            <SearchItem
-              searchInput={searchInput}
-              handleInputChange={handleInputChange}
-              handleSubmit={handleSubmitSearch}
-              loading={loading}
-            />
-          </Col>
+
           <section>
             <Container className="productContainer">
-              <h2>Fresh Detox</h2>
-              {products?.length ? (
-                <div className="product-card">
-                  {products.map((product) => (
-                    <ProductCard
-                      product={product}
-                      key={product._id}
-                      handleClick={handleClickOnProduct}
+              <Row>
+                <Col>
+                  <div className="search-form pull-left">
+                    <SearchItem
+                      searchInput={searchInput}
+                      handleInputChange={handleInputChange}
+                      handleSubmit={handleSubmitSearch}
+                      loading={loading}
                     />
-                  ))}
-                </div>
-              ) : (
-                <p>There are no Products</p>
-              )}
+                  </div>
+                </Col>
+                <Col xs={12}>
+                  {products?.length ? (
+                    <div className="product-card">
+                      {products.map((product) => (
+                        <ProductCard
+                          product={product}
+                          key={product._id}
+                          handleClick={handleClickOnProduct}
+                        />
+                      ))}
+                    </div>
+                  ) : (
+                    <p>There are no Products</p>
+                  )}
+                </Col>
+              </Row>
             </Container>
           </section>
         </>
