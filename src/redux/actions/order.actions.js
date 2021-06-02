@@ -7,7 +7,7 @@ const createOrder = (totalAmount) => async (dispatch) => {
   dispatch({ type: types.CREATE_ORDER_REQUEST, payload: null });
   try {
     const res = await api.post(`/orders`, { totalAmount });
-    /* const res = await fetch("http://localhost:5000/api/orders", {
+    /* const res = await fetch("https://agile-sierra-38268.herokuapp.com/api/orders", {
       method: "post",
       headers: new Headers({
         Authorization: "Bearer " + localStorage.getItem("accessToken"),

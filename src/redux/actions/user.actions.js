@@ -53,34 +53,37 @@ const updateBillingAddress =
   }) =>
   async (dispatch) => {
     try {
-      dispatch({ type: types.UPDATE_BILLINGADDRESS_REQUEST, payload: null });
-      const res = await api.put(`/users/shipping`, {
-        fullname,
-        email,
-        address1,
-        address2,
-        phone,
-        city,
-        paymentMethod,
-        shippingFee,
-      });
-      // const res = await fetch("http://localhost:5000/api/users/shipping", {
-      //   method: "put",
-      //   headers: new Headers({
-      //     Authorization: "Bearer " + localStorage.getItem("accessToken"),
-      //     "Content-Type": "application/json",
-      //   }),
-      //   body: JSON.stringify({
-      //     fullname,
-      //     email,
-      //     address1,
-      //     address2,
-      //     phone,
-      //     city,
-      //     paymentMethod,
-      //     shippingFee,
-      //   }),
+      // dispatch({ type: types.UPDATE_BILLINGADDRESS_REQUEST, payload: null });
+      // const res = await api.put(`/users/shipping`, {
+      //   fullname,
+      //   email,
+      //   address1,
+      //   address2,
+      //   phone,
+      //   city,
+      //   paymentMethod,
+      //   shippingFee,
       // });
+      const res = await fetch(
+        "https://agile-sierra-38268.herokuapp.com/api/users/shipping",
+        {
+          method: "put",
+          headers: new Headers({
+            Authorization: "Bearer " + localStorage.getItem("accessToken"),
+            "Content-Type": "application/json",
+          }),
+          body: JSON.stringify({
+            fullname,
+            email,
+            address1,
+            address2,
+            phone,
+            city,
+            paymentMethod,
+            shippingFee,
+          }),
+        }
+      );
       dispatch({
         type: types.UPDATE_BILLINGADDRESS_SUCCESS,
         payload: res.data.data,
