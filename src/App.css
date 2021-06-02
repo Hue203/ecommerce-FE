@@ -1007,9 +1007,14 @@ a:hover {
   padding: 20px;
 }
 .profile-container {
-  padding: 30px;
+  padding: 10px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
   background-image: url(https://img.freepik.com/free-photo/body-detoxification-healthy-diet-concept-green-natural-fresh-apple-word-detox-from-white-letters_75163-1965.jpg?size=626&ext=jpg);
 }
+
 .publicNavbar {
   position: fixed;
 }
