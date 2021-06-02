@@ -1018,12 +1018,20 @@ a:hover {
 }
 .product-cart .item-product :hover img {
   transform: scale(1.05);
-
   transition: 0.3s ease-in-out;
+}
+.product-cart :hover {
+  transition-duration: 0.5s;
+  box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
+}
+.product-cart {
+  transition-duration: 0.5s;
+  box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
 }
 .product-cart {
   margin: 15px 15px 0;
   padding: 0;
+  border: none !important;
 }
 .product-card {
   margin: 1rem;
@@ -1032,6 +1040,8 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  transition-duration: 0.5s;
+  box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
 }
 .card .product-img-div :hover {
   transform: scale(1.05);
