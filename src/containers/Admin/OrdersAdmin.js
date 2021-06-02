@@ -61,7 +61,7 @@ const OrdersAdmin = () => {
         </div>
       ) : (
         <Container fluid>
-          {orders && (
+          {orders !== undefined && (
             <>
               <Row>
                 <Col md={4}>
@@ -127,7 +127,7 @@ const OrdersAdmin = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {orders?.length ? (
+                    {orders !== undefined?.length ? (
                       <>
                         {orders.map((item) => (
                           <tr key={item._id}>

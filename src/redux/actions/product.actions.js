@@ -56,6 +56,7 @@ const createNewProduct = (formData) => async (dispatch) => {
       type: types.CREATE_PRODUCT_SUCCESS,
       payload: res.data.data,
     });
+    dispatch(productActions.productsRequest({ pageNum: 1 }));
     dispatch(routeActions.redirect("__GO_BACK__"));
     toast.success("New product has been created!");
   } catch (err) {
@@ -72,6 +73,7 @@ const updateProduct = (productId, formData) => async (dispatch) => {
       type: types.UPDATE_PRODUCT_SUCCESS,
       payload: res.data.data,
     });
+
     dispatch(routeActions.redirect("__GO_BACK__"));
     toast.success("The product has been updated!");
   } catch (err) {

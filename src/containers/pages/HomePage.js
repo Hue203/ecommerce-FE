@@ -10,7 +10,6 @@ import ProductSlider from "../../components/ProductSlider";
 import BlogCard from "../../components/BlogCard";
 import { blogActions } from "../../redux/actions/blog.action";
 import { packageActions } from "../../redux/actions/package.action";
-import Slider from "react-slick";
 import FooterPublic from "../../components/FooterPublic";
 
 const HomePage = () => {

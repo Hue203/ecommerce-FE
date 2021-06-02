@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Container, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 const ProductCard = ({ product, handleClick }) => {
   return (
@@ -8,13 +8,15 @@ const ProductCard = ({ product, handleClick }) => {
         <Card className="product-cart">
           <div className="item-product">
             {
-              <img
-                width="250"
-                height="250"
-                src={product.images[0].imageUrl}
-                alt="product-img"
-                className="product-img"
-              />
+              <div className="product-img-div">
+                <img
+                  width="250"
+                  height="250"
+                  src={product.images[0].imageUrl}
+                  alt="product-img"
+                  className="product-img"
+                />
+              </div>
             }
             <div className="product-info">
               <h3 className="product-title">
@@ -43,7 +45,7 @@ const ProductCard = ({ product, handleClick }) => {
                         <span className="woocommerce-Price-currencySymbol">
                           £
                         </span>
-                        {` ${product.price}- Bottle only`}
+                        {` ${(product.price * 80) / 100} - Bottle only`}
                       </span>
                     </ins>
                   </span>

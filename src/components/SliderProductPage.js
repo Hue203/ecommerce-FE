@@ -67,7 +67,7 @@ const SliderProductPage = () => {
               <p className="titlestay" font-bold>
                 Stay Safe - Stay Healthy
               </p>
-              <h4 className="slideStayhealth">Up to 35% all product.</h4>
+              <h4 className="slideStayhealth">Up to 35% all products.</h4>
             </div>
           </Carousel.Caption>
         </Carousel.Item>

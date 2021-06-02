@@ -18,14 +18,18 @@ const ReviewList = ({ reviews }) => {
 const ReviewContent = ({ review }) => {
   return (
     <div className="comment">
-      <span className="comment_body">{review?.content}</span>
-      <br />
-      <span className="comment_by">posted </span>
-      {/* <span className="comment_user">{review?.user?.name}</span> */}
-      <span className="comment_on"> on </span>
-      <span className="comment_date">
-        <Moment fromNow>{review?.createdAt}</Moment>
+      <span className="comment_body">
+        <h5>{review?.content}</h5>
       </span>
+      <br />
+      <p>
+        {" "}
+        <span className="comment_by">posted</span>
+        <span className="comment_on"> on </span>
+        <span className="comment_date">
+          <Moment fromNow>{review?.createdAt}</Moment>
+        </span>
+      </p>
     </div>
   );
 };

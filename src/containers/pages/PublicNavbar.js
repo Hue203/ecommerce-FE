@@ -43,11 +43,11 @@ const PublicNavbar = () => {
     </Nav>
   );
 
-  <Nav>
-    <Nav.Link as={Link} to="/user/dashboard">
-      <FontAwesomeIcon icon="user" size="sm" /> Dashboard
-    </Nav.Link>
-  </Nav>;
+  // <Nav>
+  //   <Nav.Link as={Link} to="/user/dashboard">
+  //     <FontAwesomeIcon icon="user" size="sm" /> Dashboard
+  //   </Nav.Link>
+  // </Nav>;
 
   return (
     <Navbar className="publicNavbar">
@@ -58,17 +58,18 @@ const PublicNavbar = () => {
           width="150px"
           className="logo-resize"
         />
+
         <Navbar.Collapse id="navbar-dark-example">
           <Nav>
             <NavDropdown
               id="nav-dropdown-dark-example"
-              title="Catagories"
+              title="Product"
               menuvariant="dark"
             >
-              <NavDropdown.Item>
+              {/* <NavDropdown.Item>
                 {" "}
                 <FontAwesomeIcon icon="list-alt" size="sm" /> Detox products
-              </NavDropdown.Item>
+              </NavDropdown.Item> */}
               <NavDropdown.Item as={Link} to="/products">
                 Fresh Detox Juice
               </NavDropdown.Item>
@@ -87,12 +88,19 @@ const PublicNavbar = () => {
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
+          <Navbar.Brand as={Link} to="/">
+            Home
+          </Navbar.Brand>
+          <br />
+          <Navbar.Brand as={Link} to="/">
+            About
+          </Navbar.Brand>
         </Navbar.Collapse>
       </Navbar.Brand>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
-      <Nav className="mr-auto"></Nav>
+
       {!loading && <>{isAuthenticated ? authLinks : publicLinks}</>}
     </Navbar>
   );

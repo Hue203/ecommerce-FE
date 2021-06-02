@@ -2,27 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../../redux/actions/product.actions";
-import { reviewActions } from "../../redux/actions/review.action";
 import { Button, Card } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
-import {
-  Col,
-  Row,
-  Container,
-  Tabs,
-  Tab,
-  Nav,
-  NavDropdown,
-  Badge,
-} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Col, Row, Container, Tabs, Tab } from "react-bootstrap";
 import ReviewForm from "../../components/ReviewForm";
 import SearchItem from "../../components/SearchItem";
 import ReviewList from "../../components/ReviewList";
 import SliderProductPage from "../../components/SliderProductPage";
 import ProductCard from "../../components/ProductCard";
 import { userActions } from "../../redux/actions/user.actions";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import StarRatings from "react-star-ratings";
 
 const DetailPage = () => {
@@ -69,9 +57,7 @@ const DetailPage = () => {
     dispatch(productActions.createReview(singleProduct._id, reviewText));
     setReviewText("");
   };
-  const handleOnClickReview = (id) => {
-    history.push(`/reviews/${id}`);
-  };
+
   const handleChangeQuantity = (e) => {
     setAddQuantity(e.target.value);
   };
@@ -160,16 +146,15 @@ const DetailPage = () => {
                               }
                             </ul>
                           </div>
-                          <p>
+                          <ul>
                             {" "}
                             <StarRatings
-                              className="startRating"
                               rating={4.5}
-                              starRatedColor="yellow"
+                              starRatedColor="gold"
                               numberOfStars={5}
                               name="rating"
                             />
-                          </p>
+                          </ul>
 
                           <div>
                             <ul>

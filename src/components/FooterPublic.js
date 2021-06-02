@@ -20,7 +20,7 @@ const FooterPublic = () => {
               </p>
             </div>
             <div className="col-lg-2 col-md-6">
-              <h5 className="text-white mb-3">Quick links</h5>
+              <h5 className="text-white mb-3">Links</h5>
               <ul className="list-unstyled text-muted">
                 <li>
                   <a href="/">Home</a>

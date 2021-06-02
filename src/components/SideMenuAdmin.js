@@ -6,8 +6,7 @@ const SideMenuAdmin = () => {
   return (
     <Nav className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
       <div className="sidebar-sticky pt-3">
-        <Nav.Item></Nav.Item>
-        <Nav.Item>
+        {/* <Nav.Item>
           <Nav.Link
             as={NavLink}
             to="/admin/management"
@@ -16,7 +15,7 @@ const SideMenuAdmin = () => {
           >
             DashBoard
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         <Nav.Item>
           <Nav.Link
             as={NavLink}

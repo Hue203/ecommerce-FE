@@ -69,6 +69,7 @@ const updateOrder = (orderId, formData) => async (dispatch) => {
       payload: res.data.data,
     });
     dispatch(orderActions.getAllOrders({ pageNum: 1 }));
+    toast.success("The order has been updated!");
   } catch (err) {
     dispatch({
       type: types.UPDATE_ORDER_FAILURE,

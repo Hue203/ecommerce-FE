@@ -4,7 +4,7 @@ import { routeActions } from "./route.actions";
 import { toast } from "react-toastify";
 
 const blogsRequest =
-  (pageNum = 1, limit = 3, query = null, sortBy = null) =>
+  (pageNum = 1, limit = 2, query = null, sortBy = null) =>
   async (dispatch) => {
     dispatch({ type: types.GET_BLOGS_REQUEST, payload: null });
     try {

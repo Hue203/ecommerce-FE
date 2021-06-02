@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Container } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Card, Col, Row } from "react-bootstrap";
 import Moment from "react-moment";
 
@@ -63,7 +63,7 @@ const BlogCard = ({ blog, handleClick }) => {
                 : blog.content.slice(0, 150) + "..."}
             </Card.Text>
             <Button
-              className="readmore-btn"
+              className="btn readmore-btn"
               variant="success"
               onClick={() => handleClick(blog._id)}
             >
