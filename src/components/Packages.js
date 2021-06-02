@@ -9,7 +9,7 @@ const Packages = ({ packageProduct, handleClick }) => {
           <div className="flex">
             <Row className="productRow">
               <Col>
-                <div data-toggle="tooltip">
+                <div>
                   {
                     <img
                       width="250"
@@ -19,13 +19,11 @@ const Packages = ({ packageProduct, handleClick }) => {
                       className="img-package"
                     />
                   }
-                  <div>
+                  <div className="package-content">
                     <ul>
                       {
                         <strong>
-                          <h4 className="package-content">
-                            {packageProduct.name}
-                          </h4>
+                          <h4>{packageProduct.name}</h4>
                         </strong>
                       }
                     </ul>

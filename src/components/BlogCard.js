@@ -58,9 +58,12 @@ const BlogCard = ({ blog, handleClick }) => {
             <Card.Title className="blog-title">{blog.title}</Card.Title>
 
             <Card.Text className="blog-content">
-              {blog?.content?.length <= 150 && blog.content !== undefined
-                ? blog.content
-                : blog.content.slice(0, 150) + "..."}
+              <p>
+                {" "}
+                {blog?.content?.length <= 150 && blog.content !== undefined
+                  ? blog.content
+                  : blog.content.slice(0, 150) + "..."}
+              </p>
             </Card.Text>
             <Button
               className="btn readmore-btn"

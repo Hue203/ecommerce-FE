@@ -1,9 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Source+Sans+Pro:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&display=swap");
 
 body {
   color: #000;
-  font-family: "Nanum Myeongjo", serif;
+  font-family: "Cabin Sketch", cursive;
   font-size: 14px;
   line-height: inherit;
   margin: 0;
@@ -24,6 +25,8 @@ body {
   border-radius: 70%;
 }
 .cart-page {
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url(https://image.freepik.com/free-photo/bottle-detox-water-with-mint-lemon-grey-background-citrus-lemonade-summer-fruit-infused-water_80743-2117.jpg);
 }
 .cart-table {
@@ -83,11 +86,7 @@ body {
   padding-top: 50px;
   padding-left: 50px;
 }
-.legend {
-  font-size: 30px;
-  font-weight: bold;
-  font-style: italic;
-}
+
 .login-form {
   width: 500px;
   height: 700px;
@@ -228,20 +227,6 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   background-color: paleturquoise;
-}
-.packages-row {
-  margin: 30px;
-  border-radius: 10px;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.packages-row .package-content {
-  padding: 30px;
 }
 
 .package-detail-container {
@@ -659,10 +644,7 @@ img {
 .banner-slider .item-slider {
   position: relative;
 }
-.owl-carousel .owl-wrapper,
-.owl-carousel .owl-item {
-  float: left;
-}
+
 .banner-slider .banner-thumb {
   position: relative;
 }
@@ -690,6 +672,7 @@ element.style {
 }
 .banner-info {
   height: 250px;
+  padding-bottom: 300px;
 }
 
 .animated.flipOutX,
@@ -765,12 +748,7 @@ element.style {
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
 }
-.btn-arrow::after,
-.post-control-prev .btn-arrow::before {
-  content: "\f3d6";
-  font-family: "Ionicons";
-  margin-left: 10px;
-}
+
 a {
   color: #337ab7;
   text-decoration: none;
@@ -783,7 +761,7 @@ a {
   font-size: 30px;
 }
 .title120 {
-  font-size: 120px;
+  font-size: 80px;
   color: #f8ff09;
 }
 .font-bold {
@@ -811,6 +789,9 @@ a {
 .text-center {
   text-align: center;
 }
+.secondSlide {
+  padding-bottom: 100px;
+}
 .titlestay {
   display: flex;
   justify-content: center;
@@ -831,7 +812,7 @@ a {
 }
 .thankyoutitle {
   color: #00ff22;
-  font-size: 90px;
+  font-size: 120px;
   font-weight: 700;
   text-align: center;
   margin-bottom: 350px;
@@ -944,11 +925,15 @@ a {
 .reviewlist {
   padding: 10px;
   margin-left: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url(https://image.freepik.com/free-photo/water-detox-with-lemon-lime-mint-blue-background-detox-drink-with-copy-space_106006-2846.jpg);
 }
 .description-card {
   font-weight: 500;
   font-size: 30px;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url(https://www.photocase.com/photos/3431339-berries-detox-fruit-infused-water-in-mason-jar-flavored-with-herb-leaves-on-table-at-sunny-turquoise-blue-background-summer-mood-drinks-and-lifestyle-healthy-background-photocase-stock-photo-large.jpeg);
 }
 .andro_btn-custom {
@@ -1048,3 +1033,32 @@ a:hover {
   transition-duration: 0.5s;
   box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
 } */
+/* .img-package {
+  transition-duration: 0.3s;
+  box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.img-package :hover {
+  transform: scale(1.05);
+  transition: 0.3s ease-in-out;
+  box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
+} */
+.packages-row {
+  margin: 30px;
+  border-radius: 10px;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.packages-row .package-content {
+  padding: 30px;
+}
+/* .packages-row :hover {
+  box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
+  transform: scale(1.05);
+} */
+.package-content {
+  box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
+  padding: auto;
+}

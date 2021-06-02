@@ -261,7 +261,7 @@ const DetailPage = () => {
               <Card>
                 <br />
                 <Card.Title className="relatedproduct-title">
-                  Related Product
+                  <p>Related Product</p>
                 </Card.Title>
                 <Card.Body>
                   {loadingAll ? (

@@ -22,10 +22,6 @@ const BlogDetailPage = () => {
     }
   }, [dispatch, params]);
 
-  const handleGoBackClick = (e) => {
-    history.goBack();
-  };
-
   return (
     <>
       <Container>
@@ -56,9 +52,7 @@ const BlogDetailPage = () => {
 
                             <div>
                               <ul>
-                                {
-                                  <h5>{`Ingredients: ${singleBlog.content}`}</h5>
-                                }
+                                <p>{singleBlog.content}</p>
                               </ul>
                             </div>
                           </div>

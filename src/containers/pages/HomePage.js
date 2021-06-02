@@ -69,7 +69,7 @@ const HomePage = () => {
                 id="uncontrolled-tab-example"
                 className="tab-product"
               >
-                <Tab eventKey="product" title="Popular Product">
+                <Tab eventKey="product" title="Popular Product" variant="pills">
                   <Container className="productContainer">
                     {products?.length ? (
                       <>
@@ -91,7 +91,7 @@ const HomePage = () => {
                     )}
                   </Container>
                 </Tab>
-                <Tab eventKey="packages" title="Detox Plan">
+                <Tab eventKey="packages" title="Detox Plan" variant="pills">
                   <Container className="packageSection">
                     <div className="title-pkg-container">
                       Regular Drink with Detox Box

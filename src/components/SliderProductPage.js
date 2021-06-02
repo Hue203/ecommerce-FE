@@ -22,7 +22,7 @@ const SliderProductPage = () => {
                 >
                   up to <span className="title90">35% off</span>
                 </h2>
-                <h4 className="title18 s7upf_1622525397">
+                <h4 className="title18 ">
                   {" "}
                   limited quantities only in the first week of June
                 </h4>
@@ -42,7 +42,7 @@ const SliderProductPage = () => {
           <img className="d-block w-100" src={slide6} alt="Second slide" />
 
           <Carousel.Caption>
-            <div className="text-center white text-uppercase">
+            <div className="text-center white text-uppercase secondSlide">
               <h3 className="title30 ">Fruit Organic Juice</h3>
               <h2
                 className="title120 font-bold animated flash"
@@ -50,7 +50,7 @@ const SliderProductPage = () => {
               >
                 up to <span className="title90">25% off </span>
               </h2>
-              <h4 className="title18 s7upf_1622525397"> Hurry Up!!!</h4>
+              <h4 className="title18 "> Hurry Up!!!</h4>
 
               <a href="/products" target="_parent" className="btn-arrow white">
                 Shop now

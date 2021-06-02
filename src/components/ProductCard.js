@@ -28,10 +28,7 @@ const ProductCard = ({ product, handleClick }) => {
                 <span className="price">
                   <del>
                     <span className="woocommerce-Price-amount amount">
-                      <span className="woocommerce-Price-currencySymbol">
-                        £
-                      </span>
-                      {`Old Price: ${product.price} `}
+                      {`Old Price:  £${product.price} `}
                     </span>
                   </del>{" "}
                   <span>
