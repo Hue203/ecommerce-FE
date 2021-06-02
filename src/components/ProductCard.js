@@ -19,15 +19,11 @@ const ProductCard = ({ product, handleClick }) => {
               </div>
             }
             <div className="product-info">
-              <h3 className="product-title">
+              <h4 className="product-title">
                 <ul>
-                  {
-                    <strong>
-                      <h4>{product.name}</h4>
-                    </strong>
-                  }
+                  <h4>{product.name}</h4>
                 </ul>
-              </h3>
+              </h4>
               <div className="product-price">
                 <span className="price">
                   <del>

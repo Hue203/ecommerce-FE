@@ -1,11 +1,11 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Container } from "react-bootstrap";
 import slide1 from "../images/slide1.jpg";
 import slide6 from "../images/slide6.jpg";
 import silde5 from "../images/slide5.jpg";
 const SliderProductPage = () => {
   return (
-    <div>
+    <Container>
       <Carousel>
         <Carousel.Item>
           <img className="d-block w-100" src={slide1} alt="First slide" />
@@ -72,7 +72,7 @@ const SliderProductPage = () => {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-    </div>
+    </Container>
   );
 };
 

@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row, Container } from "react-bootstrap";
 import Moment from "react-moment";
 
 const BlogCard = ({ blog, handleClick }) => {
   return (
-    <>
+    <Container>
       {/* <div className="blog-container">
         <div className="card-blog" onClick={() => handleClick(blog._id)}>
           <div className="imgBx">
@@ -80,7 +80,7 @@ const BlogCard = ({ blog, handleClick }) => {
           </small>
         </Row>
       </Card>
-    </>
+    </Container>
   );
 };
 

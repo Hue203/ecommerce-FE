@@ -1,13 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&family=Source+Sans+Pro:wght@300&display=swap");
 
 body {
   color: #000;
-  font-family: "Merriweather Sans", sans-serif;
+  font-family: "Nanum Myeongjo", serif;
   font-size: 14px;
   line-height: inherit;
   margin: 0;
   padding: 0;
-  font-weight: 400;
+  font-weight: 200;
 }
 
 * {
@@ -264,6 +265,7 @@ body {
 /* FOOTER  */
 footer {
   background-color: #ffc68f;
+  width: 100vw;
 }
 
 .readmore-btn {
@@ -1024,13 +1026,11 @@ a:hover {
 }
 .product-cart :hover {
   transition-duration: 0.5s;
-  box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
 }
+
 .product-cart {
   transition-duration: 0.5s;
-  box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
-}
-.product-cart {
   margin: 15px 15px 0;
   padding: 0;
   border: none !important;
@@ -1042,11 +1042,9 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  transition-duration: 0.5s;
-  box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
 }
-.card .product-img-div :hover {
+/* .card :hover {
   transform: scale(1.05);
   transition-duration: 0.5s;
   box-shadow: 0px 10px 15px 3px rgba(0, 0, 0, 0.1);
-}
+} */
