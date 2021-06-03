@@ -187,7 +187,8 @@ const HomePage = () => {
                 <VideoDetox />
               </Col>
               <Col className="content-video">
-                <div className="background-img">
+                <div className="background-img"></div>
+                {/* <div>
                   <h3>Detox water recipies and Benefit</h3>
                   <p>
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -202,8 +203,7 @@ const HomePage = () => {
                     error eveniet, possimus rerum nam vel est qui ut, quasi
                     inventore consequuntur? Cum, sit facilis.
                   </p>
-                </div>
-                <div></div>
+                </div> */}
               </Col>
             </Row>
           </Container>
