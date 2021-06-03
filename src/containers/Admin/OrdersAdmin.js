@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import ModalEditOrder from "../../components/ModalEdditOrder";
 import { orderActions } from "../../redux/actions/order.actions";
 import { ClipLoader } from "react-spinners";
-import ModalDeleteOrder from "../../components/ModalDeleteOrder";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PaginationBar from "../../components/PaginationBar";
 import SearchItem from "../../components/SearchItem";
@@ -174,10 +174,6 @@ const OrdersAdmin = () => {
             <ModalEditOrder
               showModal={showModalEdit}
               setShowModal={setShowModalEdit}
-            />
-            <ModalDeleteOrder
-              showDeleted={showDeleted}
-              setShowDelete={setshowDeleted}
             />
           </>
         )}

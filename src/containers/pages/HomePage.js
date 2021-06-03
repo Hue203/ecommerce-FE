@@ -10,6 +10,7 @@ import ProductSlider from "../../components/ProductSlider";
 import { blogActions } from "../../redux/actions/blog.action";
 import { packageActions } from "../../redux/actions/package.action";
 import FooterPublic from "../../components/FooterPublic";
+import SliderProductPage from "../../components/SliderProductPage";
 
 const HomePage = () => {
   const { loading, loadingBlog, loadingPackage } = useSelector((state) => ({
@@ -129,7 +130,9 @@ const HomePage = () => {
               </Col>
             </Row>
           </Container>
-
+          <Container>
+            <SliderProductPage />
+          </Container>
           <Container className="product-tab">
             <Tabs defaultActiveKey="product" id="uncontrolled-tab-example">
               <Tab eventKey="product" title="Popular Product" variant="pills">

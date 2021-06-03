@@ -67,6 +67,7 @@ library.add(
 
 function App() {
   const dispatch = useDispatch();
+  const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
 
   useEffect(() => {
     const accessToken = localStorage.getItem("accessToken");
@@ -79,9 +80,15 @@ function App() {
   }, [dispatch]);
   return (
     <>
-      <Router>
-        <Routes />
-      </Router>
+      {isAuthenticated === undefined ? (
+        <div className="text-center">
+          <ClipLoader color="#f86c6b" size={150} loading={true} />
+        </div>
+      ) : (
+        <Router>
+          <Routes />
+        </Router>
+      )}
     </>
   );
 }
