@@ -21,15 +21,16 @@ const ReviewContent = ({ review }) => {
       <span className="comment_body">
         <h5>{review?.content}</h5>
       </span>
-      <br />
-      <p>
-        {" "}
-        <span className="comment_by">posted</span>
-        <span className="comment_on"> on </span>
-        <span className="comment_date">
-          <Moment fromNow>{review?.createdAt}</Moment>
-        </span>
-      </p>
+      <div>
+        <small>
+          {" "}
+          <span className="comment_by">posted</span>
+          <span className="comment_on"> on </span>
+          <span className="comment_date">
+            <Moment fromNow>{review?.createdAt}</Moment>
+          </span>
+        </small>
+      </div>
     </div>
   );
 };

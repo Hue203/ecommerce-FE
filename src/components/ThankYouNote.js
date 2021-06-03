@@ -6,7 +6,11 @@ const ThankYouNote = () => {
     <>
       <Carousel>
         <Carousel.Item>
-          <img className="d-block w-100" src={thanknote} alt="First slide" />
+          <img
+            className="d-block w-100"
+            src="https://image.shutterstock.com/image-photo/green-red-smoothie-bottles-fresh-260nw-373399789.jpg"
+            alt="First slide"
+          />
           <Carousel.Caption>
             <div className="thankyoutitle">
               <h1>Thank you for your order</h1>

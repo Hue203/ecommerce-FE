@@ -9,6 +9,7 @@ import BeforeAfter from "../../components/BeforeAfter";
 import { packageActions } from "../../redux/actions/package.action";
 import SearchItem from "../../components/SearchItem";
 import SliderProductPage from "../../components/SliderProductPage";
+import HeaderBar from "../../components/HeaderBar";
 
 const PackagePage = () => {
   const [pageNum, setPageNum] = useState(1);
@@ -41,6 +42,12 @@ const PackagePage = () => {
 
   return (
     <>
+      <HeaderBar
+        searchInput={searchInput}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmitSearch}
+        loading={loading}
+      />
       {loading ? (
         <div className="text-center">
           <ClipLoader color="#f86c6b" size={150} loading={loading} />
@@ -50,40 +57,30 @@ const PackagePage = () => {
           <SliderProductPage />
           <br />
 
-          <Col md={4}>
-            <SearchItem
-              searchInput={searchInput}
-              handleInputChange={handleInputChange}
-              handleSubmit={handleSubmitSearch}
-              loading={loading}
-            />
-          </Col>
-          <section>
-            <div className="packages-title">
-              <h2>Everyday with Detox Box </h2>
-              {/* <div>
+          <div className="packages-title">
+            <h2>Everyday with Detox Box </h2>
+            {/* <div>
                   {" "}
                   <h3>Start with Detox Box </h3>
                 </div> */}
-            </div>
-            <Container className="packageConatiner">
-              {packages?.length ? (
-                <>
-                  {packages.map((packageItem) => (
-                    <div className="packages-row">
-                      <Packages
-                        packageProduct={packageItem}
-                        key={packageItem._id}
-                        handleClick={handleClickOnPackage}
-                      />
-                    </div>
-                  ))}
-                </>
-              ) : (
-                <p>There are no Packages</p>
-              )}
-            </Container>
-          </section>
+          </div>
+          <Container className="packageConatiner">
+            {packages?.length ? (
+              <>
+                {packages.map((packageItem) => (
+                  <div className="packages-row">
+                    <Packages
+                      packageProduct={packageItem}
+                      key={packageItem._id}
+                      handleClick={handleClickOnPackage}
+                    />
+                  </div>
+                ))}
+              </>
+            ) : (
+              <p>There are no Packages</p>
+            )}
+          </Container>
         </>
       )}
       <PaginationBar

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SearchItem from "../../components/SearchItem";
+import HeaderBar from "../../components/HeaderBar";
 import { useHistory } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { productActions } from "../../redux/actions/product.actions";
@@ -46,22 +46,20 @@ const ProductsPage = () => {
         </div>
       ) : (
         <>
+          <div className="search-form pull-left">
+            <HeaderBar
+              searchInput={searchInput}
+              handleInputChange={handleInputChange}
+              handleSubmit={handleSubmitSearch}
+              loading={loading}
+            />
+          </div>
           <SliderProductPage />
           <br />
 
           <section>
             <Container className="productContainer">
               <Row>
-                <Col>
-                  <div className="search-form pull-left">
-                    <SearchItem
-                      searchInput={searchInput}
-                      handleInputChange={handleInputChange}
-                      handleSubmit={handleSubmitSearch}
-                      loading={loading}
-                    />
-                  </div>
-                </Col>
                 <Col xs={12}>
                   {products?.length ? (
                     <div className="product-card">

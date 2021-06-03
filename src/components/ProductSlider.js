@@ -1,15 +1,12 @@
 import React from "react";
-import { Carousel } from "react-bootstrap";
+import { Carousel, Container } from "react-bootstrap";
 import slide1 from "../images/slide1-1.jpg";
 import slide2 from "../images/slide1-2.jpg";
 import slide3 from "../images/slide1-3.jpg";
-import thumb1 from "../images/thumb1.jpg";
 
 const ProductSlider = () => {
   return (
     <>
-      <div className="owl-wrapper"></div>
-
       <Carousel>
         <Carousel.Item>
           <img className="d-block w-100 " src={slide1} alt="First slide" />
@@ -177,7 +174,7 @@ const ProductSlider = () => {
 
           <div className="absolute list-image-ads-extend">
             <div
-              className="item-image-ads-extend animated ads-image431 slideInUp "
+              className="item-image-ads-extend animated ads-image431 rotate360 "
               data-animated="slideInUp"
             >
               <img

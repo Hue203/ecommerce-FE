@@ -19,6 +19,7 @@ import BlogPage from "../../pages/BlogPage";
 import PackagePage from "../../pages/PackagePage";
 import OrderDetailPage from "../../pages/OrderDetailPage";
 import FooterPublic from "../../../components/FooterPublic";
+import AboutUs from "../../pages/AboutUs";
 
 const PublicLayout = () => {
   return (
@@ -37,6 +38,7 @@ const PublicLayout = () => {
         <Route exact path="/packages/:id" component={PakagesDetailPage} />
         <Route exact path="/blogs" component={BlogPage} />
         <Route exact path="/blogs/:id" component={BlogDetailPage} />
+        <Route exact path="/about" component={AboutUs} />
 
         <ProtectedRoute exact path="/shipping" component={ShippingInfor} />
         <ProtectedRoute

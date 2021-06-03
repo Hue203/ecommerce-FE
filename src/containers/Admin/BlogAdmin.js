@@ -157,7 +157,7 @@ const BlogAdmin = () => {
                     alt="blog images"
                   ></img>
                 )}
-                <Button variant="info" onClick={uploadWidget}>
+                <Button variant="success" onClick={uploadWidget}>
                   {addOrEdit} Images
                 </Button>
               </Form.Group>
@@ -165,7 +165,7 @@ const BlogAdmin = () => {
                 {loading ? (
                   <Button
                     className="mr-3"
-                    variant="primary"
+                    variant="success"
                     type="button"
                     disabled
                   >
@@ -177,7 +177,7 @@ const BlogAdmin = () => {
                     Submitting...
                   </Button>
                 ) : (
-                  <Button className="mr-3" type="submit" variant="primary">
+                  <Button className="mr-3" type="submit" variant="success">
                     Submit
                   </Button>
                 )}

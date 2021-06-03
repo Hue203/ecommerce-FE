@@ -23,7 +23,7 @@ const SearchItem = ({
           </Col>
           <Col>
             {loading ? (
-              <Button variant="success" type="button" disabled>
+              <Button variant="outline-success" type="button" disabled>
                 <span
                   className="spinner-border spinner-border-sm"
                   role="status"
@@ -32,7 +32,9 @@ const SearchItem = ({
                 Searching...
               </Button>
             ) : (
-              <Button type="submit">Search</Button>
+              <Button type="submit" variant="outline-success">
+                Search
+              </Button>
             )}
           </Col>
         </Row>

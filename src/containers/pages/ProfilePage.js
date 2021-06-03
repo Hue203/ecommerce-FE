@@ -80,7 +80,7 @@ const ProfilePage = () => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Row>
           <Col sm={3}>
-            <Nav variant="pills" className="flex-column">
+            <Nav className="flex-column">
               <Nav.Item>
                 <Nav.Link eventKey="first">Profile User</Nav.Link>
               </Nav.Item>
@@ -92,7 +92,6 @@ const ProfilePage = () => {
           <Col sm={9}>
             <Tab.Content>
               <Tab.Pane eventKey="first">
-                <Card></Card>
                 <Row>
                   <Col md={{ span: 8, offset: 2 }} className="accountInfo">
                     {loading ? (
@@ -114,8 +113,7 @@ const ProfilePage = () => {
                             )}
                             <br />
                             <Button
-                              variant="info"
-                              // className="btn-block w-50 "
+                              variant="success"
                               onClick={uploadWidget}
                               disabled={!editable}
                             >
@@ -163,7 +161,7 @@ const ProfilePage = () => {
                             {loading ? (
                               <Button
                                 className="mr-3"
-                                variant="primary"
+                                variant="success"
                                 type="button"
                                 disabled
                               >
@@ -175,21 +173,26 @@ const ProfilePage = () => {
                                 Submitting...
                               </Button>
                             ) : (
-                              <Button
-                                className="mr-3"
-                                type="submit"
-                                variant="primary"
-                              >
-                                Submit
-                              </Button>
+                              <div>
+                                <span></span>
+                                <Button
+                                  className="mr-3"
+                                  type="submit"
+                                  variant="success"
+                                >
+                                  Submit
+                                </Button>
+                              </div>
                             )}
-                            <Button
-                              variant="light"
-                              onClick={handleCancel}
-                              disabled={loading}
-                            >
-                              Cancel
-                            </Button>
+                            <span>
+                              <Button
+                                variant="danger"
+                                onClick={handleCancel}
+                                disabled={loading}
+                              >
+                                Cancel
+                              </Button>
+                            </span>
                           </ButtonGroup>
                         )}
                       </Form>
@@ -199,10 +202,10 @@ const ProfilePage = () => {
 
                 <br />
                 <Row>
-                  <Col>Account Information</Col>
+                  <Col></Col>
 
                   <Col>
-                    <Button variant="primary" onClick={() => setEditable(true)}>
+                    <Button variant="success" onClick={() => setEditable(true)}>
                       <FontAwesomeIcon icon="edit" size="1x" /> Edit
                     </Button>
                   </Col>
@@ -251,15 +254,15 @@ const ProfilePage = () => {
                                   : "No"}
                               </td>
                               <td>
-                                <button
+                                <Button
                                   type="button"
-                                  className="small"
+                                  variant="success"
                                   onClick={() => {
                                     handleOnClick(order._id);
                                   }}
                                 >
                                   Details
-                                </button>
+                                </Button>
                               </td>
                             </tr>
                           ))}

@@ -258,11 +258,10 @@ const DetailPage = () => {
               </Col>
             </Row>
             <Container className="relatedProduct-container">
+              <div className="relatedProduct">
+                <h5>Related Product</h5>{" "}
+              </div>
               <Card>
-                <br />
-                <Card.Title className="relatedproduct-title">
-                  <p>Related Product</p>
-                </Card.Title>
                 <Card.Body>
                   {loadingAll ? (
                     <div className="text-center">

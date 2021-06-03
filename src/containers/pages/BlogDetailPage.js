@@ -60,9 +60,9 @@ const BlogDetailPage = () => {
                       </Card.Body>
                     </Row>
                     <Card.Title>
-                      <p className="posted-blog">
-                        Posted:<Moment fromNow>{singleBlog.createdAt}</Moment>
-                      </p>
+                      <small className="posted-blog">
+                        Posted <Moment fromNow>{singleBlog.createdAt}</Moment>
+                      </small>
                     </Card.Title>
                   </Card>
                 )}

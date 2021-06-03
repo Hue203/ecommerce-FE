@@ -76,26 +76,29 @@ const ProductsAdmin = () => {
                       </td>
                       <td>{item.service}</td>
                       <td>{item.catagories}</td>
-                      <th>
-                        <span>
-                          <Button onClick={() => handleOnclickEdit(item._id)}>
-                            EDIT
-                          </Button>
-                        </span>
-                        <span>
-                          <Button onClick={() => handleOnclickDelete(item._id)}>
-                            DELETE
-                          </Button>
-                        </span>
+                      <th className="btn">
+                        <Button
+                          variant="success"
+                          onClick={() => handleOnclickEdit(item._id)}
+                        >
+                          EDIT
+                        </Button>
+
+                        <br />
+
+                        <Button
+                          variant="success"
+                          onClick={() => handleOnclickDelete(item._id)}
+                        >
+                          DELETE
+                        </Button>
                       </th>{" "}
                     </tr>
                   ))}
-              </tbody>
-
-              <span>
-                {" "}
-                <Button onClick={handleOnclickAdd}>ADD</Button>
-              </span>
+              </tbody>{" "}
+              <Button variant="success" onClick={handleOnclickAdd}>
+                ADD
+              </Button>
             </Table>
           </Row>
           <ModalAddProduct showModal={showModal} setShowModal={setShowModal} />

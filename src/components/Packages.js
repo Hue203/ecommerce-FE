@@ -9,7 +9,7 @@ const Packages = ({ packageProduct, handleClick }) => {
           <div className="flex">
             <Row className="productRow">
               <Col>
-                <div>
+                <div className="image-divpack">
                   {
                     <img
                       width="250"

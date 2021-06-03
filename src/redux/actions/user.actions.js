@@ -17,7 +17,7 @@ const addCartRequest =
         type: types.ADD_CART_SUCCESS,
         payload: res.data.data,
       });
-      dispatch(routeActions.redirect("__GO_BACK__"));
+      /* dispatch(routeActions.redirect("__GO_BACK__")); */
       toast.success("You just add product to cart");
     } catch (err) {
       dispatch({ type: types.ADD_CART_FAILURE, payload: err });

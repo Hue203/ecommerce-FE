@@ -82,7 +82,7 @@ const CartPage = () => {
   }, [selectedUser, dispatch]);
 
   return (
-    <div className="cart-page">
+    <Container className="cart-page">
       {loading ? (
         <div className="text-center">
           <ClipLoader color="#FFD700" size={150} loading={loading} />
@@ -148,7 +148,7 @@ const CartPage = () => {
       )}
 
       <Container>
-        <Card>
+        <Card className="shipping-detail">
           <Card.Title className="shipping-cart">Shipping Detail</Card.Title>
           <Card.Body>
             <Form onSubmit={handleSubmit}>
@@ -246,7 +246,7 @@ const CartPage = () => {
           </Card.Body>
         </Card>
       </Container>
-    </div>
+    </Container>
   );
 };
 

@@ -1,53 +1,55 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useDispatch } from "react-redux";
+import { userActions } from "../redux/actions/user.actions";
 const ProductCard = ({ product, handleClick }) => {
+  const dispatch = useDispatch();
+  const handleOnClick = () => {
+    dispatch(
+      userActions.addCartRequest({ productId: product._id, quantity: 1 })
+    );
+  };
   return (
     <>
-      <div onClick={() => handleClick(product._id)}>
-        <Card className="product-cart">
-          <div className="item-product">
-            {
-              <div className="product-img-div">
-                <img
-                  width="250"
-                  height="250"
-                  src={product.images[0].imageUrl}
-                  alt="product-img"
-                  className="product-img"
-                />
-              </div>
-            }
-            <div className="product-info">
-              <h4 className="product-title">
-                <ul>
-                  <h4>{product.name}</h4>
-                </ul>
-              </h4>
-              <div className="product-price">
-                <span className="price">
-                  <del>
-                    <span className="woocommerce-Price-amount amount">
-                      {`Old Price:  £${product.price} `}
-                    </span>
-                  </del>{" "}
-                  <span>
-                    <br />
-                    <ins>
-                      <span className="woocommerce-Price-amount amount">
-                        <span className="woocommerce-Price-currencySymbol">
-                          £
-                        </span>
-                        {` ${(product.price * 80) / 100} - Bottle only`}
-                      </span>
-                    </ins>
-                  </span>
-                </span>
-              </div>
+      <Card className="product-cart">
+        <div className="item-product">
+          <div
+            className="product-img-div"
+            onClick={() => handleClick(product._id)}
+          >
+            <img
+              width="250"
+              height="250"
+              src={product.images[0].imageUrl}
+              alt="product-img"
+              className="product-img"
+            />
+          </div>
+          <div className="product-info">
+            <h4
+              className="product-title"
+              onClick={() => handleClick(product._id)}
+            >
+              {product.name}{" "}
+            </h4>
+            <div className="product-price">
+              <small className="amount">
+                Old Price: <del> {`£${product.price} `}</del>
+              </small>
+              <div style={{ fontWeight: "bolder" }}>{` £${
+                (product.price * 80) / 100
+              } - Bottle only`}</div>
             </div>
           </div>
-        </Card>
-      </div>
+        </div>
+        <div className="add-wishlist">
+          <FontAwesomeIcon icon="heart" size="lg" />
+        </div>
+        <div className="shopping-cart" onClick={handleOnClick}>
+          <FontAwesomeIcon icon="shopping-cart" size="lg" />
+        </div>
+      </Card>
     </>
   );
 };

@@ -1,5 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const FooterPublic = () => {
   return (
@@ -15,33 +17,31 @@ const FooterPublic = () => {
               </p>
               <p className="small text-muted mb-0">
                 &copy; Copyrights. All rights reserved.{" "}
-                <a className="text-primary" href="/">
-                  Detox Box
-                </a>
               </p>
             </div>
             <div className="col-lg-2 col-md-6">
-              <h5 className="text-white mb-3">Links</h5>
+              {/* <h5 className="text-white mb-3">Links</h5>
               <ul className="list-unstyled text-muted">
                 <li>
                   <a href="/">Home</a>
                 </li>
                 <li>
-                  <a href="/">About</a>
+                  <a href="/about">About</a>
                 </li>
                 <li>
-                  <a href="/">Get started</a>
+                  <a href="/products">Get started</a>
                 </li>
                 <li>
                   <a href="/">FAQ</a>
                 </li>
-              </ul>
+              </ul> */}
             </div>
             <div className="col-lg-2 col-md-6">
-              <h5 className="text-white mb-3">Contact Us</h5>
+              {/* <h5 className="text-white mb-3">Contact Us</h5>
               <ul className="list-unstyled text-muted">
-                <li>
-                  <a href="/">FaceBook</a>
+                <li as={Link} to="/user/profile">
+                  <FontAwesomeIcon icon="facebook" size="sm" />
+                  FaceBook
                 </li>
                 <li>
                   <a href="/">Instagram</a>
@@ -52,8 +52,9 @@ const FooterPublic = () => {
                 <li>
                   <a href="/">FAQ</a>
                 </li>
-              </ul>
+              </ul>{" "} */}
             </div>
+
             <div className="col-lg-4 col-md-6">
               <h5 className="text-white mb-3">Newsletter</h5>
               <p className="small text-muted">
