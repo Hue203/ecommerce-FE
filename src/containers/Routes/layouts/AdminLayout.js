@@ -31,10 +31,9 @@ const AdminLayout = () => {
                 path="/admin/management"
                 component={AdminDashboard}
               />
-
-              {/* <Route exact path="/admin/products" component={ProductsAdmin} />
+              <Route exact path="/admin/products" component={ProductsAdmin} />
               <Route exact path="/admin/orders" component={OrdersAdmin} />
-              <Route exact path="/admin/blogs" component={BlogAdmin} /> */}
+              <Route exact path="/admin/blogs" component={BlogAdmin} />
 
               <Route component={NotFoundPage} />
             </Switch>
