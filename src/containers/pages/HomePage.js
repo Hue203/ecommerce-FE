@@ -86,7 +86,7 @@ const HomePage = () => {
         </div>
       ) : (
         <>
-          <Container>
+          <div className="container" style={{ marginBottom: "100px" }}>
             <Row>
               <Col>
                 <div
@@ -129,7 +129,7 @@ const HomePage = () => {
                 </div>
               </Col>
             </Row>
-          </Container>
+          </div>
           <Container>
             <SliderProductPage />
           </Container>
@@ -139,9 +139,7 @@ const HomePage = () => {
                 <Container className="productContainer">
                   {products?.length ? (
                     <>
-                      <div className="title-pkg-container">
-                        Popular Detox Drink
-                      </div>
+                      <div className="relatedProduct">Popular Detox Drink</div>
                       <div className="product-card">
                         {products.map((product) => (
                           <ProductCard
@@ -159,7 +157,7 @@ const HomePage = () => {
               </Tab>
               <Tab eventKey="packages" title="Detox Plan" variant="pills">
                 <Container className="packageSection">
-                  <div className="title-pkg-container">
+                  <div className="relatedProduct">
                     Regular Drink with Detox Box
                   </div>
                   <Container className="packageConatiner">

@@ -71,11 +71,11 @@ const FooterPublic = () => {
                     aria-describedby="button-addon2"
                   ></input>
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-footer"
                     id="button-addon2"
                     type="button"
                   >
-                    <i className="fas fa-paper-plane"></i>
+                    <FontAwesomeIcon icon="arrow-right" size="sm" />
                   </button>
                 </div>
               </form>

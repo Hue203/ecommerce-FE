@@ -22,9 +22,10 @@ body {
   margin-top: 100px;
 }
 .logo-resize {
-  width: 100px;
-  border-radius: 70%;
+  width: 110px;
+  transform: translateY(-5px);
 }
+
 .cart-page {
   background-repeat: no-repeat;
   background-size: cover;
@@ -212,7 +213,6 @@ body {
   text-align: center;
 }
 .reviewForm {
-  margin-top: 66px;
   margin-bottom: 66px;
 }
 .re-size-img-single {
@@ -677,6 +677,13 @@ element.style {
 .product-tab {
   margin-top: 70px;
 }
+.product-tab .nav-link.active {
+  color: #198754 !important;
+  font-weight: 600;
+}
+.product-tab .nav-link {
+  color: black;
+}
 .tab-product {
   margin-top: 30px;
 }
@@ -854,12 +861,7 @@ a {
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
 }
-.item-product {
-  padding: 10px;
-  position: relative;
-  transition: all 0.5s ease-out 0s;
-  -webkit-transition: all 0.5s ease-out 0s;
-}
+
 .item-product1 > * {
   position: relative;
   z-index: 1;
@@ -941,8 +943,8 @@ a {
   background-image: url(https://image.freepik.com/free-photo/water-detox-with-lemon-lime-mint-blue-background-detox-drink-with-copy-space_106006-2846.jpg);
 }
 .description-card {
+  padding: 20px 40px;
   font-weight: 500;
-  font-size: 30px;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url(https://www.photocase.com/photos/3431339-berries-detox-fruit-infused-water-in-mason-jar-flavored-with-herb-leaves-on-table-at-sunny-turquoise-blue-background-summer-mood-drinks-and-lifestyle-healthy-background-photocase-stock-photo-large.jpeg);
@@ -1017,19 +1019,23 @@ a:hover {
   transform: scale(1.05);
   transition: 0.3s ease-in-out;
 } */
-.product-cart .item-product .product-img-div :hover {
+.item-product .product-img-div :hover {
   box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
   transform: scale(1.05);
   transition: 0.3s ease-in-out;
 }
 
 .product-cart {
-  position: relative;
-  transition-duration: 0.5s;
   margin: 15px 15px 0;
   padding: 0;
   border: none !important;
 }
+.item-product {
+  padding: 10px;
+  position: relative;
+  transition: all 0.5s ease-out 0s;
+}
+
 .product-card {
   margin: 1rem;
   overflow: hidden;
@@ -1062,24 +1068,30 @@ a:hover {
 }
 
 .image-divpack {
-  transition-duration: 0.3s;
-  -webkit-transition: -webkit-transform 3s ease-in-out;
-  transition: transform 3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 .packages-row .image-divpack:hover {
   box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
   transform: scale(1.05);
+  transition-duration: 0.3s;
 }
 .package-content {
-  box-shadow: 0px 0px 3px 5px rgba(0, 0, 0, 0.1);
-  padding: auto;
   padding: 30px;
+  border: 0.5px solid #80808033;
+  border-top: none;
 }
 .relatedProduct {
-  margin-right: 50px;
-  align-items: center;
-  display: flex;
   justify-content: center;
+  font-size: 50px;
+  text-align: center;
+  margin: 80px 0 30px 0;
+  color: #246404;
+}
+.btn-footer {
+  background-color: #246404 !important;
+}
+.btn-footer svg {
+  color: white;
 }
 
 .rotate360 {
@@ -1089,11 +1101,57 @@ a:hover {
   -o-animation: rotate360 2s;
   animation: rotate360 2s;
 }
-
-.publickNavbar {
-  background-color: pink;
+.search-product {
+  margin-top: 60px;
 }
 
+.publickNavbar {
+  background-color: #8ed26c;
+  position: fixed !important;
+  width: 1440px;
+  z-index: 10;
+  border: none;
+  padding-top: 0 !important;
+  padding-bottom: 10px !important;
+  box-shadow: 0 1px 10px 0 #807b7bad;
+}
+.publickNavbar .navbar-brand {
+  padding: 0;
+}
+.publickNavbar .container a {
+  color: #246404 !important;
+  font-size: 16px;
+  font-weight: 600;
+  transform: translateY(5px);
+}
+.publickNavbar .container .nav-link :hover {
+  color: white !important;
+}
+.publickNavbar .container #responsive-navbar-nav {
+  align-items: flex-end;
+}
+.sidebar-sticky .nav-link {
+  color: black;
+}
+.sidebar-sticky {
+  width: 100%;
+}
+.sidebar-sticky .nav-link .active {
+  color: white;
+  background-color: #246404;
+}
+.active-side {
+  background-color: #246404;
+  color: white !important;
+  border-radius: 5px;
+}
+.normal-side {
+  color: black;
+}
+
+.break {
+  height: 66px;
+}
 .aboutus {
   margin-top: 80px;
 }
@@ -1119,12 +1177,27 @@ a:hover {
   top: 20px;
   color: gray;
   z-index: 10;
+  display: none;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+.product-cart:hover .shopping-cart {
+  display: block;
+  transition-duration: 0.5s;
 }
 .add-wishlist {
   position: absolute;
   left: 20px;
   top: 20px;
   color: gray;
+  z-index: 10;
+  display: none;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+.product-cart:hover .add-wishlist {
+  display: block;
+  transition-duration: 0.5s;
 }
 .shipping-detail {
   background-color: rgb(0 0 0 / 26%) !important;
@@ -1166,7 +1239,6 @@ a:hover {
   padding: 10px;
 }
 .table-product {
-  margin-top: 30px;
   padding: 10px;
 }
 .background-img {
@@ -1304,4 +1376,16 @@ ul {
 }
 a {
   text-decoration: none;
+}
+
+.detail-tab a {
+  color: black !important;
+}
+.detail-tab a.active {
+  color: #246404 !important;
+  font-weight: 600 !important;
+}
+
+.pagi .page-item.active .page-link {
+  background-color: #246404;
 }

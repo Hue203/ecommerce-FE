@@ -2,9 +2,9 @@ import React from "react";
 import { Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 
-const SideMenuAdmin = () => {
+const SideMenuAdmin = ({ page }) => {
   return (
-    <Nav className="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+    <Nav>
       <div className="sidebar-sticky pt-3">
         {/* <Nav.Item>
           <Nav.Link
@@ -19,8 +19,18 @@ const SideMenuAdmin = () => {
         <Nav.Item>
           <Nav.Link
             as={NavLink}
+            to="/admin/products"
+            className={page === "products" ? "active-side" : "normal-side"}
+            strict={true}
+          >
+            Products
+          </Nav.Link>
+        </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            as={NavLink}
             to="/admin/orders"
-            activeClassName="active"
+            className={page === "orders" ? "active-side" : "normal-side"}
             strict={true}
           >
             Orders
@@ -36,17 +46,8 @@ const SideMenuAdmin = () => {
             Payments
           </Nav.Link>
         </Nav.Item> */}
-        <Nav.Item>
-          <Nav.Link
-            as={NavLink}
-            to="/admin/products"
-            activeClassName="active"
-            strict={true}
-          >
-            Products
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
+
+        {/*  <Nav.Item>
           <Nav.Link
             as={NavLink}
             to="/admin/blogs"
@@ -55,7 +56,7 @@ const SideMenuAdmin = () => {
           >
             Blogs
           </Nav.Link>
-        </Nav.Item>
+        </Nav.Item> */}
         {/* <Nav.Item>
           <Nav.Link
             as={NavLink}

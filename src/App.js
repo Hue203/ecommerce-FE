@@ -31,6 +31,7 @@ import {
   faChartLine,
   faSignOutAlt,
   faSignInAlt,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { fas } from "@fortawesome/free-solid-svg-icons";

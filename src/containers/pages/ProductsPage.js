@@ -47,7 +47,8 @@ const ProductsPage = () => {
         </div>
       ) : (
         <>
-          <div className="search-form pull-left">
+          <SliderProductPage />
+          <div className="search-product container">
             <HeaderBar
               searchInput={searchInput}
               handleInputChange={handleInputChange}
@@ -55,8 +56,6 @@ const ProductsPage = () => {
               loading={loading}
             />
           </div>
-          <SliderProductPage />
-          <br />
 
           <section>
             <Container className="productContainer">

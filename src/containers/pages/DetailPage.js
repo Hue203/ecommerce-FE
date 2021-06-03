@@ -117,7 +117,7 @@ const DetailPage = () => {
                  
                 </Row>
               </Col> */}
-
+              <Col xs={1}></Col>
               <Col xs={10}>
                 {singleProduct && (
                   <>
@@ -207,14 +207,14 @@ const DetailPage = () => {
                       <Tabs
                         defaultActiveKey="description"
                         id="uncontrolled-tab-example"
-                        className="mb-3"
+                        className="mb-3 detail-tab"
                       >
                         <Tab eventKey="description" title="Description">
                           <Card className="description-card">
                             <Card.Title>
-                              <h5 className="singleProduct-name">
+                              <h3 className="singleProduct-name">
                                 {singleProduct.name}
-                              </h5>
+                              </h3>
                             </Card.Title>
                             <Card.Body>
                               <small>{singleProduct.description}</small>{" "}
@@ -250,44 +250,38 @@ const DetailPage = () => {
                   </>
                 )}
               </Col>
+              <Col xs={1}></Col>
             </Row>
             <Container className="relatedProduct-container">
-              <div className="relatedProduct">
-                <h3>Related Product</h3>{" "}
+              <div className="relatedProduct">Related Product</div>
+
+              <div>
+                {loadingAll ? (
+                  <div className="text-center">
+                    <ClipLoader color="#f86c6b" size={150} loading={loading} />
+                  </div>
+                ) : (
+                  <>
+                    <section>
+                      <Container className="productContainer">
+                        {products?.length ? (
+                          <div className="product-card">
+                            {products.map((product) => (
+                              <ProductCard
+                                product={product}
+                                key={product._id}
+                                handleClick={handleClickOnProduct}
+                              />
+                            ))}
+                          </div>
+                        ) : (
+                          <p>There are no Products</p>
+                        )}
+                      </Container>
+                    </section>
+                  </>
+                )}
               </div>
-              <Card>
-                <Card.Body>
-                  {loadingAll ? (
-                    <div className="text-center">
-                      <ClipLoader
-                        color="#f86c6b"
-                        size={150}
-                        loading={loading}
-                      />
-                    </div>
-                  ) : (
-                    <>
-                      <section>
-                        <Container className="productContainer">
-                          {products?.length ? (
-                            <div className="product-card">
-                              {products.map((product) => (
-                                <ProductCard
-                                  product={product}
-                                  key={product._id}
-                                  handleClick={handleClickOnProduct}
-                                />
-                              ))}
-                            </div>
-                          ) : (
-                            <p>There are no Products</p>
-                          )}
-                        </Container>
-                      </section>
-                    </>
-                  )}
-                </Card.Body>
-              </Card>
             </Container>
           </>
         )}

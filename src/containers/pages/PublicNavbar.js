@@ -41,101 +41,52 @@ const PublicNavbar = () => {
   );
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="publickNavbar">
-      <Container>
-        <Navbar.Brand as={Link} to="/">
-          <img
-            src={logo}
-            alt="CompanyLogo"
-            width="150px"
-            className="logo-resize"
-          />
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">
-              Home
-            </Nav.Link>
-            <Nav.Link as={Link} to="/about">
-              About
-            </Nav.Link>
-            <NavDropdown title="Product" id="collasible-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/products">
-                Fresh Detox Juice
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/packages">
-                {" "}
-                Regular Drink
-              </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/blogs">
-                Blogs
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/">
-                Mixed Cereals
-              </NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link eventKey={2}>
-              {!loading && <>{isAuthenticated ? authLinks : publicLinks}</>}
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-
-    // <Navbar className="publicNavbar">
-    //   <Navbar.Brand as={Link} to="/" className="mr-auto">
-    //     <img
-    //       src={logo}
-    //       alt="CompanyLogo"
-    //       width="150px"
-    //       className="logo-resize"
-    //     />
-
-    //     <Navbar.Collapse id="navbar-dark-example">
-    //       <Nav>
-    //         <NavDropdown
-    //           id="nav-dropdown-dark-example"
-    //           title="Product"
-    //           menuvariant="dark"
-    //         >
-    //           <NavDropdown.Item as={Link} to="/products">
-    //             Fresh Detox Juice
-    //           </NavDropdown.Item>
-    //           <NavDropdown.Item href="#action/3.3">Detox Tea</NavDropdown.Item>
-    //           <NavDropdown.Divider />
-    //           <NavDropdown.Item href="#action/3.4">
-    //             Mixed Cereals
-    //           </NavDropdown.Item>
-    //           <NavDropdown.Divider />
-    //           <NavDropdown.Item as={Link} to="/packages">
-    //             Regular Drink
-    //           </NavDropdown.Item>
-    //           <NavDropdown.Divider />
-    //           <NavDropdown.Item as={Link} to="/blogs">
-    //             Blogs
-    //           </NavDropdown.Item>
-    //         </NavDropdown>
-    //       </Nav>
-    //       <Navbar.Brand as={Link} to="/">
-    //         Home
-    //       </Navbar.Brand>
-    //       <br />
-    //       <Navbar.Brand as={Link} to="/">
-    //         About
-    //       </Navbar.Brand>
-    //     </Navbar.Collapse>
-    //   </Navbar.Brand>
-
-    //   <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    //   <Navbar.Collapse id="basic-navbar-nav">
-    //     <Nav className="mr-auto"></Nav>
-    //     {!loading && <>{isAuthenticated ? authLinks : publicLinks}</>}
-    //   </Navbar.Collapse>
-    // </Navbar>
+    <>
+      <Navbar collapseOnSelect expand="lg" className="publickNavbar">
+        <Container>
+          <Navbar.Brand as={Link} to="/">
+            <img
+              src="https://res.cloudinary.com/hue203/image/upload/v1622744142/LogoMakr-4nseHJ_fgvegi.png"
+              alt="CompanyLogo"
+              className="logo-resize"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link as={Link} to="/">
+                Home
+              </Nav.Link>
+              <Nav.Link as={Link} to="/about">
+                About
+              </Nav.Link>
+              <NavDropdown title="Product" id="collasible-nav-dropdown">
+                <NavDropdown.Item as={Link} to="/products">
+                  Fresh Detox Juice
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/packages">
+                  {" "}
+                  Regular Drink
+                </NavDropdown.Item>
+                <NavDropdown.Item as={Link} to="/blogs">
+                  Blogs
+                </NavDropdown.Item>
+                <NavDropdown.Divider />
+                <NavDropdown.Item as={Link} to="/">
+                  Mixed Cereals
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Nav.Link eventKey={2}>
+                {!loading && <>{isAuthenticated ? authLinks : publicLinks}</>}
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+      <div className="break"></div>
+    </>
   );
 };
 

@@ -10,6 +10,7 @@ import AdminDashboard from "../../Admin/AdminDashboard";
 import { useHistory } from "react-router-dom";
 import BlogAdmin from "../../Admin/BlogAdmin";
 import { useSelector } from "react-redux";
+import NavbarAdmin from "../../pages/NavbarAdmin";
 
 const AdminLayout = () => {
   const role = useSelector((state) => state.auth.role);
@@ -20,26 +21,16 @@ const AdminLayout = () => {
 
   return (
     <>
-      <Container fluid>
-        <Row>
-          <SideMenuAdmin />
-          <Col md={9} lg={10}>
-            <AlertMsg />
-            <Switch>
-              <Route
-                exact
-                path="/admin/management"
-                component={AdminDashboard}
-              />
-              <Route exact path="/admin/products" component={ProductsAdmin} />
-              <Route exact path="/admin/orders" component={OrdersAdmin} />
-              <Route exact path="/admin/blogs" component={BlogAdmin} />
+      <AlertMsg />
+      <NavbarAdmin />
+      <Switch>
+        <Route exact path="/admin/management" component={AdminDashboard} />
+        <Route exact path="/admin/products" component={ProductsAdmin} />
+        <Route exact path="/admin/orders" component={OrdersAdmin} />
+        <Route exact path="/admin/blogs" component={BlogAdmin} />
 
-              <Route component={NotFoundPage} />
-            </Switch>
-          </Col>
-        </Row>
-      </Container>
+        <Route component={NotFoundPage} />
+      </Switch>
     </>
   );
 };
