@@ -37,12 +37,9 @@ const LoginPage = () => {
           <img src={login} alt="login-img" style={{ height: "80%" }} />
         </Col>
         <Col className="login-form">
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{ textAlign: "center" }}>
             <div className="text-center mb-3">
-              <h1 className="text-primary">Sign In</h1>
-              <p className="lead">
-                <FontAwesomeIcon icon="user" size="1x" /> Sign Into Your Account
-              </p>
+              <h1 style={{ color: "#245404" }}>Sign In</h1>
             </div>
             <br />
             <Form.Group>
@@ -90,14 +87,17 @@ const LoginPage = () => {
                 Loading...
               </Button>
             ) : (
-              <Button className="btn-block" type="submit" variant="primary">
+              <Button type="submit" variant="success">
                 Login
               </Button>
             )}
             <hr />
             <br />
             <p>
-              Don't have an account? <Link to="/register">Sign Up</Link>
+              Don't have an account?{" "}
+              <Link to="/register">
+                <span style={{ color: "#246404" }}>Sign Up</span>
+              </Link>
             </p>
           </Form>
         </Col>

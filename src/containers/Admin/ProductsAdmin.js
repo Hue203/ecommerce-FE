@@ -129,7 +129,6 @@ const ProductsAdmin = () => {
                 />
               </Container>
             )}
-            <PaginationBar />
           </Col>
         </Row>
       </Container>

@@ -177,15 +177,6 @@ const OrdersAdmin = () => {
           </Col>
         </Row>
       </Container>
-
-      <Col>
-        <PaginationBar
-          pageNum={pageNum}
-          setPageNum={setPageNum}
-          totalPageNum={totalPageNum}
-          loading={loading}
-        />
-      </Col>
     </>
   );
 };

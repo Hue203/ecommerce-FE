@@ -13,6 +13,8 @@ const PublicNavbar = () => {
   const handleLogout = () => {
     dispatch(authActions.logout());
   };
+  const role = useSelector((state) => state.auth.user.role);
+  console.log(role);
 
   const authLinks = (
     <Nav bg="dark">
@@ -23,6 +25,17 @@ const PublicNavbar = () => {
         <FontAwesomeIcon icon="shopping-cart" size="sm" /> Carts
         <i class="fas fa-shopping-cart"></i>
       </Nav.Link>
+      <Nav.Link onClick={handleLogout}>
+        <FontAwesomeIcon icon="sign-out-alt" size="sm" /> Logout
+      </Nav.Link>
+    </Nav>
+  );
+  const adminAuthLinks = (
+    <Nav bg="dark">
+      <Nav.Link as={Link} to="/admin/products">
+        <FontAwesomeIcon icon="user" size="sm" /> Dashboard
+      </Nav.Link>
+
       <Nav.Link onClick={handleLogout}>
         <FontAwesomeIcon icon="sign-out-alt" size="sm" /> Logout
       </Nav.Link>
@@ -77,11 +90,15 @@ const PublicNavbar = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <Nav>
-              <Nav.Link eventKey={2}>
-                {!loading && <>{isAuthenticated ? authLinks : publicLinks}</>}
-              </Nav.Link>
-            </Nav>
+            {!loading && (
+              <>
+                {isAuthenticated
+                  ? role === "user"
+                    ? authLinks
+                    : adminAuthLinks
+                  : publicLinks}
+              </>
+            )}
           </Navbar.Collapse>
         </Container>
       </Navbar>
