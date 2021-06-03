@@ -41,7 +41,7 @@ const ProductsAdmin = () => {
           <ClipLoader color="#f86c6b" size={150} loading={loading} />
         </div>
       ) : (
-        <Container fluid>
+        <Container className="table-product" fluid>
           <Row>
             <Table striped bordered hover>
               <thead>
@@ -63,7 +63,12 @@ const ProductsAdmin = () => {
                     <tr key={item._id}>
                       <td>{item.name}</td>
                       <td>{item.ingredients}</td>
-                      <td>{item.description}</td>
+                      <td>
+                        {item.description?.length <= 150 &&
+                        item.description !== undefined
+                          ? item.description
+                          : item.description.slice(0, 99) + "..."}
+                      </td>
                       <td>{item.quantity}</td>
                       <td>{item.price}</td>
                       <td>

@@ -187,19 +187,23 @@ const HomePage = () => {
                 <VideoDetox />
               </Col>
               <Col className="content-video">
-                <h3>Detox water recipies and Benefit</h3>
-                <p>
-                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                  Quisquam repellendus esse, distinctio, sapiente optio quia
-                  necessitatibus similique mollitia sed porro unde consectetur,
-                  reprehenderit corrupti nihil nostrum ullam atque illum magni!
-                </p>
-                <p>
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Atque debitis aperiam dignissimos ipsum cupiditate dicta error
-                  eveniet, possimus rerum nam vel est qui ut, quasi inventore
-                  consequuntur? Cum, sit facilis.
-                </p>
+                <div className="background-img">
+                  <h3>Detox water recipies and Benefit</h3>
+                  <p>
+                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                    Quisquam repellendus esse, distinctio, sapiente optio quia
+                    necessitatibus similique mollitia sed porro unde
+                    consectetur, reprehenderit corrupti nihil nostrum ullam
+                    atque illum magni!
+                  </p>
+                  <p className="bg-text">
+                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                    Atque debitis aperiam dignissimos ipsum cupiditate dicta
+                    error eveniet, possimus rerum nam vel est qui ut, quasi
+                    inventore consequuntur? Cum, sit facilis.
+                  </p>
+                </div>
+                <div></div>
               </Col>
             </Row>
           </Container>

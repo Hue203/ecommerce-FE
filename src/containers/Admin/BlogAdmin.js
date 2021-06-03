@@ -219,7 +219,12 @@ const BlogAdmin = () => {
                 blogs.map((item) => (
                   <tr key={item._id}>
                     <td>{item.title}</td>
-                    <td>{item.content}</td>
+                    <td>
+                      {item?.content?.length <= 150 &&
+                      item.content !== undefined
+                        ? item.content
+                        : item.content.slice(0, 150) + "..."}
+                    </td>
                     <td>
                       <img
                         src={item.blogImage}
