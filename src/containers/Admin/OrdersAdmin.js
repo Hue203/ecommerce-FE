@@ -152,14 +152,7 @@ const OrdersAdmin = () => {
                                 EDIT
                               </Button>
                             </span>
-                            <span>
-                              <Button
-                                variant="success"
-                                onClick={() => handleOnclickDelete(item._id)}
-                              >
-                                DELETE
-                              </Button>
-                            </span>
+                            <span></span>
                           </th>{" "}
                         </tr>
                       ))}

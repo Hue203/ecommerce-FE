@@ -22,7 +22,7 @@ const AdminLayout = () => {
     <>
       <Container fluid>
         <Row>
-          {/* <SideMenuAdmin /> */}
+          <SideMenuAdmin />
           <Col md={9} lg={10}>
             <AlertMsg />
             <Switch>
