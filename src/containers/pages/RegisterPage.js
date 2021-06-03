@@ -5,7 +5,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { authActions } from "../../redux/actions/auth.actions";
 import { routeActions } from "../../redux/actions/route.actions";
-import imgregister from "../../images/img-register.jpg";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -102,10 +101,8 @@ const RegisterPage = () => {
 
               <Col>
                 <Form.Label>Avatar</Form.Label>
-                <br />
                 <Button onClick={() => uploadWidget()}>Upload</Button>
               </Col>
-              <br />
             </Form.Group>
             <Form.Group>
               <Form.Control
@@ -119,7 +116,7 @@ const RegisterPage = () => {
                 <small className="form-text text-danger">{errors.name}</small>
               )}
             </Form.Group>
-            <br />
+
             <Form.Group>
               <Form.Control
                 type="email"
@@ -132,7 +129,7 @@ const RegisterPage = () => {
                 <small className="form-text text-danger">{errors.email}</small>
               )}
             </Form.Group>
-            <br />
+
             <Form.Group>
               <Form.Control
                 type="password"

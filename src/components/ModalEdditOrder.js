@@ -53,32 +53,27 @@ const ModalEdditOrder = ({ showModal, setShowModal }) => {
             <Modal.Title>Edit Order</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            {loading ? (
-              <div className="text-center">
-                <ClipLoader color="#f86c6b" size={150} loading={loading} />
-              </div>
-            ) : (
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Service</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {selectedOrder?.productList?.map((order) => {
-                    return (
-                      <tr>
-                        <td>{order.productId.name}</td>
-                        <td>{order.productId.price}</td>
-                        <td>{order.productId.service}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </Table>
-            )}
+            <Table striped bordered hover>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Service</th>
+                </tr>
+              </thead>
+              <tbody>
+                {selectedOrder?.productList?.map((order) => {
+                  return (
+                    <tr>
+                      <td>{order.productId.name}</td>
+                      <td>{order.productId.price}</td>
+                      <td>{order.productId.service}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </Table>
+
             <Row>
               <Col>Status</Col>
               <Col>{selectedOrder.statusOrder}</Col>

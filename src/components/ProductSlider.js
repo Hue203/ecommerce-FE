@@ -1,5 +1,5 @@
 import React from "react";
-import { Carousel, Container } from "react-bootstrap";
+import { Carousel } from "react-bootstrap";
 import slide1 from "../images/slide1-1.jpg";
 import slide2 from "../images/slide1-2.jpg";
 import slide3 from "../images/slide1-3.jpg";
@@ -68,9 +68,14 @@ const ProductSlider = () => {
           </div>
 
           <Carousel.Caption>
-            <h3>Fresh your day</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-
+            <div>
+              <h1 className="content-amination">
+                Fresh your day with fruity juice
+              </h1>
+              <h5>
+                Nulla vitae elit libero, a pharetra augue mollis interdum.
+              </h5>
+            </div>
             <a href="/products" target="_parent" className="btn-arrow white">
               Shop now
             </a>
@@ -165,8 +170,8 @@ const ProductSlider = () => {
           </div>
 
           <Carousel.Caption>
-            <h3>Drink Juice and Stay Fresh</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h1 className="content-amination">Drink Juice and Stay Safe</h1>
+            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className="owl-item">
@@ -230,10 +235,12 @@ const ProductSlider = () => {
           </div>
 
           <Carousel.Caption>
-            <h3>Drink The Life Like A Glass Of Juice</h3>
-            <p>
+            <h1 className="content-amination">
+              Drink The Life Like A Glass Of Juice
+            </h1>
+            <h5>
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+            </h5>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

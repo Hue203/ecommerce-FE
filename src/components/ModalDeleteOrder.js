@@ -8,7 +8,7 @@ const ModalDeleteOrder = ({ showDeleted, setShowDelete }) => {
   const selectedOrder = useSelector((state) => state.product.selectedOrder);
   let dispatch = useDispatch();
   const handleDelete = async () => {
-    dispatch(orderActions.updateProduct(selectedOrder._id));
+    dispatch(orderActions.updateOrder(selectedOrder._id));
     handleClose();
   };
 

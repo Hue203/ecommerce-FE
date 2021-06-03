@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "../../redux/actions/order.actions";
 import { useParams } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
+import FooterPublic from "../../components/FooterPublic";
 
 const OrderDetailPage = () => {
   const params = useParams();
@@ -46,6 +47,7 @@ const OrderDetailPage = () => {
           )}
         </Container>
       )}
+      <FooterPublic />
     </>
   );
 };

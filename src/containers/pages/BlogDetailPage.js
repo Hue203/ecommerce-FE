@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { blogActions } from "../../redux/actions/blog.action";
 import SearchItem from "../../components/SearchItem";
 import Moment from "react-moment";
+import FooterPublic from "../../components/FooterPublic";
 
 const BlogDetailPage = () => {
   const params = useParams();
@@ -71,6 +72,7 @@ const BlogDetailPage = () => {
           </Col>
         </Row>
       </Container>
+      <FooterPublic />
     </>
   );
 };

@@ -7,6 +7,7 @@ import ModalAddProduct from "../../components/ModalAddProduct";
 import ModalDeleteProduct from "../../components/ModalDeleteProduct";
 import { ClipLoader } from "react-spinners";
 import PaginationBar from "../../components/PaginationBar";
+import HeaderBar from "../../components/HeaderBar";
 const ProductsAdmin = () => {
   const [showModal, setShowModal] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
@@ -36,6 +37,7 @@ const ProductsAdmin = () => {
 
   return (
     <>
+      <HeaderBar />
       {loading ? (
         <div className="text-center">
           <ClipLoader color="#f86c6b" size={150} loading={loading} />

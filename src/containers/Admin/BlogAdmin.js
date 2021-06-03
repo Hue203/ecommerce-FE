@@ -116,6 +116,53 @@ const BlogAdmin = () => {
 
   return (
     <>
+      <Container fluid className="container-blogs">
+        <Row>
+          <Table striped bordered hover>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Pictures</th>
+              </tr>
+            </thead>
+            <tbody>
+              {blogs &&
+                blogs.map((item) => (
+                  <tr key={item._id}>
+                    <td>{item.title}</td>
+                    <td>
+                      {item?.content?.length <= 150 &&
+                      item.content !== undefined
+                        ? item.content
+                        : item.content.slice(0, 150) + "..."}
+                    </td>
+                    <td>
+                      <img
+                        src={item.blogImage}
+                        alt="blog-img"
+                        width="90px"
+                        height="60px"
+                      />
+                    </td>
+                    {/* <th>
+                      <span>
+                        <Button onClick={() => handleOnclickEdit(item._id)}>
+                          EDIT
+                        </Button>
+                      </span>
+                      <span>
+                        <Button onClick={() => handleOnclickDelete(item._id)}>
+                          DELETE
+                        </Button>
+                      </span>
+                    </th>{" "} */}
+                  </tr>
+                ))}
+            </tbody>
+          </Table>
+        </Row>
+      </Container>
       <Container>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
@@ -202,53 +249,6 @@ const BlogAdmin = () => {
               )}
             </Form>
           </Col>
-        </Row>
-      </Container>
-      <Container fluid>
-        <Row>
-          <Table striped bordered hover>
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Pictures</th>
-              </tr>
-            </thead>
-            <tbody>
-              {blogs &&
-                blogs.map((item) => (
-                  <tr key={item._id}>
-                    <td>{item.title}</td>
-                    <td>
-                      {item?.content?.length <= 150 &&
-                      item.content !== undefined
-                        ? item.content
-                        : item.content.slice(0, 150) + "..."}
-                    </td>
-                    <td>
-                      <img
-                        src={item.blogImage}
-                        alt="blog-img"
-                        width="90px"
-                        height="60px"
-                      />
-                    </td>
-                    {/* <th>
-                      <span>
-                        <Button onClick={() => handleOnclickEdit(item._id)}>
-                          EDIT
-                        </Button>
-                      </span>
-                      <span>
-                        <Button onClick={() => handleOnclickDelete(item._id)}>
-                          DELETE
-                        </Button>
-                      </span>
-                    </th>{" "} */}
-                  </tr>
-                ))}
-            </tbody>
-          </Table>
         </Row>
       </Container>
     </>

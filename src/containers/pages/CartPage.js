@@ -14,6 +14,7 @@ import {
 } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
 import { orderActions } from "../../redux/actions/order.actions";
+import FooterPublic from "../../components/FooterPublic";
 
 const CartPage = () => {
   const loading = useSelector((state) => state.user.loading);
@@ -82,171 +83,174 @@ const CartPage = () => {
   }, [selectedUser, dispatch]);
 
   return (
-    <Container className="cart-page">
-      {loading ? (
-        <div className="text-center">
-          <ClipLoader color="#FFD700" size={150} loading={loading} />
-        </div>
-      ) : (
-        <section className="cart-part">
-          <h2>{`SHOPPING CART `}</h2>
+    <section className="cart-page-sections">
+      <Container className="cart-page">
+        {loading ? (
+          <div className="text-center">
+            <ClipLoader color="#FFD700" size={150} loading={loading} />
+          </div>
+        ) : (
+          <section className="cart-part">
+            <h2>{`SHOPPING CART `}</h2>
 
-          <Container fluid>
-            {selectedUser && (
-              <Row>
-                <Col>
-                  <Row>
-                    <Table className="cart-table" striped bordered hover>
-                      <thead>
-                        <tr className="cart-table">
-                          <th>Name</th>
-                          <th>Price</th>
-                          <th>Quantity</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {selectedUser.cart?.length ? (
-                          <>
-                            {selectedUser.cart.map((product) => (
-                              <tr key={product._id}>
-                                <td>{product.productId.name}</td>
-                                <td>{`$ ${product.productId.price}`}</td>
-                                <td>{product.quantity}</td>
-                              </tr>
-                            ))}
-                          </>
-                        ) : (
-                          <p>There are no Products in cart</p>
-                        )}
-                      </tbody>
-                    </Table>
-                  </Row>
-                </Col>
+            <Container fluid>
+              {selectedUser && (
+                <Row>
+                  <Col>
+                    <Row>
+                      <Table className="cart-table" striped bordered hover>
+                        <thead>
+                          <tr className="cart-table">
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {selectedUser.cart?.length ? (
+                            <>
+                              {selectedUser.cart.map((product) => (
+                                <tr key={product._id}>
+                                  <td>{product.productId.name}</td>
+                                  <td>{`$ ${product.productId.price}`}</td>
+                                  <td>{product.quantity}</td>
+                                </tr>
+                              ))}
+                            </>
+                          ) : (
+                            <p>There are no Products in cart</p>
+                          )}
+                        </tbody>
+                      </Table>
+                    </Row>
+                  </Col>
 
-                <Col>
-                  <Card>
-                    <Card.Body>
-                      <Row>
-                        <Col>Provisional</Col>
-                        <Col>{`$ ${totalAmount}`}</Col>
-                      </Row>
-                      <Row>
-                        <Col>Discount</Col>
-                        <Col>0%</Col>
-                      </Row>
-                      <Row>
-                        <Col>Total</Col>
-                        <Col>{`$ ${totalAmount}`}</Col>
-                      </Row>
-                    </Card.Body>
-                  </Card>
-                </Col>
-              </Row>
-            )}
-          </Container>
-        </section>
-      )}
+                  <Col>
+                    <Card>
+                      <Card.Body>
+                        <Row>
+                          <Col>Provisional</Col>
+                          <Col>{`$ ${totalAmount}`}</Col>
+                        </Row>
+                        <Row>
+                          <Col>Discount</Col>
+                          <Col>0%</Col>
+                        </Row>
+                        <Row>
+                          <Col>Total</Col>
+                          <Col>{`$ ${totalAmount}`}</Col>
+                        </Row>
+                      </Card.Body>
+                    </Card>
+                  </Col>
+                </Row>
+              )}
+            </Container>
+          </section>
+        )}
 
-      <Container>
-        <Card className="shipping-detail">
-          <Card.Title className="shipping-cart">Shipping Detail</Card.Title>
-          <Card.Body>
-            <Form onSubmit={handleSubmit}>
-              <Row className="mb-3">
+        <Container>
+          <Card className="shipping-detail">
+            <Card.Title className="shipping-cart">Shipping Detail</Card.Title>
+            <Card.Body>
+              <Form onSubmit={handleSubmit}>
+                <Row className="mb-3">
+                  <Form.Group>
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      type="email"
+                      placeholder="Enter email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </Form.Group>
+                </Row>
                 <Form.Group>
-                  <Form.Label>Email</Form.Label>
+                  <Form.Label>Address</Form.Label>
                   <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    name="email"
-                    value={formData.email}
+                    type="text"
+                    placeholder="1234 Nguyen Van Linh, dist 7"
+                    name="address1"
+                    value={formData.address1}
                     onChange={handleChange}
                   />
                 </Form.Group>
-              </Row>
-              <Form.Group>
-                <Form.Label>Address</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="1234 Nguyen Van Linh, dist 7"
-                  name="address1"
-                  value={formData.address1}
-                  onChange={handleChange}
-                />
-              </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Address 2</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Apart,floor,.."
-                  name="address2"
-                  value={formData.address2}
-                  onChange={handleChange}
-                />
-              </Form.Group>
+                <Form.Group>
+                  <Form.Label>Address 2</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Apart,floor,.."
+                    name="address2"
+                    value={formData.address2}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Label>Phone Number </Form.Label>
-                <Form.Control
-                  placeholder="Phone Number"
-                  type="text"
-                  name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                />
-              </Form.Group>
+                <Form.Group>
+                  <Form.Label>Phone Number </Form.Label>
+                  <Form.Control
+                    placeholder="Phone Number"
+                    type="text"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
 
-              <Form.Group>
-                <Form.Label>City </Form.Label>
-                <Form.Control
-                  placeholder="Ho Chi Minh City"
-                  type="text"
-                  name="city"
-                  value={formData.city}
-                  onChange={handleChange}
-                />
-              </Form.Group>
+                <Form.Group>
+                  <Form.Label>City </Form.Label>
+                  <Form.Control
+                    placeholder="Ho Chi Minh City"
+                    type="text"
+                    name="city"
+                    value={formData.city}
+                    onChange={handleChange}
+                  />
+                </Form.Group>
 
-              <Form>
-                <Form.Label>Payment Method</Form.Label>
-                <Form.Check
-                  type="radio"
-                  label="COD"
-                  defaultChecked
-                  name="paymentMethod"
-                ></Form.Check>
+                <Form>
+                  <Form.Label>Payment Method</Form.Label>
+                  <Form.Check
+                    type="radio"
+                    label="COD"
+                    defaultChecked
+                    name="paymentMethod"
+                  ></Form.Check>
+                </Form>
+                <p>Shipping Fee : 0</p>
+
+                {loading ? (
+                  <Button
+                    className="btn-block"
+                    variant="success"
+                    type="button"
+                    disabled
+                  >
+                    <span
+                      className="spinner-border spinner-border-sm"
+                      role="status"
+                      aria-hidden="true"
+                    ></span>
+                    Loading...
+                  </Button>
+                ) : (
+                  <Button
+                    className="btn-Continue"
+                    type="submit"
+                    variant="success"
+                  >
+                    Continue
+                  </Button>
+                )}
               </Form>
-              <p>Shipping Fee : 0</p>
-
-              {loading ? (
-                <Button
-                  className="btn-block"
-                  variant="success"
-                  type="button"
-                  disabled
-                >
-                  <span
-                    className="spinner-border spinner-border-sm"
-                    role="status"
-                    aria-hidden="true"
-                  ></span>
-                  Loading...
-                </Button>
-              ) : (
-                <Button
-                  className="btn-Continue"
-                  type="submit"
-                  variant="success"
-                >
-                  Continue
-                </Button>
-              )}
-            </Form>
-          </Card.Body>
-        </Card>
+            </Card.Body>
+          </Card>
+        </Container>
       </Container>
-    </Container>
+      <FooterPublic />
+    </section>
   );
 };
 

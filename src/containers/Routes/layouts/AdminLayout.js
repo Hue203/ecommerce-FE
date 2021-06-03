@@ -7,15 +7,22 @@ import { Container, Col, Row } from "react-bootstrap";
 import SideMenuAdmin from "../../../components/SideMenuAdmin";
 import ProductsAdmin from "../../Admin/ProductsAdmin";
 import AdminDashboard from "../../Admin/AdminDashboard";
-
+import { useHistory } from "react-router-dom";
 import BlogAdmin from "../../Admin/BlogAdmin";
+import { useSelector } from "react-redux";
 
 const AdminLayout = () => {
+  const role = useSelector((state) => state.auth.role);
+  const history = useHistory();
+  if (role !== "admin") {
+    history.push("/");
+  }
+
   return (
     <>
       <Container fluid>
         <Row>
-          <SideMenuAdmin />
+          {/* <SideMenuAdmin /> */}
           <Col md={9} lg={10}>
             <AlertMsg />
             <Switch>
@@ -25,9 +32,9 @@ const AdminLayout = () => {
                 component={AdminDashboard}
               />
 
-              <Route exact path="/admin/products" component={ProductsAdmin} />
+              {/* <Route exact path="/admin/products" component={ProductsAdmin} />
               <Route exact path="/admin/orders" component={OrdersAdmin} />
-              <Route exact path="/admin/blogs" component={BlogAdmin} />
+              <Route exact path="/admin/blogs" component={BlogAdmin} /> */}
 
               <Route component={NotFoundPage} />
             </Switch>

@@ -12,6 +12,7 @@ import SliderProductPage from "../../components/SliderProductPage";
 import ProductCard from "../../components/ProductCard";
 import { userActions } from "../../redux/actions/user.actions";
 import StarRatings from "react-star-ratings";
+import FooterPublic from "../../components/FooterPublic";
 
 const DetailPage = () => {
   const params = useParams();
@@ -26,10 +27,9 @@ const DetailPage = () => {
   const [searchInput, setSearchInput] = useState("");
   const [sortBy, setSortBy] = useState({ key: "", ascending: -1 });
   const [query, setQuery] = useState("");
-  const product = useSelector((state) => state.product.selectedProduct);
+
   const loadingAll = useSelector((state) => state.product.loading);
   const products = useSelector((state) => state.product.products);
-  const reviewList = useSelector((state) => state.review.reviews);
 
   useEffect(() => {
     if (params?.id) {
@@ -163,12 +163,6 @@ const DetailPage = () => {
                           </div>
                           <div>
                             <ul>
-                              {singleProduct.quantity > 0
-                                ? "In Stock"
-                                : "Unavailable."}
-                            </ul>
-
-                            <ul>
                               <h5>Quantity</h5>
                               <select
                                 className="quantity-slect"
@@ -218,12 +212,12 @@ const DetailPage = () => {
                         <Tab eventKey="description" title="Description">
                           <Card className="description-card">
                             <Card.Title>
-                              <h3 className="singleProduct-name">
+                              <h5 className="singleProduct-name">
                                 {singleProduct.name}
-                              </h3>
+                              </h5>
                             </Card.Title>
                             <Card.Body>
-                              <p>{singleProduct.description}</p>{" "}
+                              <small>{singleProduct.description}</small>{" "}
                             </Card.Body>
                           </Card>
                         </Tab>
@@ -259,7 +253,7 @@ const DetailPage = () => {
             </Row>
             <Container className="relatedProduct-container">
               <div className="relatedProduct">
-                <h5>Related Product</h5>{" "}
+                <h3>Related Product</h3>{" "}
               </div>
               <Card>
                 <Card.Body>
@@ -298,6 +292,7 @@ const DetailPage = () => {
           </>
         )}
       </Container>
+      <FooterPublic />
     </>
   );
 };

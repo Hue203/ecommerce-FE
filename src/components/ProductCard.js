@@ -39,7 +39,7 @@ const ProductCard = ({ product, handleClick }) => {
               </small>
               <div style={{ fontWeight: "bolder" }}>{` £${
                 (product.price * 80) / 100
-              } - Bottle only`}</div>
+              }`}</div>
             </div>
           </div>
         </div>

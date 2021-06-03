@@ -1,5 +1,4 @@
 import * as types from "../constants/auth.constants";
-
 const isAuthenticated = !!localStorage.getItem("accessToken"); //true
 const role = localStorage.getItem("role");
 const updateProfile = localStorage.getItem("updateProfile");
@@ -36,7 +35,7 @@ const authReducer = (state = initialState, action) => {
     case types.GET_CURRENT_USER_SUCCESS:
       return {
         ...state,
-        user: payload.user,
+        user: payload,
         accessToken: payload.token,
         loading: false,
         isAuthenticated: true,

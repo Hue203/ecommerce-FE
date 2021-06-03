@@ -8,6 +8,7 @@ import { Container, Col, Row } from "react-bootstrap";
 import ProductCard from "../../components/ProductCard";
 import PaginationBar from "../../components/PaginationBar";
 import SliderProductPage from "../../components/SliderProductPage";
+import FooterPublic from "../../components/FooterPublic";
 
 const ProductsPage = () => {
   const [searchInput, setSearchInput] = useState("");
@@ -87,6 +88,7 @@ const ProductsPage = () => {
         totalPageNum={totalPageNum}
         loading={loading}
       />
+      <FooterPublic />
     </>
   );
 };

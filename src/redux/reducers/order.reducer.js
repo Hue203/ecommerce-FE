@@ -12,12 +12,15 @@ const orderReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
     case types.CREATE_ORDER_REQUEST:
-    case types.UPDATE_ORDER_REQUEST:
     case types.GET_ORDERS_REQUEST:
     case types.CURRENT_USER_ORDER_REQUEST:
     case types.GET_SINGLE_ORDER_REQUEST:
       return { ...state, loading: true };
-
+    case types.UPDATE_ORDER_REQUEST:
+      return {
+        ...state,
+        loading: false,
+      };
     case types.CREATE_ORDER_SUCCESS:
     case types.GET_ORDERS_SUCCESS:
     case types.CURRENT_USER_ORDER_SUCCESS:

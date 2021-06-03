@@ -30,7 +30,8 @@ const ProfilePage = () => {
   });
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
-
+  console.log(formData);
+  console.log(currentUser);
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -51,10 +52,21 @@ const ProfilePage = () => {
     dispatch(orderActions.getSingleOrder(orderId));
     // history.push(`/orders/${id}`);
   };
+
+  useEffect(() => {
+    if (currentUser) {
+      setFormData({
+        name: currentUser && currentUser.name,
+        email: currentUser && currentUser.email,
+        avatarUrl: currentUser && currentUser.avatarUrl,
+      });
+    }
+  }, [currentUser]);
+
   useEffect(() => {
     dispatch(authActions.getCurrentUser());
     dispatch(orderActions.getCurrentUserOrder());
-  }, [dispatch, formData]);
+  }, [dispatch]);
   const uploadWidget = () => {
     window.cloudinary.openUploadWidget(
       {
@@ -76,210 +88,215 @@ const ProfilePage = () => {
   };
 
   return (
-    <section className="profile-container">
-      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-        <Row>
-          <Col sm={3}>
-            <Nav className="flex-column">
-              <Nav.Item>
-                <Nav.Link eventKey="first">Profile User</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="second">Orders</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col sm={9}>
-            <Tab.Content>
-              <Tab.Pane eventKey="first">
-                <Row>
-                  <Col md={{ span: 8, offset: 2 }} className="accountInfo">
-                    {loading ? (
-                      <div className="d-flex justify-content-center align-items-center">
-                        <ClipLoader color="#f86c6b" size={150} loading={true} />
+    <section className="profile-container ">
+      <div className="container">
+        <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+          <Row>
+            <Col sm={3}>
+              <Nav className="flex-column nav-custom">
+                <Nav.Item>
+                  <Nav.Link eventKey="first">Profile User</Nav.Link>
+                </Nav.Item>
+                <Nav.Item>
+                  <Nav.Link eventKey="second">Orders</Nav.Link>
+                </Nav.Item>
+              </Nav>
+            </Col>
+            <Col sm={9}>
+              <Tab.Content>
+                <Tab.Pane eventKey="first">
+                  <Row>
+                    <Col md={{ span: 8, offset: 2 }} className="accountInfo">
+                      {loading ? (
+                        <div className="d-flex justify-content-center align-items-center">
+                          <ClipLoader
+                            color="#f86c6b"
+                            size={150}
+                            loading={true}
+                          />
+                        </div>
+                      ) : (
+                        currentUser !== undefined && (
+                          <Form onSubmit={handleSubmit}>
+                            <Form.Group>
+                              <div className="text-center">
+                                <div className="mb-3">
+                                  <img
+                                    src={formData.avatarUrl}
+                                    className="avatar-lg"
+                                    alt="avatar"
+                                  />
+                                </div>
+
+                                <br />
+                                <Button
+                                  variant="success"
+                                  onClick={uploadWidget}
+                                  disabled={!editable}
+                                >
+                                  Edit avatar
+                                </Button>
+                              </div>
+                              <br />
+                            </Form.Group>
+                            <Form.Group as={Row}>
+                              <Form.Label column sm="2">
+                                Name
+                              </Form.Label>
+                              <Col>
+                                <Form.Control
+                                  type="text"
+                                  required
+                                  placeholder="Name"
+                                  name="name"
+                                  value={formData.name}
+                                  onChange={handleChange}
+                                  disabled={!editable}
+                                />
+                              </Col>
+                            </Form.Group>
+                            <br />
+                            <Form.Group as={Row}>
+                              <Form.Label column sm="2">
+                                Email
+                              </Form.Label>
+                              <Col>
+                                <Form.Control
+                                  type="email"
+                                  required
+                                  placeholder="Email"
+                                  name="email"
+                                  value={formData.email}
+                                  disabled={true}
+                                />
+                              </Col>
+                            </Form.Group>
+
+                            <br />
+                            <Row>
+                              {editable && (
+                                <ButtonGroup className="d-flex mb-3 justify-content-center">
+                                  {loading ? (
+                                    <Button
+                                      className="mr-3"
+                                      variant="success"
+                                      type="button"
+                                      disabled
+                                    >
+                                      <span
+                                        className="spinner-border spinner-border-sm"
+                                        role="status"
+                                        aria-hidden="true"
+                                      ></span>
+                                      Submitting...
+                                    </Button>
+                                  ) : (
+                                    <div className="submit-button">
+                                      <Button
+                                        className="mr-3"
+                                        type="submit"
+                                        variant="success"
+                                      >
+                                        Submit
+                                      </Button>
+                                    </div>
+                                  )}
+                                  <div>
+                                    <Button
+                                      variant="danger"
+                                      onClick={handleCancel}
+                                      disabled={loading}
+                                    >
+                                      Cancel
+                                    </Button>
+                                  </div>
+                                </ButtonGroup>
+                              )}
+                            </Row>
+                            <Row>
+                              <Button
+                                className="edit-btn"
+                                variant="success"
+                                onClick={() => setEditable(true)}
+                              >
+                                <FontAwesomeIcon icon="edit" size="1x" /> Edit
+                              </Button>
+                            </Row>
+                          </Form>
+                        )
+                      )}
+                    </Col>
+                  </Row>
+                </Tab.Pane>
+                <Tab.Pane eventKey="second">
+                  <div>
+                    <h1>Order History</h1>
+                    {loadingOrder ? (
+                      <div className="text-center">
+                        <ClipLoader
+                          color="#f86c6b"
+                          size={150}
+                          loading={loadingOrder}
+                        />
                       </div>
                     ) : (
-                      <Form onSubmit={handleSubmit}>
-                        <Form.Group>
-                          <div className="text-center">
-                            {currentUser !== undefined && formData.avatarUrl && (
-                              <div className="mb-3">
-                                <img
-                                  src={formData.avatarUrl}
-                                  className="avatar-lg"
-                                  alt="avatar"
-                                />
-                              </div>
-                            )}
-                            <br />
-                            <Button
-                              variant="success"
-                              onClick={uploadWidget}
-                              disabled={!editable}
-                            >
-                              Edit avatar
-                            </Button>
-                          </div>
-                          <br />
-                        </Form.Group>
-                        <Form.Group as={Row}>
-                          <Form.Label column sm="2">
-                            Name
-                          </Form.Label>
-                          <Col>
-                            <Form.Control
-                              type="text"
-                              required
-                              placeholder="Name"
-                              name="name"
-                              value={formData.name}
-                              onChange={handleChange}
-                              disabled={!editable}
-                            />
-                          </Col>
-                        </Form.Group>
-                        <br />
-                        <Form.Group as={Row}>
-                          <Form.Label column sm="2">
-                            Email
-                          </Form.Label>
-                          <Col>
-                            <Form.Control
-                              type="email"
-                              required
-                              placeholder="Email"
-                              name="email"
-                              value={formData.email}
-                              disabled={true}
-                            />
-                          </Col>
-                        </Form.Group>
-
-                        <br />
-                        {editable && (
-                          <ButtonGroup className="d-flex mb-3">
-                            {loading ? (
-                              <Button
-                                className="mr-3"
-                                variant="success"
-                                type="button"
-                                disabled
-                              >
-                                <span
-                                  className="spinner-border spinner-border-sm"
-                                  role="status"
-                                  aria-hidden="true"
-                                ></span>
-                                Submitting...
-                              </Button>
-                            ) : (
-                              <div>
-                                <span></span>
-                                <Button
-                                  className="mr-3"
-                                  type="submit"
-                                  variant="success"
-                                >
-                                  Submit
-                                </Button>
-                              </div>
-                            )}
-                            <span>
-                              <Button
-                                variant="danger"
-                                onClick={handleCancel}
-                                disabled={loading}
-                              >
-                                Cancel
-                              </Button>
-                            </span>
-                          </ButtonGroup>
-                        )}
-                      </Form>
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>DATE</th>
+                            <th>TOTAL</th>
+                            <th>PAID</th>
+                            <th>DELIVERED</th>
+                            <th>ACTIONS</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {currentUserOrder !== undefined &&
+                            currentUserOrder !== {} &&
+                            currentUserOrder?.map((order) => (
+                              <tr key={order._id}>
+                                <td>{`#${order?._id}`}</td>
+                                <td>{order?.createdAt.substring(0, 10)}</td>
+                                <td>{order?.totalPrice?.toFixed(2)}</td>
+                                <td>
+                                  {order.statusOrder
+                                    ? order.statusOrder.substring(0, 10)
+                                    : "No"}
+                                </td>
+                                <td>
+                                  {order.statusOrder
+                                    ? order.statusOrder.substring(0, 10)
+                                    : "No"}
+                                </td>
+                                <td>
+                                  <Button
+                                    type="button"
+                                    variant="success"
+                                    onClick={() => {
+                                      handleOnClick(order._id);
+                                    }}
+                                  >
+                                    Details
+                                  </Button>
+                                </td>
+                              </tr>
+                            ))}
+                        </tbody>
+                      </table>
                     )}
-                  </Col>
-                </Row>
 
-                <br />
-                <Row>
-                  <Col></Col>
-
-                  <Col>
-                    <Button variant="success" onClick={() => setEditable(true)}>
-                      <FontAwesomeIcon icon="edit" size="1x" /> Edit
-                    </Button>
-                  </Col>
-                </Row>
-                <br />
-              </Tab.Pane>
-              <Tab.Pane eventKey="second">
-                <div>
-                  <h1>Order History</h1>
-                  {loadingOrder ? (
-                    <div className="text-center">
-                      <ClipLoader
-                        color="#f86c6b"
-                        size={150}
-                        loading={loadingOrder}
-                      />
-                    </div>
-                  ) : (
-                    <table className="table">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>DATE</th>
-                          <th>TOTAL</th>
-                          <th>PAID</th>
-                          <th>DELIVERED</th>
-                          <th>ACTIONS</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {currentUserOrder !== undefined &&
-                          currentUserOrder &&
-                          currentUserOrder?.map((order) => (
-                            <tr key={order._id}>
-                              <td>{`#${order?._id}`}</td>
-                              <td>{order?.createdAt.substring(0, 10)}</td>
-                              <td>{order?.totalPrice?.toFixed(2)}</td>
-                              <td>
-                                {order.statusOrder
-                                  ? order.statusOrder.substring(0, 10)
-                                  : "No"}
-                              </td>
-                              <td>
-                                {order.statusOrder
-                                  ? order.statusOrder.substring(0, 10)
-                                  : "No"}
-                              </td>
-                              <td>
-                                <Button
-                                  type="button"
-                                  variant="success"
-                                  onClick={() => {
-                                    handleOnClick(order._id);
-                                  }}
-                                >
-                                  Details
-                                </Button>
-                              </td>
-                            </tr>
-                          ))}
-                      </tbody>
-                    </table>
-                  )}
-
-                  <ModalOrderPage
-                    showModal={showModal}
-                    setShowModal={setShowModal}
-                  />
-                </div>
-              </Tab.Pane>
-            </Tab.Content>
-          </Col>
-        </Row>
-      </Tab.Container>
+                    <ModalOrderPage
+                      showModal={showModal}
+                      setShowModal={setShowModal}
+                    />
+                  </div>
+                </Tab.Pane>
+              </Tab.Content>
+            </Col>
+          </Row>
+        </Tab.Container>
+      </div>
     </section>
   );
 };

@@ -7,12 +7,9 @@ import { Row, Col, Container, Tabs, Tab, Button } from "react-bootstrap";
 import ProductCard from "../../components/ProductCard";
 import Packages from "../../components/Packages";
 import ProductSlider from "../../components/ProductSlider";
-import BlogCard from "../../components/BlogCard";
 import { blogActions } from "../../redux/actions/blog.action";
 import { packageActions } from "../../redux/actions/package.action";
 import FooterPublic from "../../components/FooterPublic";
-import SliderHome from "../../components/SliderHome";
-import VideoDetox from "../../components/VideoDetox";
 
 const HomePage = () => {
   const { loading, loadingBlog, loadingPackage } = useSelector((state) => ({
@@ -22,7 +19,7 @@ const HomePage = () => {
   }));
 
   const products = useSelector((state) => state.product.products);
-  const blogs = useSelector((state) => state.blog.blogs);
+
   const packages = useSelector((state) => state.package.packages);
 
   const dispatch = useDispatch();
@@ -134,11 +131,7 @@ const HomePage = () => {
           </Container>
 
           <Container className="product-tab">
-            <Tabs
-              defaultActiveKey="product"
-              id="uncontrolled-tab-example"
-              className="tab-product"
-            >
+            <Tabs defaultActiveKey="product" id="uncontrolled-tab-example">
               <Tab eventKey="product" title="Popular Product" variant="pills">
                 <Container className="productContainer">
                   {products?.length ? (
@@ -182,30 +175,34 @@ const HomePage = () => {
               </Tab>
             </Tabs>
             <Row>
-              <Col>
+              {/* <Col>
                 {" "}
                 <VideoDetox />
               </Col>
-              <Col className="content-video">
-                <div className="background-img"></div>
-                {/* <div>
-                  <h3>Detox water recipies and Benefit</h3>
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Quisquam repellendus esse, distinctio, sapiente optio quia
-                    necessitatibus similique mollitia sed porro unde
-                    consectetur, reprehenderit corrupti nihil nostrum ullam
-                    atque illum magni!
-                  </p>
-                  <p className="bg-text">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Atque debitis aperiam dignissimos ipsum cupiditate dicta
-                    error eveniet, possimus rerum nam vel est qui ut, quasi
-                    inventore consequuntur? Cum, sit facilis.
-                  </p>
-                </div> */}
-              </Col>
+              <Col className="content-video"></Col> */}
             </Row>
+            {/* <Row>
+              <Col>
+                <img
+                  src="http://fitmeal.like-themes.com/wp-content/uploads/2019/10/avocado.png"
+                  alt=""
+                />
+              </Col>
+              <Col className="" style={{ maxWidth: "360px" }}>
+                <div className="ltx-wrapper">
+                  <div className="wpb_text_column wpb_content_element ">
+                    <Card className="card-avocado">
+                      <ul className="check-invert">
+                        <li>Reduces weight</li>
+                        <li>Improves health</li>
+                        <li>No sugar and gluten</li>
+                        <li>Adds strength and energy</li>
+                      </ul>
+                    </Card>
+                  </div>
+                </div>
+              </Col>
+            </Row> */}
           </Container>
           <FooterPublic />
         </>
