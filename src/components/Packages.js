@@ -7,7 +7,7 @@ const Packages = ({ packageProduct, handleClick }) => {
       <Container className="package-container">
         <div onClick={() => handleClick(packageProduct._id)}>
           <div className="flex">
-            <Row className="productRow">
+            <Row className="packageRow">
               <Col>
                 <div className="image-divpack">
                   {

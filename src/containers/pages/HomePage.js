@@ -12,6 +12,7 @@ import { blogActions } from "../../redux/actions/blog.action";
 import { packageActions } from "../../redux/actions/package.action";
 import FooterPublic from "../../components/FooterPublic";
 import SliderHome from "../../components/SliderHome";
+import VideoDetox from "../../components/VideoDetox";
 
 const HomePage = () => {
   const { loading, loadingBlog, loadingPackage } = useSelector((state) => ({
@@ -180,6 +181,27 @@ const HomePage = () => {
                 </Container>
               </Tab>
             </Tabs>
+            <Row>
+              <Col>
+                {" "}
+                <VideoDetox />
+              </Col>
+              <Col className="content-video">
+                <h3>Detox water recipies and Benefit</h3>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Quisquam repellendus esse, distinctio, sapiente optio quia
+                  necessitatibus similique mollitia sed porro unde consectetur,
+                  reprehenderit corrupti nihil nostrum ullam atque illum magni!
+                </p>
+                <p>
+                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                  Atque debitis aperiam dignissimos ipsum cupiditate dicta error
+                  eveniet, possimus rerum nam vel est qui ut, quasi inventore
+                  consequuntur? Cum, sit facilis.
+                </p>
+              </Col>
+            </Row>
           </Container>
           <FooterPublic />
         </>

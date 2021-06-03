@@ -43,9 +43,9 @@ const ProductCard = ({ product, handleClick }) => {
             </div>
           </div>
         </div>
-        <div className="add-wishlist">
+        {/* <div className="add-wishlist">
           <FontAwesomeIcon icon="heart" size="lg" />
-        </div>
+        </div> */}
         <div className="shopping-cart" onClick={handleOnClick}>
           <FontAwesomeIcon icon="shopping-cart" size="lg" />
         </div>
