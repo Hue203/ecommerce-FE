@@ -7,6 +7,7 @@ import { ClipLoader } from "react-spinners";
 import { Button, Col, Row, Form, Card, Container } from "react-bootstrap";
 import { userActions } from "../../redux/actions/user.actions";
 import SliderProductPage from "../../components/SliderProductPage";
+import FooterPublic from "../../components/FooterPublic";
 const PakagesDetailPage = () => {
   const params = useParams();
   const dispatch = useDispatch();
@@ -125,6 +126,7 @@ const PakagesDetailPage = () => {
           </>
         )}
       </Container>
+      <FooterPublic />
     </>
   );
 };

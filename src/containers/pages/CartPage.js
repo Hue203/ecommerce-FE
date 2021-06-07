@@ -41,7 +41,7 @@ const CartPage = () => {
     city: "",
   });
 
-  let totalAmount;
+  let totalAmount = 0;
 
   if (selectedUser) {
     totalAmount = selectedUser.cart?.reduce((total, currentElement) => {
@@ -51,10 +51,9 @@ const CartPage = () => {
           parseInt(currentElement.quantity)
       );
     }, 0);
-  }
-  if (selectedUser) {
-    if (selectedUser.cartPackage) {
-      totalAmount = totalAmount + selectedUser.cartPackage?.cylceId?.price;
+    if (Object.entries(selectedUser.cartPackage).length !== 0) {
+      totalAmount =
+        totalAmount + parseInt(selectedUser.cartPackage?.cylceId?.price);
     } else {
       totalAmount = totalAmount + 0;
     }
@@ -119,7 +118,7 @@ const CartPage = () => {
                                 {selectedUser.cart.map((product) => (
                                   <tr key={product._id}>
                                     <td>{product.productId.name}</td>
-                                    <td>{`$ ${product.productId.price}`}</td>
+                                    <td>{`£ ${product.productId.price}`}</td>
 
                                     <td>
                                       <UpdateProductCart product={product} />
@@ -144,13 +143,15 @@ const CartPage = () => {
                             </tr>
                           </thead>
                           <tbody>
-                            {selectedUser?.cartPackage?.length !== undefined ? (
+                            {selectedUser?.cartPackage !== undefined &&
+                            selectedUser?.cartPackage.packageId !==
+                              undefined ? (
                               <>
                                 <tr key={selectedUser?.cartPackage?._id}>
                                   <td>
                                     {selectedUser?.cartPackage?.packageId.name}
                                   </td>
-                                  <td>{`£${selectedUser?.cartPackage?.cylceId.price}`}</td>
+                                  <td>{`£ ${selectedUser?.cartPackage?.cylceId.price}`}</td>
                                   <td>{`${selectedUser?.cartPackage?.deliveryTime}`}</td>
                                   <td>
                                     {selectedUser?.cartPackage?.dateStart}{" "}
@@ -260,7 +261,7 @@ const CartPage = () => {
                     name="paymentMethod"
                   ></Form.Check>
                 </Form>
-                <p>Shipping Fee : 35%</p>
+                <p>Shipping Fee : 0</p>
 
                 {loading ? (
                   <Button
@@ -282,7 +283,7 @@ const CartPage = () => {
                     type="submit"
                     variant="success"
                   >
-                    Continue
+                    Check Out
                   </Button>
                 )}
               </Form>

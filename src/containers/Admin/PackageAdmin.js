@@ -117,43 +117,43 @@ const PackageAdmin = () => {
                         >
                           DATE
                         </th>
-                        <th>Actions</th>
+                        <th>
+                          <span>
+                            <Button
+                              variant="success"
+                              onClick={() => handleOnclickAdd()}
+                            >
+                              ADD
+                            </Button>
+                          </span>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
                       {packages !== undefined?.length ? (
                         <>
                           {packages.map((item) => (
-                            <tr key={item._id}>
-                              <td>{item.name}</td>
-                              <td>
-                                {item.products?.map(
-                                  (product) => product.productId.name
-                                )}
-                              </td>
-                              <td>{item.packageType}</td>
-                              <td>{item.deliveryTime}</td>
-                              <td>
-                                <img
-                                  src={item.images[0].imageUrl}
-                                  alt="product-img"
-                                  width="90px"
-                                  height="60px"
-                                />
-                              </td>
-                              <td>{item?.createdAt.substring(0, 10)}</td>
-                              <th>
-                                <span>
-                                  <Button
-                                    variant="success"
-                                    onClick={() => handleOnclickAdd(item._id)}
-                                  >
-                                    ADD
-                                  </Button>
-                                </span>
-                                <span></span>
-                              </th>{" "}
-                            </tr>
+                            <>
+                              <tr key={item._id}>
+                                <td>{item.name}</td>
+                                <td>
+                                  {item.products?.map(
+                                    (product) => product.productId.name
+                                  )}
+                                </td>
+                                <td>{item.packageType}</td>
+                                <td>{item.deliveryTime}</td>
+                                <td>
+                                  <img
+                                    src={item.images[0].imageUrl}
+                                    alt="product-img"
+                                    width="90px"
+                                    height="60px"
+                                  />
+                                </td>
+                                <td>{item?.createdAt.substring(0, 10)}</td>
+                              </tr>
+                            </>
                           ))}
                         </>
                       ) : (
@@ -168,6 +168,7 @@ const PackageAdmin = () => {
         </Row>
         <ModalAddPackage showModal={showModal} setShowModal={setShowModal} />
       </Container>
+
       <Container>
         <Row>
           <Col xs={2}></Col>
@@ -191,7 +192,15 @@ const PackageAdmin = () => {
                           Price <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
 
-                        <th>Actions</th>
+                        <th>
+                          {" "}
+                          <Button
+                            variant="success"
+                            onClick={() => handleOnclickAddCycle()}
+                          >
+                            ADD
+                          </Button>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -202,16 +211,6 @@ const PackageAdmin = () => {
                               <td>{item.cycleName}</td>
                               <td>{item.price}</td>
                               <th>
-                                <span>
-                                  <Button
-                                    variant="success"
-                                    onClick={() =>
-                                      handleOnclickAddCycle(item._id)
-                                    }
-                                  >
-                                    ADD
-                                  </Button>
-                                </span>
                                 <span></span>
                               </th>{" "}
                             </tr>
@@ -230,12 +229,6 @@ const PackageAdmin = () => {
         <ModalAddCycle
           showModalCycle={showModalCycle}
           setShowModalCycle={setShowModalCycle}
-        />
-        <PaginationBar
-          pageNum={pageNum}
-          setPageNum={setPageNum}
-          totalPageNum={totalPageNum}
-          loading={loading}
         />
       </Container>
     </>

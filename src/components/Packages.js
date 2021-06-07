@@ -20,10 +20,10 @@ const Packages = ({ packageProduct, handleClick }) => {
               <div className="package-content">
                 <div>
                   <ul>
-                    <h5>Include:</h5>
+                    <h5>With:</h5>
                     <p>
                       {packageProduct.products.map((item) => (
-                        <p>{`1 ${item.productId.name}`}</p>
+                        <ul>{`1 ${item.productId.name}`}</ul>
                       ))}
                     </p>
                   </ul>

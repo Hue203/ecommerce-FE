@@ -11,6 +11,8 @@ import { blogActions } from "../../redux/actions/blog.action";
 import { packageActions } from "../../redux/actions/package.action";
 import FooterPublic from "../../components/FooterPublic";
 import SliderProductPage from "../../components/SliderProductPage";
+import VideoDetox from "../../components/VideoDetox";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const { loading, loadingBlog, loadingPackage } = useSelector((state) => ({
@@ -86,75 +88,79 @@ const HomePage = () => {
         </div>
       ) : (
         <>
-          <div className="container" style={{ marginBottom: "100px" }}>
-            <Row>
-              <Col>
-                <div
-                  onClick={() => handleClickOnBlog("60b69efc303b7251a3ccf295")}
-                  className="blog-card"
-                >
-                  <div className="blog-div">
-                    <img
-                      className="blog-img"
-                      variant="top"
-                      src="http://res.cloudinary.com/hue203/image/upload/v1622580984/en8x3bzjumggl09auxs2.jpg"
-                      alt="blog-img"
+          <Container>
+            <div className="container" style={{ marginBottom: "100px" }}>
+              <Row>
+                <Col>
+                  <div
+                    onClick={() =>
+                      handleClickOnBlog("60b69efc303b7251a3ccf295")
+                    }
+                    className="blog-card"
+                  >
+                    <div className="blog-div">
+                      <img
+                        className="blog-img"
+                        variant="top"
+                        src="http://res.cloudinary.com/hue203/image/upload/v1622580984/en8x3bzjumggl09auxs2.jpg"
+                        alt="blog-img"
+                      />
+                    </div>
+                    <BlogContent
+                      text={blogContents[0].content}
+                      blogId={blogContents[0].id}
+                      blogTitle={blogContents[0].title}
                     />
                   </div>
-                  <BlogContent
-                    text={blogContents[0].content}
-                    blogId={blogContents[0].id}
-                    blogTitle={blogContents[0].title}
-                  />
-                </div>
-              </Col>
-              <Col>
-                <div
-                  onClick={() => handleClickOnBlog("60b67ea02b713c2d2a39810b")}
-                  className="blog-card"
-                >
-                  <BlogContent
-                    text={blogContents[1].content}
-                    blogId={blogContents[1].id}
-                    blogTitle={blogContents[1].title}
-                  />
-                  <div className="blog-div">
-                    <img
-                      className="blog-img"
-                      variant="top"
-                      src="https://www.naturefresh.ca/wp-content/uploads/NFF_Tomatoes_Mix-2-W.jpg"
-                      alt="blog-img"
+                </Col>
+                <Col>
+                  <div
+                    onClick={() =>
+                      handleClickOnBlog("60b67ea02b713c2d2a39810b")
+                    }
+                    className="blog-card"
+                  >
+                    <BlogContent
+                      text={blogContents[1].content}
+                      blogId={blogContents[1].id}
+                      blogTitle={blogContents[1].title}
                     />
+                    <div className="blog-div">
+                      <img
+                        className="blog-img"
+                        variant="top"
+                        src="https://www.naturefresh.ca/wp-content/uploads/NFF_Tomatoes_Mix-2-W.jpg"
+                        alt="blog-img"
+                      />
+                    </div>
                   </div>
-                </div>
-              </Col>
-            </Row>
-          </div>
+                </Col>
+              </Row>
+            </div>
+          </Container>
           <Container>
             <SliderProductPage />
           </Container>
           <Container className="product-tab">
-            <Tabs defaultActiveKey="product" id="uncontrolled-tab-example">
-              <Tab eventKey="product" title="Popular Product" variant="pills">
-                <Container className="productContainer">
-                  {products?.length ? (
-                    <>
-                      <div className="relatedProduct">Popular Detox Drink</div>
-                      <div className="product-card">
-                        {products.map((product) => (
-                          <ProductCard
-                            product={product}
-                            key={product._id}
-                            handleClick={handleClickOnProduct}
-                          />
-                        ))}
-                      </div>
-                    </>
-                  ) : (
-                    <p>There are no Products</p>
-                  )}
-                </Container>
-              </Tab>
+            {/* <Tabs defaultActiveKey="product" id="uncontrolled-tab-example">
+              <Tab eventKey="product" title="Popular Product" variant="pills"> */}
+            {products?.length ? (
+              <>
+                <div className="relatedProduct">Popular Detox Drink</div>
+                <div className="product-card">
+                  {products.map((product) => (
+                    <ProductCard
+                      product={product}
+                      key={product._id}
+                      handleClick={handleClickOnProduct}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <p>There are no Products</p>
+            )}
+            {/* </Tab>
               <Tab eventKey="packages" title="Detox Plan" variant="pills">
                 <Container className="packageSection">
                   <div className="relatedProduct">
@@ -174,36 +180,36 @@ const HomePage = () => {
                   </Container>
                 </Container>
               </Tab>
-            </Tabs>
-            <Row>
-              {/* <Col>
-                {" "}
-                <VideoDetox />
-              </Col>
-              <Col className="content-video"></Col> */}
-            </Row>
-            {/* <Row>
-              <Col>
-                <img
-                  src="http://fitmeal.like-themes.com/wp-content/uploads/2019/10/avocado.png"
-                  alt=""
-                />
-              </Col>
-              <Col className="" style={{ maxWidth: "360px" }}>
-                <div className="ltx-wrapper">
-                  <div className="wpb_text_column wpb_content_element ">
-                    <Card className="card-avocado">
-                      <ul className="check-invert">
-                        <li>Reduces weight</li>
-                        <li>Improves health</li>
-                        <li>No sugar and gluten</li>
-                        <li>Adds strength and energy</li>
-                      </ul>
-                    </Card>
-                  </div>
-                </div>
-              </Col>
-            </Row> */}
+            </Tabs> */}
+            <Container>
+              {" "}
+              <Row>
+                <Col className="video">
+                  {" "}
+                  <VideoDetox />
+                </Col>
+                <Col className="content-video">
+                  <h5>REGULAR PACKAGE</h5>
+                  <div className="detox-text">Detox Box</div>
+                  <h4 className="vitamintext">Vitamin for life</h4>
+                  <h3>Detox Box with 3 No</h3>
+                  <h5>
+                    <li>Do not add diluent water </li>
+                    <li>No refined sugar No Additives</li>
+                    <li> Preservatives</li>
+                  </h5>
+
+                  <Button
+                    className="btn readmore-btn"
+                    variant="success"
+                    as={Link}
+                    to="/packages"
+                  >
+                    Explore
+                  </Button>
+                </Col>
+              </Row>
+            </Container>
           </Container>
           <FooterPublic />
         </>

@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { authActions } from "../../redux/actions/auth.actions";
 import { routeActions } from "../../redux/actions/route.actions";
+import login from "../../images/logo1.png";
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -76,17 +77,18 @@ const RegisterPage = () => {
     <Container className="registerForm">
       <Row>
         <Col>
-          <img
-            src="https://i.pinimg.com/originals/c2/5c/76/c25c768acd2fe3b66d76efdee6ec932a.jpg"
-            alt="img-register"
-            className="img-register"
-          />
+          <img src={login} alt="img-register" style={{ height: "80%" }} />
         </Col>
         <Col className="form-regis">
           <div className="text-center mb-3">
-            <h1 className="text-primary">Sign Up</h1>
+            <h1 style={{ color: "#245404" }}>Sign Up</h1>
             <p className="lead">
-              <FontAwesomeIcon icon="user" size="1x" /> Create Your Account
+              <FontAwesomeIcon
+                icon="user"
+                size="1x"
+                style={{ color: "#245404" }}
+              />{" "}
+              Create Your Account
             </p>
           </div>
           <Form onSubmit={handleSubmit}>
@@ -101,7 +103,9 @@ const RegisterPage = () => {
 
               <Col>
                 <Form.Label>Avatar</Form.Label>
-                <Button onClick={() => uploadWidget()}>Upload</Button>
+                <Button variant="success" onClick={() => uploadWidget()}>
+                  Upload
+                </Button>
               </Col>
             </Form.Group>
             <Form.Group>
@@ -158,7 +162,7 @@ const RegisterPage = () => {
             {loading ? (
               <Button
                 className="btn-block"
-                variant="primary"
+                variant="success"
                 type="button"
                 disabled
               >
@@ -170,13 +174,16 @@ const RegisterPage = () => {
                 Loading...
               </Button>
             ) : (
-              <Button className="btn-block" type="submit" variant="primary">
+              <Button className="btn-block" type="submit" variant="success">
                 Register
               </Button>
             )}
 
-            <p>
-              Already have an account? <Link to="/login">Sign In</Link>
+            <p style={{ color: "#245404" }}>
+              Already have an account?{" "}
+              <Link to="/login" style={{ color: "orange" }}>
+                Sign In
+              </Link>
             </p>
           </Form>
         </Col>

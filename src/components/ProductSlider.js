@@ -72,9 +72,9 @@ const ProductSlider = () => {
               <h1 className="content-amination">
                 Fresh your day with fruity juice
               </h1>
-              <h5>
+              <div className="content-carousel">
                 Nulla vitae elit libero, a pharetra augue mollis interdum.
-              </h5>
+              </div>
             </div>
             <a href="/products" target="_parent" className="btn-arrow white">
               Shop now
@@ -171,7 +171,12 @@ const ProductSlider = () => {
 
           <Carousel.Caption>
             <h1 className="content-amination">Drink Juice and Stay Safe</h1>
-            <h5>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h5>
+            <div className="content-carousel">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
+            <a href="/products" target="_parent" className="btn-arrow white">
+              Shop now
+            </a>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className="owl-item">
@@ -238,9 +243,12 @@ const ProductSlider = () => {
             <h1 className="content-amination">
               Drink The Life Like A Glass Of Juice
             </h1>
-            <h5>
+            <div className="content-carousel">
               Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </h5>
+            </div>
+            <a href="/products" target="_parent" className="btn-arrow white">
+              Shop now
+            </a>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

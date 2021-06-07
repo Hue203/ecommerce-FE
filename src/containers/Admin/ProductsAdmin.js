@@ -83,7 +83,7 @@ const ProductsAdmin = () => {
             ) : (
               <Container className="table-product" fluid>
                 <Row>
-                  <Table striped bordered hover>
+                  <Table striped bordered hover variant="dark">
                     <thead>
                       <tr>
                         <th

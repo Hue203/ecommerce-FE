@@ -36,34 +36,32 @@ const UpdateProductCart = ({ product }) => {
     <>
       <Form onSubmit={hanleSubmit} className="cart-number">
         <div className="">
-          <FontAwesomeIcon
-            icon="angle-down"
-            size="sm"
-            onClick={handleOnclickDown}
-          />
+          <FontAwesomeIcon icon="minus" size="sm" onClick={handleOnclickDown} />
 
           <input
             min={quantity}
             title="Qty"
-            size="2"
+            size="3"
             type="text"
             name="quantity"
             value={quantity}
             onChange={handleOnChange}
+            className="input-quantity"
           />
-          <FontAwesomeIcon
-            icon="angle-up"
-            size="sm"
-            onClick={handleOnclickUp}
-          />
-          <button type="submit">
+          <FontAwesomeIcon icon="plus" size="sm" onClick={handleOnclickUp} />
+          <Button
+            style={{ margin: "0 20px" }}
+            type="submit"
+            size={1}
+            variant="outline-success"
+          >
             {" "}
             <FontAwesomeIcon icon="save" />
-          </button>
-          <button onClick={handleDelete}>
+          </Button>
+          <Button variant="outline-danger" size={1} onClick={handleDelete}>
             {" "}
             <FontAwesomeIcon icon="trash-alt" />
-          </button>
+          </Button>
         </div>
       </Form>
     </>

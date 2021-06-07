@@ -72,27 +72,37 @@ const PackagePage = () => {
 
       <div style={{ marginTop: "60px" }}></div>
       <Container>
-        <div className="content-top">
-          <div>
-            <h1>Create your own package</h1>
-            <h2>Green living - Skin Regeneration</h2>
-            <h3>Are you ready to feel and look like you 18 again?</h3>
-            <h4>Saving 30% - Drink Everyday</h4>
-            <div>
-              {" "}
-              <a href="#packageConatiner">
-                <Button variant="outline-danger">Discovery</Button>
-              </a>
+        <Container>
+          {" "}
+          <div className="content-top">
+            <div className="content-avocado">
+              <div className="greenText">Green living - Skin Regeneration</div>
+              <br />
+              <h3>Are you ready to feel and look like you 18 again?</h3>
+
+              <h5>
+                Solutions to improve health and change habits from the roots of
+                nutrition{" "}
+              </h5>
+              <br />
+              <div>
+                {" "}
+                <a href="#packageConatiner">
+                  <Button variant="outline-danger" className="addtocardbtn">
+                    Discovery
+                  </Button>
+                </a>
+              </div>
+            </div>
+            <div className="img-avacodo">
+              <img
+                src="http://fitmeal.like-themes.com/wp-content/uploads/2019/10/avocado.png"
+                alt=""
+                className="avocado"
+              />
             </div>
           </div>
-          <div>
-            <img
-              src="http://fitmeal.like-themes.com/wp-content/uploads/2019/10/avocado.png"
-              alt=""
-              className="avocado"
-            />
-          </div>
-        </div>
+        </Container>
 
         {loading ? (
           <div className="text-center">
@@ -102,7 +112,12 @@ const PackagePage = () => {
           <>
             <Form onSubmit={handleSubmit}>
               <div id="packageConatiner">
-                <h1 className="select-text">Selected Combo</h1>{" "}
+                <div className="select-text">
+                  {" "}
+                  <FontAwesomeIcon icon="box-open" className="icon" />{" "}
+                  <span></span>
+                  Selected Combo
+                </div>{" "}
                 <div className="packageConatiner">
                   {packages?.length ? (
                     <>
@@ -136,9 +151,18 @@ const PackagePage = () => {
                 </div>
               </div>
               <div style={{ marginTop: "60px" }}></div>
-              <div id="cycle-row">
+              <Container id="cycle-row">
                 <Row className="mb-3">
-                  <h1 className="select-text">Select Cycle</h1>
+                  <div className="select-text">
+                    {" "}
+                    <FontAwesomeIcon
+                      icon="calendar-alt"
+                      className="icon"
+                      size="2x"
+                    />{" "}
+                    <span></span>
+                    Selected Cycle
+                  </div>{" "}
                   <div className="cycle-plan" id="cycle-plan">
                     {cycle &&
                       cycle.map((item) => (
@@ -146,6 +170,7 @@ const PackagePage = () => {
                           <div className="div-days">
                             <h1>{item.cycleName}</h1>
                             <h3>{`£${item.price}`}</h3>
+
                             <div>
                               <a href="#delivery-row">
                                 <Button
@@ -158,26 +183,40 @@ const PackagePage = () => {
                                   {" "}
                                   <FontAwesomeIcon
                                     icon="calendar-week"
-                                    size="7x"
+                                    size="3x"
                                   />
                                 </Button>
                               </a>
+                              <div className="content-cylce">
+                                <li>Pay by the package.</li>{" "}
+                                <li> Drink will be delivery to you</li>
+                                <li>Stop anytime “Free shipping”</li>
+                              </div>
                             </div>
                           </div>
                         </>
                       ))}
                   </div>
                 </Row>
-              </div>
-              <div id="delivery-row" className="delivery-row">
+              </Container>
+              <Container id="delivery-row" className="delivery-row">
                 <Row>
                   <div>
                     {" "}
-                    <h1 className="select-text">Delivery time</h1>
-                    <h5 className="select-text">
+                    <div className="select-text">
+                      {" "}
+                      <FontAwesomeIcon
+                        icon="truck"
+                        className="icon"
+                        size="2x"
+                      />{" "}
+                      <span></span>
+                      Delivery Time
+                    </div>{" "}
+                    {/* <h5 className="select-text">
                       {" "}
                       Start Day <Datetime className="dateFormat" />
-                    </h5>
+                    </h5> */}
                   </div>
 
                   <div className="delivery-time">
@@ -191,7 +230,7 @@ const PackagePage = () => {
                           onClick={() => handleOnClickTime8(console.log("8am"))}
                         >
                           {" "}
-                          <FontAwesomeIcon icon="clock" size="7x" />
+                          <FontAwesomeIcon icon="clock" size="3x" />
                         </Button>
                       </a>
                     </div>
@@ -200,14 +239,14 @@ const PackagePage = () => {
                       <a href="#addtocard">
                         <Button
                           variant="success"
-                          ame="deliveryTime"
+                          className="deliveryTime"
                           value={formData.deliveryTime}
                           onClick={() =>
                             handleOnClickTime10(console.log("10am"))
                           }
                         >
                           {" "}
-                          <FontAwesomeIcon icon="clock" size="7x" />
+                          <FontAwesomeIcon icon="clock" size="3x" />
                         </Button>
                       </a>
                     </div>
@@ -216,28 +255,47 @@ const PackagePage = () => {
                       <a href="#addtocard">
                         <Button
                           variant="success"
-                          ame="deliveryTime"
+                          className="deliveryTime"
                           value={formData.deliveryTime}
                           onClick={() => handleOnClickTime1(console.log("1pm"))}
                         >
                           {" "}
-                          <FontAwesomeIcon icon="clock" size="7x" />
+                          <FontAwesomeIcon icon="clock" size="3x" />
                         </Button>
                       </a>
                     </div>
                   </div>
+                  <div className="addtocard" id="addtocard">
+                    <Button
+                      className="addtocardbtn"
+                      type="submit"
+                      variant="outline-danger"
+                      onClick={handleSubmit}
+                    >
+                      {" "}
+                      Add to Card{" "}
+                    </Button>
+                  </div>
                 </Row>
-                <div className="addtocard" id="addtocard">
-                  <Button
-                    type="submit"
-                    variant="outline-danger"
-                    onClick={handleSubmit}
-                  >
-                    {" "}
-                    Add to Card{" "}
-                  </Button>
+
+                <div className="faqs">
+                  {" "}
+                  <a href="#faqs" class="faqs-button">
+                    <svg
+                      height="50pt"
+                      viewBox="0 0 100 100"
+                      width="50pt"
+                      src="http://www.w3.org/2000/svg"
+                    >
+                      <FontAwesomeIcon icon="question-circle" />
+                    </svg>
+                  </a>
+                  <p id="faqs">
+                    Change any information before the next drink delivery date 1
+                    day.
+                  </p>
                 </div>
-              </div>
+              </Container>
             </Form>
           </>
         )}

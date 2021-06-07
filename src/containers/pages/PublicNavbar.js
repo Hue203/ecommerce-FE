@@ -16,7 +16,7 @@ const PublicNavbar = () => {
   const role = useSelector((state) => state.auth.user.role);
 
   const authLinks = (
-    <Nav bg="dark">
+    <Nav bg="dark" responsive="sm">
       <Nav.Link as={Link} to="/user/profile">
         <FontAwesomeIcon icon="user" size="sm" />
       </Nav.Link>
@@ -29,7 +29,7 @@ const PublicNavbar = () => {
     </Nav>
   );
   const adminAuthLinks = (
-    <Nav bg="dark">
+    <Nav bg="dark" responsive="sm">
       <Nav.Link as={Link} to="/admin/products">
         <FontAwesomeIcon icon="user" size="sm" /> Dashboard
       </Nav.Link>
@@ -41,7 +41,7 @@ const PublicNavbar = () => {
   );
 
   const publicLinks = (
-    <Nav>
+    <Nav responsive="sm">
       <Nav.Link as={Link} to="/register">
         <FontAwesomeIcon icon="registered" size="sm" /> Register
       </Nav.Link>
@@ -65,28 +65,24 @@ const PublicNavbar = () => {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link as={Link} to="/">
-                Home
-              </Nav.Link>
               <Nav.Link as={Link} to="/about">
                 About
               </Nav.Link>
-              <NavDropdown title="Product" id="collasible-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/products">
-                  Fresh Detox Juice
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/packages">
-                  {" "}
-                  Regular Drink
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/blogs">
-                  Blogs
-                </NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item as={Link} to="/">
-                  Mixed Cereals
-                </NavDropdown.Item>
-              </NavDropdown>
+
+              <Nav.Link as={Link} to="/products">
+                Detox Juice
+              </Nav.Link>
+              <Nav.Link as={Link} to="/packages">
+                {" "}
+                Package
+              </Nav.Link>
+              {/* <NavDropdown.Item as={Link} to="/blogs">
+                Blogs
+              </NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/">
+                Mixed Cereals
+              </NavDropdown.Item> */}
             </Nav>
             {!loading && (
               <>

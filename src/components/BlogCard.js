@@ -5,7 +5,7 @@ import Moment from "react-moment";
 
 const BlogCard = ({ blog, handleClick }) => {
   return (
-    <div onClick={() => handleClick(blog._id)} c lassName="blog-card">
+    <div onClick={() => handleClick(blog._id)} className="blog-card">
       <div className="blog-div">
         <img
           className="blog-img"

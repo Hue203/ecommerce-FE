@@ -11,6 +11,7 @@ body {
   line-height: inherit;
   margin: 0;
   padding: 0;
+  max-width: 1440px;
 }
 
 * {
@@ -182,7 +183,9 @@ body {
   margin-right: 50px;
   padding: 20px;
 }
-
+.blog-content {
+  font-size: 16px;
+}
 .readmore-btn :hover {
   color: #fff;
   cursor: pointer;
@@ -276,6 +279,7 @@ footer {
 .blog-title {
   padding: 20px 0;
   font-weight: 700;
+  font-size: 28px;
 }
 
 .card-package {
@@ -755,7 +759,7 @@ element.style {
     transform: scale3d(1, 1, 1);
   }
 }
-.btn-arrow.white {
+.btn-arrow {
   color: #fff;
   border: 2px solid #fff;
   line-height: 38px;
@@ -771,11 +775,12 @@ element.style {
   background: transparent;
   transition: all 0.5s ease-out 0s;
   -webkit-transition: all 0.5s ease-out 0s;
+  background-color: #246404;
 }
 
 a {
-  color: #337ab7;
-  text-decoration: none;
+  color: orange !important;
+  text-decoration: none !important;
 }
 
 .footer-public-section {
@@ -1090,10 +1095,11 @@ a:hover {
 }
 .relatedProduct {
   justify-content: center;
-  font-size: 50px;
+  font-size: 30px;
   text-align: center;
   margin: 80px 0 30px 0;
   color: #246404;
+  font-weight: 500;
 }
 .btn-footer {
   background-color: #246404 !important;
@@ -1245,6 +1251,7 @@ a:hover {
 }
 .content-video {
   padding: 10px;
+  background-image: url(https://nutritous.7uptheme.net/wp-content/uploads/2018/07/adv2.jpg?id=630) !important;
 }
 .table-product {
   padding: 10px;
@@ -1341,6 +1348,9 @@ a {
   display: flex;
   vertical-align: inherit;
 }
+.content-avocado {
+  padding-top: 50px;
+}
 .bg-package {
   height: 100%;
   background-position: center;
@@ -1349,42 +1359,67 @@ a {
 }
 .select-text {
   text-align: center;
-  padding-top: 30px;
+  padding-top: 50px;
   vertical-align: inherit;
   color: #246404;
+  font-size: 30px;
+  font-weight: 700;
 }
 .div-days {
-  width: 300px;
-  height: 300px;
+  width: 370px;
+  height: 360px;
   border: solid 2px #246404;
   border-radius: 20px;
   text-align: center;
   margin: 10px;
-  padding-top: 50px;
+  padding-top: 20px;
 }
 .delivery-time {
   display: flex;
-  width: 300px;
-  height: 300px;
-  justify-content: space-between;
+
+  width: 50%;
+  justify-content: center;
+  padding-top: 30px;
+
+  border-radius: 20%;
+}
+.content-cylce {
+  text-align: left;
+  padding-top: 30px;
+  padding-left: 50px;
+  vertical-align: inherit;
+  color: #246404;
+  font-size: 20px;
 }
 
 .div-time {
-  width: 300px;
-  height: 300px;
-  border: solid 2px #246404;
+  width: 200px;
+  height: 200px;
+
   border-radius: 20px;
   text-align: center;
-  margin: 10px;
-  padding-top: 50px;
 }
 .delivery-row {
+  margin-top: 50px;
+
   padding-top: 100px;
 }
 .dateFormat {
   width: 110px !important;
   margin: 0px 600px !important;
 }
+.addtocard {
+  margin-top: 30px;
+  text-align: center !important;
+}
+.addtocardbtn {
+  max-width: 100% !important;
+  height: 60px !important;
+  background-color: #fa6400 !important;
+  color: white !important;
+  border-radius: 20px !important;
+}
+
 .img-combo {
   border-radius: 10px;
   width: 360px;
@@ -1404,11 +1439,93 @@ a {
 .content-top a {
   text-decoration: none;
 }
-.addtocard {
-  margin-top: 30px;
-  text-align: center;
-}
+
 .avocado {
   width: 488px;
   height: 610px;
+}
+.faqs-button {
+  width: 60px;
+  height: 60px;
+  background-color: #fa6400;
+  border-radius: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: 1200px;
+}
+.faqs {
+  padding-top: 20px;
+  text-align: end;
+}
+.cart-number {
+  margin: 10px;
+}
+.input-quantity {
+  border: solid 2px #246404;
+  margin: 5px;
+  text-align: center;
+}
+.content-video {
+  padding: 30px;
+  border-radius: 50px !important;
+  border: solid 1px #246404;
+  color: #246404;
+  margin: 30px;
+  font-weight: 300;
+  padding-left: 100px;
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+.detox-text {
+  font-size: 40px;
+  font-weight: 700;
+  color: #fa6400;
+}
+/* .video {
+  padding-top: 30px;
+  width: 1280px;
+  height: 520px;
+  border-radius: 50px !important;
+  border: solid 1px #246404;
+} */
+
+.carousel-caption .content-carousel {
+  display: inline-block;
+  color: #f8f9fa;
+  background-color: #31870796;
+  padding: 15px 25px;
+  border-radius: 20px;
+  font-weight: 500;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.vitamintext {
+  font-family: "Pacifico", cursive;
+  font-size: 40px;
+}
+.greenText {
+  font-family: "Pacifico", cursive;
+  font-size: 40px;
+}
+.img-avacodo {
+  margin: 30px;
+}
+.icon {
+  border-radius: 5px;
+}
+
+@media only screen and (max-width: 600px) {
+  .blog-div {
+    width: 300px;
+  }
+  .react-player {
+    width: 320px !important;
+    height: 180px !important;
+    margin-bottom: 30px;
+  }
+  .carousel-caption .content-carousel {
+  }
 }
