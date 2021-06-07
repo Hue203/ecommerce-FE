@@ -14,8 +14,7 @@ const api = axios.create({
 api.interceptors.request.use(
   (request) => {
     console.log("Starting Request", request);
-    console.log("localstore", localStorage.getItem("accessToken"));
-    console.log("headerrrr", request.headers);
+
     return request;
   },
   function (error) {

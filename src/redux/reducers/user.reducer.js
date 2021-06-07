@@ -7,6 +7,7 @@ const initialState = {
   loading: false,
   cart: [],
   order: [],
+  package: {},
 };
 
 const userReducer = (state = initialState, action) => {

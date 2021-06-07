@@ -30,15 +30,14 @@ const createOrder = (totalAmount) => async (dispatch) => {
 };
 
 const getAllOrders =
-  ({ pageNum = 1, limit = 6, query = null, sortBy = null }) =>
+  ({ pageNum = 1, limit = 10, query = null, sortBy = null }) =>
   async (dispatch) => {
     dispatch({ type: types.GET_ORDERS_REQUEST, payload: null });
     try {
-      console.log("limit", limit);
       let queryString = "";
       console.log(pageNum, limit, query);
       if (query) {
-        queryString = `&_id[$regex]=${query}&_id[$options]=i`;
+        queryString = `&statusOrder[$regex]=${query}&statusOrder[$options]=i`;
       }
 
       let sortByString = "";
@@ -49,7 +48,7 @@ const getAllOrders =
       const res = await api.get(
         `/orders?page=${pageNum}&limit=${limit}${queryString}${sortByString}`
       );
-      console.log("resorders", res);
+
       dispatch({
         type: types.GET_ORDERS_SUCCESS,
         payload: res.data.data.orders,

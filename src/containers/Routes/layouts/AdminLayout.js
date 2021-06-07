@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import BlogAdmin from "../../Admin/BlogAdmin";
 import { useSelector } from "react-redux";
 import NavbarAdmin from "../../pages/NavbarAdmin";
+import PackageAdmin from "../../Admin/PackageAdmin";
 
 const AdminLayout = () => {
   const role = useSelector((state) => state.auth.role);
@@ -28,6 +29,7 @@ const AdminLayout = () => {
         <Route exact path="/admin/products" component={ProductsAdmin} />
         <Route exact path="/admin/orders" component={OrdersAdmin} />
         <Route exact path="/admin/blogs" component={BlogAdmin} />
+        <Route exact path="/admin/packages" component={PackageAdmin} />
 
         <Route component={NotFoundPage} />
       </Switch>

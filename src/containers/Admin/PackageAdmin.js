@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Container, Row, Table, Button, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import ModalEditOrder from "../../components/ModalEdditOrder";
-import { orderActions } from "../../redux/actions/order.actions";
+
+import { packageActions } from "../../redux/actions/package.action";
 import { ClipLoader } from "react-spinners";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -10,17 +10,21 @@ import PaginationBar from "../../components/PaginationBar";
 
 import HeaderBar from "../../components/HeaderBar";
 import SideMenuAdmin from "../../components/SideMenuAdmin";
-const OrdersAdmin = () => {
-  const [showModalEdit, setShowModalEdit] = useState(false);
-  const [showDeleted, setshowDeleted] = useState(false);
+import ModalAddPackage from "../../components/ModalAddPackage";
+import { cycleActions } from "../../redux/actions/cycle.action";
+import ModalAddCycle from "../../components/AddCycleModal";
+
+const PackageAdmin = () => {
+  const [showModal, setShowModal] = useState(false);
+  const [showModalCycle, setShowModalCycle] = useState(false);
   const [pageNum, setPageNum] = useState(1);
   const [searchInput, setSearchInput] = useState("");
   const [query, setQuery] = useState("");
   const [sortBy, setSortBy] = useState({ key: "", ascending: -1 });
   const loading = useSelector((state) => state.order.loading);
-  const orders = useSelector((state) => state.order.orders);
+  const packages = useSelector((state) => state.package.packages);
   const totalPageNum = useSelector((state) => state.blog.totalPageNum);
-
+  const cycle = useSelector((state) => state.cycle.cycle);
   const dispatch = useDispatch();
 
   const handleSort = (key) => {
@@ -40,27 +44,18 @@ const OrdersAdmin = () => {
     setPageNum(1);
     setQuery(searchInput);
   };
-  const handleOnclickEdit = (orderId) => {
-    setShowModalEdit(true);
-    dispatch(orderActions.getSingleOrder(orderId));
+  const handleOnclickAdd = () => {
+    setShowModal(true);
   };
-
-  const handleOnclickDelete = () => {
-    setshowDeleted(true);
-    dispatch(orderActions.deleteOrder());
+  const handleOnclickAddCycle = () => {
+    setShowModalCycle(true);
   };
-
   useEffect(() => {
-    dispatch(orderActions.getAllOrders({ pageNum, sortBy, query }));
+    dispatch(packageActions.packagesRequest({ pageNum, sortBy, query }));
+    dispatch(cycleActions.getCycle());
   }, [dispatch, pageNum, sortBy, query]);
-
   return (
     <>
-      {/* {loading ? (
-        <div className="text-center">
-          <ClipLoader color="#f86c6b" size={150} loading={loading} />
-        </div>
-      ) : ( */}
       <div style={{ marginTop: "30px" }}></div>
       <div className="search-product container">
         <HeaderBar
@@ -74,10 +69,10 @@ const OrdersAdmin = () => {
       <Container>
         <Row>
           <Col xs={2}>
-            <SideMenuAdmin page={"orders"} />
+            <SideMenuAdmin page={"packages"} />
           </Col>
           <Col xs={10}>
-            {orders !== undefined && (
+            {packages !== undefined && (
               <>
                 <Row>
                   <Table striped bordered hover>
@@ -87,44 +82,35 @@ const OrdersAdmin = () => {
                           className="mouse-hover"
                           onClick={() => handleSort("userId")}
                         >
-                          Customer <FontAwesomeIcon icon="sort" size="sm" />
+                          Package Name <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
                         <th
                           className="mouse-hover"
                           onClick={() => handleSort("productId")}
                         >
-                          Product Name <FontAwesomeIcon icon="sort" size="sm" />
+                          Product List <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
                         <th
                           className="mouse-hover"
                           onClick={() => handleSort("totalProduct")}
                         >
-                          Quantity <FontAwesomeIcon icon="sort" size="sm" />
+                          Types <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
                         <th
                           className="mouse-hover"
                           onClick={() => handleSort("statusOrder")}
                         >
-                          Status Order <FontAwesomeIcon icon="sort" size="sm" />
+                          Delivery Time{" "}
+                          <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
-                        <th
-                          className="mouse-hover"
-                          onClick={() => handleSort("totalPrice")}
-                        >
-                          Total Amount <FontAwesomeIcon icon="sort" size="sm" />
-                        </th>
+
                         <th
                           className="mouse-hover"
                           onClick={() => handleSort("discount")}
                         >
-                          Discount <FontAwesomeIcon icon="sort" size="sm" />
+                          Images <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
-                        <th
-                          className="mouse-hover"
-                          onClick={() => handleSort("catagories")}
-                        >
-                          Catagories <FontAwesomeIcon icon="sort" size="sm" />
-                        </th>
+
                         <th
                           className="mouse-hover"
                           onClick={() => handleSort("createdAt")}
@@ -135,33 +121,34 @@ const OrdersAdmin = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {orders !== undefined?.length ? (
+                      {packages !== undefined?.length ? (
                         <>
-                          {orders.map((item) => (
+                          {packages.map((item) => (
                             <tr key={item._id}>
-                              <td>{` OrderId ${item._id}`}</td>
+                              <td>{item.name}</td>
                               <td>
-                                {item?.productList?.map(
+                                {item.products?.map(
                                   (product) => product.productId.name
                                 )}
                               </td>
-                              <td>{item.totalProduct}</td>
-                              <td>{item.statusOrder}</td>
-                              <td>{item.totalPrice}</td>
-                              <td>{item.discount}</td>
+                              <td>{item.packageType}</td>
+                              <td>{item.deliveryTime}</td>
                               <td>
-                                {item?.productList?.map(
-                                  (product) => product.productId.catagories
-                                )}
+                                <img
+                                  src={item.images[0].imageUrl}
+                                  alt="product-img"
+                                  width="90px"
+                                  height="60px"
+                                />
                               </td>
                               <td>{item?.createdAt.substring(0, 10)}</td>
                               <th>
                                 <span>
                                   <Button
                                     variant="success"
-                                    onClick={() => handleOnclickEdit(item._id)}
+                                    onClick={() => handleOnclickAdd(item._id)}
                                   >
-                                    EDIT
+                                    ADD
                                   </Button>
                                 </span>
                                 <span></span>
@@ -175,15 +162,75 @@ const OrdersAdmin = () => {
                     </tbody>
                   </Table>
                 </Row>
-
-                <ModalEditOrder
-                  showModal={showModalEdit}
-                  setShowModal={setShowModalEdit}
-                />
               </>
             )}
           </Col>
         </Row>
+        <ModalAddPackage showModal={showModal} setShowModal={setShowModal} />
+      </Container>
+      <Container>
+        <Row>
+          <Col xs={2}></Col>
+          <Col xs={10}>
+            {cycle && cycle !== undefined && (
+              <>
+                <Row>
+                  <Table striped bordered hover>
+                    <thead>
+                      <tr>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("userId")}
+                        >
+                          Cycle Name <FontAwesomeIcon icon="sort" size="sm" />
+                        </th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("productId")}
+                        >
+                          Price <FontAwesomeIcon icon="sort" size="sm" />
+                        </th>
+
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cycle && cycle !== undefined?.length ? (
+                        <>
+                          {cycle?.map((item) => (
+                            <tr key={item._id}>
+                              <td>{item.cycleName}</td>
+                              <td>{item.price}</td>
+                              <th>
+                                <span>
+                                  <Button
+                                    variant="success"
+                                    onClick={() =>
+                                      handleOnclickAddCycle(item._id)
+                                    }
+                                  >
+                                    ADD
+                                  </Button>
+                                </span>
+                                <span></span>
+                              </th>{" "}
+                            </tr>
+                          ))}
+                        </>
+                      ) : (
+                        <p>There are no cycle</p>
+                      )}
+                    </tbody>
+                  </Table>
+                </Row>
+              </>
+            )}
+          </Col>
+        </Row>
+        <ModalAddCycle
+          showModalCycle={showModalCycle}
+          setShowModalCycle={setShowModalCycle}
+        />
         <PaginationBar
           pageNum={pageNum}
           setPageNum={setPageNum}
@@ -195,4 +242,4 @@ const OrdersAdmin = () => {
   );
 };
 
-export default OrdersAdmin;
+export default PackageAdmin;

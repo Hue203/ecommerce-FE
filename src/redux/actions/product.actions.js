@@ -23,7 +23,7 @@ const productsRequest =
       const res = await api.get(
         `/products?page=${pageNum}&limit=${limit}${queryString}${sortByString}`
       );
-      console.log("resProducts", res);
+
       dispatch({ type: types.GET_PRODUCTS_SUCCESS, payload: res.data.data });
     } catch (err) {
       console.log(err);

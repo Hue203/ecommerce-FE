@@ -7,6 +7,7 @@ import userReducer from "./user.reducer";
 import packageReducer from "./package.reducer";
 import reviewReducer from "./review.reducer";
 import orderReducer from "./order.reducer";
+import cycleReducer from "./cycle.reduce";
 
 export default combineReducers({
   auth: authReducer,
@@ -17,4 +18,5 @@ export default combineReducers({
   package: packageReducer,
   review: reviewReducer,
   order: orderReducer,
+  cycle: cycleReducer,
 });

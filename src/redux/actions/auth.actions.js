@@ -23,7 +23,6 @@ const loginRequest = (email, password) => async (dispatch) => {
   dispatch({ type: types.LOGIN_REQUEST, payload: null });
   try {
     const res = await api.post("/auth/login", { email, password });
-    console.log("resauth", res);
     const name = res.data.data.user.name;
     localStorage.setItem("role", res.data.data.user.role);
     localStorage.setItem("accessToken", res.data.data.token);

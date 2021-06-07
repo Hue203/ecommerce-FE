@@ -9,16 +9,39 @@ import { ClipLoader } from "react-spinners";
 import PaginationBar from "../../components/PaginationBar";
 import HeaderBar from "../../components/HeaderBar";
 import SideMenuAdmin from "../../components/SideMenuAdmin";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const ProductsAdmin = () => {
+  const [searchInput, setSearchInput] = useState("");
+  const [sortBy, setSortBy] = useState({ key: "", ascending: -1 });
+  const [query, setQuery] = useState("");
+  const [pageNum, setPageNum] = useState(1);
   const [showModal, setShowModal] = useState(false);
   const [showModalEdit, setShowModalEdit] = useState(false);
   const [showDeleted, setshowDeleted] = useState(false);
   const loading = useSelector((state) => state.product.loading);
   const products = useSelector((state) => state.product.products);
-  console.log("products", products);
+  const totalPageNum = useSelector((state) => state.product.totalPageNum);
 
   const dispatch = useDispatch();
 
+  const handleSort = (key) => {
+    if (!loading) {
+      setSortBy((sortBy) => ({
+        key,
+        ascending: -sortBy.ascending,
+      }));
+    }
+  };
+  const handleInputChange = (e) => {
+    setSearchInput(e.target.value);
+  };
+
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    setPageNum(1);
+    setQuery(searchInput);
+  };
   const handleOnclickAdd = () => {
     setShowModal(true);
   };
@@ -33,12 +56,20 @@ const ProductsAdmin = () => {
     dispatch(productActions.deleteProduct(productId));
   };
   useEffect(() => {
-    dispatch(productActions.productsRequest());
-  }, []);
+    dispatch(productActions.productsRequest(pageNum, 10, query, sortBy));
+  }, [dispatch, pageNum, sortBy, query]);
 
   return (
     <>
       <div style={{ marginTop: "30px" }}></div>
+      <div className="search-product container">
+        <HeaderBar
+          searchInput={searchInput}
+          handleInputChange={handleInputChange}
+          handleSubmit={handleSubmitSearch}
+          loading={loading}
+        />
+      </div>
       <Container>
         <Row>
           <Col xs={2}>
@@ -55,15 +86,58 @@ const ProductsAdmin = () => {
                   <Table striped bordered hover>
                     <thead>
                       <tr>
-                        <th>Name</th>
-                        <th>Ingredients</th>
-                        <th>Description</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("name")}
+                        >
+                          <FontAwesomeIcon icon="sort" size="sm" /> Name
+                        </th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("ingredient")}
+                        >
+                          <FontAwesomeIcon icon="sort" size="sm" /> Ingredients
+                        </th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("description")}
+                        >
+                          <FontAwesomeIcon icon="sort" size="sm" /> Description
+                        </th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("quantity")}
+                        >
+                          <FontAwesomeIcon icon="sort" size="sm" /> Quantity
+                        </th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("price")}
+                        >
+                          <FontAwesomeIcon icon="sort" size="sm" /> Price
+                        </th>
                         <th>Images</th>
-                        <th>Service</th>
-                        <th>Catagories</th>
-                        <th>Actions</th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("service")}
+                        >
+                          <FontAwesomeIcon icon="sort" size="sm" /> Service
+                        </th>
+                        <th
+                          className="mouse-hover"
+                          onClick={() => handleSort("catagories")}
+                        >
+                          <FontAwesomeIcon icon="sort" size="sm" /> Catagories
+                        </th>
+                        <th>
+                          Actions{" "}
+                          <Button
+                            variant="outline-success"
+                            onClick={handleOnclickAdd}
+                          >
+                            ADD
+                          </Button>
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -92,7 +166,7 @@ const ProductsAdmin = () => {
                             <td>{item.catagories}</td>
                             <th className="btn">
                               <Button
-                                variant="success"
+                                variant="outline-success"
                                 onClick={() => handleOnclickEdit(item._id)}
                               >
                                 EDIT
@@ -101,7 +175,7 @@ const ProductsAdmin = () => {
                               <br />
 
                               <Button
-                                variant="success"
+                                variant="outline-success"
                                 onClick={() => handleOnclickDelete(item._id)}
                               >
                                 DELETE
@@ -110,9 +184,6 @@ const ProductsAdmin = () => {
                           </tr>
                         ))}
                     </tbody>{" "}
-                    <Button variant="success" onClick={handleOnclickAdd}>
-                      ADD
-                    </Button>
                   </Table>
                 </Row>
                 <ModalAddProduct
@@ -131,6 +202,12 @@ const ProductsAdmin = () => {
             )}
           </Col>
         </Row>
+        <PaginationBar
+          pageNum={pageNum}
+          setPageNum={setPageNum}
+          totalPageNum={totalPageNum}
+          loading={loading}
+        />
       </Container>
     </>
   );

@@ -46,7 +46,24 @@ const getSinglePackage = (packageId) => async (dispatch) => {
   }
 };
 
+const createNewPackage = (formData) => async (dispatch) => {
+  dispatch({ type: types.CREATE_PACKAGE_REQUEST, payload: null });
+  try {
+    const res = await api.post("/packages", formData);
+    console.log("addPACKAGES", res);
+    dispatch({
+      type: types.CREATE_PACKAGE_SUCCESS,
+      payload: res.data.data,
+    });
+
+    dispatch(routeActions.redirect("__GO_BACK__"));
+    toast.success("New product has been created!");
+  } catch (err) {
+    dispatch({ type: types.CREATE_PACKAGE_FAILURE, payload: err });
+  }
+};
 export const packageActions = {
   packagesRequest,
   getSinglePackage,
+  createNewPackage,
 };

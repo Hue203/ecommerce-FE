@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 
 import { userActions } from "../../redux/actions/user.actions";
 import { useHistory } from "react-router-dom";
@@ -16,10 +16,11 @@ import { ClipLoader } from "react-spinners";
 import { orderActions } from "../../redux/actions/order.actions";
 import FooterPublic from "../../components/FooterPublic";
 
+import UpdateProductCart from "../../components/UpdateProductCart";
+
 const CartPage = () => {
   const loading = useSelector((state) => state.user.loading);
   const selectedUser = useSelector((state) => state.user.selectedUser);
-
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -51,6 +52,13 @@ const CartPage = () => {
       );
     }, 0);
   }
+  if (selectedUser) {
+    if (selectedUser.cartPackage) {
+      totalAmount = totalAmount + selectedUser.cartPackage?.cylceId?.price;
+    } else {
+      totalAmount = totalAmount + 0;
+    }
+  }
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -64,10 +72,8 @@ const CartPage = () => {
 
   useEffect(() => {
     dispatch(userActions.getCartRequest());
+    dispatch(userActions.getCartPackageRequest());
   }, [dispatch]);
-  // const checkoutHandler = (e) => {
-  //   history.push(`/shipping`);
-  // };
 
   useEffect(() => {
     if (selectedUser) {
@@ -95,55 +101,90 @@ const CartPage = () => {
 
             <Container fluid>
               {selectedUser && (
-                <Row>
-                  <Col>
-                    <Row>
-                      <Table className="cart-table" striped bordered hover>
-                        <thead>
-                          <tr className="cart-table">
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          {selectedUser.cart?.length ? (
-                            <>
-                              {selectedUser.cart.map((product) => (
-                                <tr key={product._id}>
-                                  <td>{product.productId.name}</td>
-                                  <td>{`$ ${product.productId.price}`}</td>
-                                  <td>{product.quantity}</td>
-                                </tr>
-                              ))}
-                            </>
-                          ) : (
-                            <p>There are no Products in cart</p>
-                          )}
-                        </tbody>
-                      </Table>
-                    </Row>
-                  </Col>
+                <>
+                  <Row>
+                    <Col>
+                      <Row>
+                        <Table className="cart-table" striped bordered hover>
+                          <thead>
+                            <tr className="cart-table">
+                              <th>Product</th>
+                              <th>Price</th>
+                              <th>Quantity</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {selectedUser.cart?.length ? (
+                              <>
+                                {selectedUser.cart.map((product) => (
+                                  <tr key={product._id}>
+                                    <td>{product.productId.name}</td>
+                                    <td>{`$ ${product.productId.price}`}</td>
 
-                  <Col>
-                    <Card>
-                      <Card.Body>
-                        <Row>
-                          <Col>Provisional</Col>
-                          <Col>{`$ ${totalAmount}`}</Col>
-                        </Row>
-                        <Row>
-                          <Col>Discount</Col>
-                          <Col>0%</Col>
-                        </Row>
-                        <Row>
-                          <Col>Total</Col>
-                          <Col>{`$ ${totalAmount}`}</Col>
-                        </Row>
-                      </Card.Body>
-                    </Card>
-                  </Col>
-                </Row>
+                                    <td>
+                                      <UpdateProductCart product={product} />
+                                    </td>
+                                  </tr>
+                                ))}
+                              </>
+                            ) : (
+                              <p>There are no Products in cart</p>
+                            )}
+                          </tbody>
+                        </Table>
+                      </Row>
+                      <Row>
+                        <Table className="cart-table" striped bordered hover>
+                          <thead>
+                            <tr className="cart-table">
+                              <th>Package</th>
+                              <th>Price</th>
+                              <th>Delivery time</th>
+                              <th>Start day</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {selectedUser?.cartPackage?.length !== undefined ? (
+                              <>
+                                <tr key={selectedUser?.cartPackage?._id}>
+                                  <td>
+                                    {selectedUser?.cartPackage?.packageId.name}
+                                  </td>
+                                  <td>{`£${selectedUser?.cartPackage?.cylceId.price}`}</td>
+                                  <td>{`${selectedUser?.cartPackage?.deliveryTime}`}</td>
+                                  <td>
+                                    {selectedUser?.cartPackage?.dateStart}{" "}
+                                  </td>
+                                </tr>
+                              </>
+                            ) : (
+                              <p>There are no Package in cart</p>
+                            )}
+                          </tbody>
+                        </Table>
+                      </Row>
+                    </Col>
+
+                    <Col>
+                      <Card>
+                        <Card.Body>
+                          <Row>
+                            <Col>Provisional</Col>
+                            <Col>{`£${totalAmount}`}</Col>
+                          </Row>
+                          <Row>
+                            <Col>Discount</Col>
+                            <Col>0%</Col>
+                          </Row>
+                          <Row>
+                            <Col>Total</Col>
+                            <Col>{`£${totalAmount}`}</Col>
+                          </Row>
+                        </Card.Body>
+                      </Card>
+                    </Col>
+                  </Row>
+                </>
               )}
             </Container>
           </section>
@@ -219,7 +260,7 @@ const CartPage = () => {
                     name="paymentMethod"
                   ></Form.Check>
                 </Form>
-                <p>Shipping Fee : 0</p>
+                <p>Shipping Fee : 35%</p>
 
                 {loading ? (
                   <Button

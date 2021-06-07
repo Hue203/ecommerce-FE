@@ -5,9 +5,9 @@ import { productActions } from "../redux/actions/product.actions";
 const ModalDeleteProduct = ({ showDeleted, setShowDelete }) => {
   const handleClose = () => setShowDelete(false);
   const selectedProduct = useSelector((state) => state.product.selectedProduct);
-  let dispatch = useDispatch();
+  const dispatch = useDispatch();
   const handleDelete = async () => {
-    dispatch(productActions.updateProduct(selectedProduct._id));
+    dispatch(productActions.deleteProduct(selectedProduct._id));
     handleClose();
   };
 

@@ -27,27 +27,55 @@ const ModalOrderPage = ({ showModal, setShowModal, product }) => {
               <ClipLoader color="#f86c6b" size={150} loading={loading} />
             </div>
           ) : (
-            <Table striped bordered hover>
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Price</th>
-                  <th>Service</th>
-                </tr>
-              </thead>
-              <tbody>
-                {selectedOrder?.productList?.map((order) => {
-                  return (
-                    <tr>
-                      <td>{order.productId.name}</td>
-                      <td>{order.productId.price}</td>
-                      <td>{order.productId.service}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-              <Col>{`Amount: $${selectedOrder.totalPrice}`}</Col>
-            </Table>
+            <>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Service</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectedOrder?.productList?.map((order) => {
+                    return (
+                      <tr>
+                        <td>{order.productId.name}</td>
+                        <td>{order.productId.price}</td>
+                        <td>{order.productId.service}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+
+              <h5>Package Order</h5>
+              <Table striped bordered hover>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Delivery time</th>
+                    <th>Date Start</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {selectedOrder?.productList?.map((order) => {
+                    return (
+                      <tr>
+                        <td> {selectedOrder?.package?.packageId.name}</td>
+                        <td></td>
+                        <td>{selectedOrder?.package?.deliveryTime}</td>
+                        <td>{selectedOrder?.package?.dateStart}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </Table>
+              <h5>Total Quantity: {selectedOrder.totalProduct} item</h5>
+              <br />
+              <h5> Total {`Amount: £${selectedOrder.totalPrice}`}</h5>
+            </>
           )}
         </Modal.Body>
         <Modal.Footer>

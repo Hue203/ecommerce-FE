@@ -14,19 +14,17 @@ const PublicNavbar = () => {
     dispatch(authActions.logout());
   };
   const role = useSelector((state) => state.auth.user.role);
-  console.log(role);
 
   const authLinks = (
     <Nav bg="dark">
       <Nav.Link as={Link} to="/user/profile">
-        <FontAwesomeIcon icon="user" size="sm" /> Account
+        <FontAwesomeIcon icon="user" size="sm" />
       </Nav.Link>
       <Nav.Link as={Link} to="/cart/checkout">
-        <FontAwesomeIcon icon="shopping-cart" size="sm" /> Carts
-        <i class="fas fa-shopping-cart"></i>
+        <FontAwesomeIcon icon="shopping-basket" size="sm" />
       </Nav.Link>
       <Nav.Link onClick={handleLogout}>
-        <FontAwesomeIcon icon="sign-out-alt" size="sm" /> Logout
+        <FontAwesomeIcon icon="sign-out-alt" size="sm" />
       </Nav.Link>
     </Nav>
   );

@@ -29,8 +29,8 @@ const PakagesDetailPage = () => {
   };
   const handleAddToCart = () => {
     dispatch(
-      userActions.addCartRequest({
-        productId: params.id,
+      userActions.addCartPakageRequest({
+        packageId: params.id,
         quantity: addQuantity,
       })
     );

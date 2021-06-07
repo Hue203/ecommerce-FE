@@ -5,45 +5,33 @@ const Packages = ({ packageProduct, handleClick }) => {
   return (
     <>
       <Container className="package-container">
-        <div onClick={() => handleClick(packageProduct._id)}>
-          <div className="flex">
-            <Row className="packageRow">
-              <Col>
-                <div className="image-divpack">
-                  {
-                    <img
-                      width="250"
-                      height="350"
-                      src={packageProduct.images[0].imageUrl}
-                      alt="package-img"
-                      className="img-package"
-                    />
-                  }
-                  <div className="package-content">
-                    <ul>
-                      {
-                        <strong>
-                          <h4>{packageProduct.name}</h4>
-                        </strong>
-                      }
-                    </ul>
-
-                    <div>
-                      <ul>
-                        {
-                          <p>{`Only £ ${packageProduct.price} for a Package`}</p>
-                        }
-                      </ul>
-                      <ul>
-                        {<p>{`Cyle for ${packageProduct.cycle} plan`}</p>}
-                      </ul>
-                    </div>
-                  </div>
+        <Row className="packageRow">
+          <div className="image-divpack">
+            {
+              <img
+                width="150"
+                height="250"
+                src={packageProduct.images[0].imageUrl}
+                alt="package-img"
+                className="img-package"
+              />
+            }
+            <div onClick={() => handleClick(packageProduct._id)}>
+              <div className="package-content">
+                <div>
+                  <ul>
+                    <h5>Include:</h5>
+                    <p>
+                      {packageProduct.products.map((item) => (
+                        <p>{`1 ${item.productId.name}`}</p>
+                      ))}
+                    </p>
+                  </ul>
                 </div>
-              </Col>
-            </Row>
+              </div>
+            </div>
           </div>
-        </div>
+        </Row>
       </Container>
     </>
   );

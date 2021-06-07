@@ -36,6 +36,16 @@ const SideMenuAdmin = ({ page }) => {
             Orders
           </Nav.Link>
         </Nav.Item>
+        <Nav.Item>
+          <Nav.Link
+            as={NavLink}
+            to="/admin/packages"
+            className={page === "packages" ? "active-side" : "normal-side"}
+            strict={true}
+          >
+            Packages
+          </Nav.Link>
+        </Nav.Item>
         {/* <Nav.Item>
           <Nav.Link
             as={NavLink}
