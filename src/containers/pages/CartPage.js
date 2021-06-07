@@ -51,14 +51,15 @@ const CartPage = () => {
           parseInt(currentElement.quantity)
       );
     }, 0);
-    if (Object.entries(selectedUser.cartPackage).length !== 0) {
-      totalAmount =
-        totalAmount + parseInt(selectedUser.cartPackage?.cylceId?.price);
-    } else {
-      totalAmount = totalAmount + 0;
-    }
+    // if (Object.entries(selectedUser?.cartPackage).length !== 0) {
+    //   totalAmount =
+    //     totalAmount + parseInt(selectedUser.cartPackage?.cylceId?.price);
+    // } else {
+    //   totalAmount = totalAmount + 0;
+    // }
   }
-
+  totalAmount =
+    totalAmount + parseInt(selectedUser.cartPackage?.cylceId?.price);
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 

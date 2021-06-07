@@ -1,17 +1,19 @@
 import React from "react";
 import { Navbar, Nav, NavDropdown, Container } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logo from "../../images/logonavbar.jpg";
 import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../redux/actions/auth.actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const NavbarAdmin = () => {
+  const history = useHistory();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const loading = useSelector((state) => state.auth.loading);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(authActions.logout());
+    history.push("/");
   };
 
   const authLinks = (

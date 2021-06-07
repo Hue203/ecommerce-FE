@@ -1366,8 +1366,8 @@ a {
   font-weight: 700;
 }
 .div-days {
-  width: 370px;
-  height: 360px;
+  width: 400px;
+  height: 500px;
   border: solid 2px #246404;
   border-radius: 20px;
   text-align: center;
@@ -1376,11 +1376,10 @@ a {
 }
 .delivery-time {
   display: flex;
-
   width: 50%;
   justify-content: center;
-  padding-top: 30px;
-
+  padding-top: 50px;
+  margin-left: 100px;
   border-radius: 20%;
 }
 .content-cylce {
@@ -1401,8 +1400,7 @@ a {
 }
 .delivery-row {
   margin-top: 50px;
-
-  padding-top: 100px;
+  padding-top: 200px;
 }
 .dateFormat {
   width: 110px !important;
