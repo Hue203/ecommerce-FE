@@ -33,7 +33,8 @@ body {
   background-image: url(https://image.freepik.com/free-photo/bottle-detox-water-with-mint-lemon-grey-background-citrus-lemonade-summer-fruit-infused-water_80743-2117.jpg);
 }
 .cart-table {
-  color: #50bd4d;
+  background-color: #50bd4d !important;
+  width: 600px !important;
 }
 .cart-part {
   padding-top: 50px;
@@ -1379,8 +1380,9 @@ a {
   width: 50%;
   justify-content: center;
   padding-top: 20px;
-  margin-left: 100px;
+  margin-left: 300px;
   border-radius: 20%;
+  flex-wrap: wrap;
 }
 .content-cylce {
   text-align: left;
@@ -1538,4 +1540,17 @@ a {
 .White {
   background-color: white;
   color: black;
+}
+.package-row {
+  margin-top: 40px !important;
+  width: 600px;
+  margin-left: 8px !important;
+}
+.card-provi {
+  color: #246404;
+  font-weight: bold;
+}
+#cycle-row {
+  display: flex;
+  flex-wrap: wrap;
 }

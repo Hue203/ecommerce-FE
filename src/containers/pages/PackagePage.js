@@ -48,12 +48,10 @@ const PackagePage = () => {
   };
   const handleOnClickTime10 = () => {
     setFormData({ ...formData, deliveryTime: "10am" });
-    setColor("RED");
   };
 
   const handleOnClickTime1 = () => {
     setFormData({ ...formData, deliveryTime: "1pm" });
-    setColor("RED");
   };
   console.log("cycleform", formData);
 

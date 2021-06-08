@@ -133,8 +133,8 @@ const CartPage = () => {
                           </tbody>
                         </Table>
                       </Row>
-                      <Row>
-                        <Table className="cart-table" striped bordered hover>
+                      <Row className="package-row">
+                        <Table className="package-table" striped bordered hover>
                           <thead>
                             <tr className="cart-table">
                               <th>Package</th>
@@ -169,7 +169,7 @@ const CartPage = () => {
 
                     <Col>
                       <Card>
-                        <Card.Body>
+                        <Card.Body className="card-provi">
                           <Row>
                             <Col>Provisional</Col>
                             <Col>{`£${totalAmount}`}</Col>
