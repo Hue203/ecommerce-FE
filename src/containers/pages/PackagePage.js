@@ -36,12 +36,10 @@ const PackagePage = () => {
 
   const handleOnClick = (id) => {
     setFormData({ ...formData, packageId: id });
-    setColor("RED");
   };
 
   const handleOnClickCycle = (id) => {
     setFormData({ ...formData, cylceId: id });
-    setColor("RED");
   };
 
   const handleOnClickTime8 = () => {
