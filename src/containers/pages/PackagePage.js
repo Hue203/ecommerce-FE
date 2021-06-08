@@ -14,7 +14,7 @@ import avocado from "../../images/avocado.png";
 import Datetime from "react-datetime";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { cycleActions } from "../../redux/actions/cycle.action";
-
+import moment from "moment";
 const PackagePage = () => {
   const [pageNum, setPageNum] = useState(1);
   const [searchInput, setSearchInput] = useState("");
@@ -41,11 +41,7 @@ const PackagePage = () => {
   const [activeCycle, setActiveCycle] = useState(null);
 
   const [color, setColor] = useState(null);
-  const [delveryLink, setDelveryLink] = useState({
-    "8am": "8am",
-    "10am": "10am",
-    "1pm": "1pm",
-  });
+
   const loading = useSelector((state) => state.package.loading);
   const packages = useSelector((state) => state.package.packages);
   const cycle = useSelector((state) => state.cycle.cycle);
@@ -251,7 +247,10 @@ const PackagePage = () => {
                       Start Day <Datetime className="dateFormat" />
                     </h5> */}
                   </div>
-
+                  <div className="select-subtext">
+                    Starting from today{" "}
+                    <span> {moment().format("MMM-DD-YYYY")} </span>
+                  </div>
                   <div className="delivery-time">
                     <div className="div-time">
                       <Button

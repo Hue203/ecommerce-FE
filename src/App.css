@@ -1379,7 +1379,6 @@ a {
   color: #246404;
   font-size: 50px;
   font-weight: 700;
-  margin-left: 129px;
 }
 .div-days {
   width: 350px;
@@ -1392,7 +1391,6 @@ a {
 }
 .delivery-time {
   display: flex;
-  width: 50%;
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 100px !important;
@@ -1592,4 +1590,15 @@ a {
   border-radius: 50%;
   font-size: 20px;
   font-weight: 600;
+}
+.select-subtext {
+  text-align: center;
+  padding-top: 30px;
+  vertical-align: inherit;
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+}
+.select-subtext span {
+  color: #246404;
 }
