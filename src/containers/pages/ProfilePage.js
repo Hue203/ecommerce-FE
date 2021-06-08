@@ -243,7 +243,7 @@ const ProfilePage = () => {
                           />
                         </div>
                       ) : (
-                        <table className="table">
+                        <table className="table-profile">
                           <thead>
                             <tr>
                               <th>ID</th>

@@ -18,7 +18,6 @@ import { cycleActions } from "../../redux/actions/cycle.action";
 const PackagePage = () => {
   const [pageNum, setPageNum] = useState(1);
   const [searchInput, setSearchInput] = useState("");
-  const [color, setColor] = useState("GREEN");
 
   const [formData, setFormData] = useState({
     packageId: "",
@@ -34,6 +33,19 @@ const PackagePage = () => {
     "60bce55e439197228c9cb826": "60bce55e439197228c9cb826",
   });
   const [active, setActive] = useState(null);
+  const [linkCycle, setlinkCycle] = useState({
+    "60bcd486686fcb1d4f53828d": "60bcd486686fcb1d4f53828d",
+    "60bcd474686fcb1d4f53828c": "60bcd474686fcb1d4f53828c",
+    "60bcd459686fcb1d4f53828b": "60bcd459686fcb1d4f53828b",
+  });
+  const [activeCycle, setActiveCycle] = useState(null);
+
+  const [color, setColor] = useState(null);
+  const [delveryLink, setDelveryLink] = useState({
+    "8am": "8am",
+    "10am": "10am",
+    "1pm": "1pm",
+  });
   const loading = useSelector((state) => state.package.loading);
   const packages = useSelector((state) => state.package.packages);
   const cycle = useSelector((state) => state.cycle.cycle);
@@ -48,18 +60,21 @@ const PackagePage = () => {
 
   const handleOnClickCycle = (id) => {
     setFormData({ ...formData, cylceId: id });
+    setActiveCycle(id);
   };
 
   const handleOnClickTime8 = () => {
     setFormData({ ...formData, deliveryTime: "8am" });
-    setColor("RED");
+    setColor("orange");
   };
   const handleOnClickTime10 = () => {
     setFormData({ ...formData, deliveryTime: "10am" });
+    setColor("orange");
   };
 
   const handleOnClickTime1 = () => {
     setFormData({ ...formData, deliveryTime: "1pm" });
+    setColor("orange");
   };
   console.log("cycleform", formData);
 
@@ -187,7 +202,9 @@ const PackagePage = () => {
                               <a href="#delivery-row">
                                 <Button
                                   className={
-                                    color === "GREEN" ? "green" : "red"
+                                    linkCycle[item._id] === activeCycle
+                                      ? "orange"
+                                      : ""
                                   }
                                   key={item._id}
                                   variant="success"
@@ -239,7 +256,7 @@ const PackagePage = () => {
                       <h1>8 am</h1>
                       <a href="#addtocard">
                         <Button
-                          className={color === "GREEN" ? "green" : "red"}
+                          className={color === null ? "" : "orange"}
                           variant="success"
                           name="deliveryTime"
                           value={formData.deliveryTime}
@@ -254,7 +271,7 @@ const PackagePage = () => {
                       <h1>10 am</h1>{" "}
                       <a href="#addtocard">
                         <Button
-                          className={color === "GREEN" ? "green" : "red"}
+                          className={color === null ? "" : "orange"}
                           variant="success"
                           value={formData.deliveryTime}
                           onClick={() =>
@@ -271,7 +288,7 @@ const PackagePage = () => {
                       <a href="#addtocard">
                         <Button
                           variant="success"
-                          className={color === "GREEN" ? "green" : "red"}
+                          className={color === null ? "" : "orange"}
                           value={formData.deliveryTime}
                           onClick={() => handleOnClickTime1(console.log("1pm"))}
                         >
