@@ -60,21 +60,17 @@ const ModalOrderPage = ({ showModal, setShowModal, product }) => {
                   </tr>
                 </thead>
                 <tbody>
-                  {selectedOrder?.productList?.map((order) => {
-                    return (
-                      <tr>
-                        <td> {selectedOrder?.package?.packageId.name}</td>
-                        <td></td>
-                        <td>{selectedOrder?.package?.deliveryTime}</td>
-                        <td>{selectedOrder?.package?.dateStart}</td>
-                      </tr>
-                    );
-                  })}
+                  <tr>
+                    <td> {selectedOrder?.package?.packageId.name}</td>
+                    <td></td>
+                    <td>{selectedOrder?.package?.deliveryTime}</td>
+                    <td>{selectedOrder?.package?.dateStart}</td>
+                  </tr>
                 </tbody>
+                {/* <div>Total Quantity: {selectedOrder.totalProduct} item</div> */}
               </Table>
-              <h5>Total Quantity: {selectedOrder.totalProduct} item</h5>
               <br />
-              <h5> Total {`Amount: £${selectedOrder.totalPrice}`}</h5>
+              <div> Total {`Amount: £ ${selectedOrder.totalPrice}`}</div>
             </>
           )}
         </Modal.Body>

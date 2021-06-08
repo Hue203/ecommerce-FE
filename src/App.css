@@ -960,7 +960,7 @@ a {
   font-weight: 500;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(https://www.photocase.com/photos/3431339-berries-detox-fruit-infused-water-in-mason-jar-flavored-with-herb-leaves-on-table-at-sunny-turquoise-blue-background-summer-mood-drinks-and-lifestyle-healthy-background-photocase-stock-photo-large.jpeg);
+  background-color: #246404;
 }
 .andro_btn-custom {
   cursor: pointer;
@@ -1526,4 +1526,16 @@ a {
   }
   .carousel-caption .content-carousel {
   }
+}
+.red {
+  background-color: red;
+}
+.Black {
+  background-color: black;
+  color: white;
+}
+
+.White {
+  background-color: white;
+  color: black;
 }

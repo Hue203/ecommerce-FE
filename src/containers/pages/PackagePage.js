@@ -10,7 +10,7 @@ import SliderProductPage from "../../components/SliderProductPage";
 import HeaderBar from "../../components/HeaderBar";
 import FooterPublic from "../../components/FooterPublic";
 import { userActions } from "../../redux/actions/user.actions";
-
+import avocado from "../../images/avocado.png";
 import Datetime from "react-datetime";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { cycleActions } from "../../redux/actions/cycle.action";
@@ -18,6 +18,7 @@ import { cycleActions } from "../../redux/actions/cycle.action";
 const PackagePage = () => {
   const [pageNum, setPageNum] = useState(1);
   const [searchInput, setSearchInput] = useState("");
+  const [color, setColor] = useState("BLACK");
   const [formData, setFormData] = useState({
     packageId: "",
     cylceId: "",
@@ -43,6 +44,7 @@ const PackagePage = () => {
 
   const handleOnClickTime8 = () => {
     setFormData({ ...formData, deliveryTime: "8am" });
+    setColor("RED");
   };
   const handleOnClickTime10 = () => {
     setFormData({ ...formData, deliveryTime: "10am" });
@@ -95,11 +97,7 @@ const PackagePage = () => {
               </div>
             </div>
             <div className="img-avacodo">
-              <img
-                src="http://fitmeal.like-themes.com/wp-content/uploads/2019/10/avocado.png"
-                alt=""
-                className="avocado"
-              />
+              <img src={avocado} alt="" className="avocado" />
             </div>
           </div>
         </Container>
@@ -224,6 +222,7 @@ const PackagePage = () => {
                       <h1>8 am</h1>
                       <a href="#addtocard">
                         <Button
+                          className={color === "BLACK" ? "Black" : "red"}
                           variant="success"
                           name="deliveryTime"
                           value={formData.deliveryTime}
