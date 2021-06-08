@@ -18,7 +18,7 @@ import { cycleActions } from "../../redux/actions/cycle.action";
 const PackagePage = () => {
   const [pageNum, setPageNum] = useState(1);
   const [searchInput, setSearchInput] = useState("");
-  const [color, setColor] = useState("BLACK");
+  const [color, setColor] = useState("GREEN");
   const [formData, setFormData] = useState({
     packageId: "",
     cylceId: "",
@@ -36,10 +36,12 @@ const PackagePage = () => {
 
   const handleOnClick = (id) => {
     setFormData({ ...formData, packageId: id });
+    setColor("RED");
   };
 
   const handleOnClickCycle = (id) => {
     setFormData({ ...formData, cylceId: id });
+    setColor("RED");
   };
 
   const handleOnClickTime8 = () => {
@@ -48,10 +50,12 @@ const PackagePage = () => {
   };
   const handleOnClickTime10 = () => {
     setFormData({ ...formData, deliveryTime: "10am" });
+    setColor("RED");
   };
 
   const handleOnClickTime1 = () => {
     setFormData({ ...formData, deliveryTime: "1pm" });
+    setColor("RED");
   };
   console.log("cycleform", formData);
 
@@ -130,7 +134,8 @@ const PackagePage = () => {
                             <a href="#cycle-row">
                               <Button
                                 variant="success"
-                                className="combo-title"
+                                className={color === "GREEN" ? "green" : "red"}
+                                id="combo-title"
                                 name="packageId"
                                 value={formData.packageId}
                                 onClick={() => handleOnClick(packageItem._id)}
@@ -164,7 +169,7 @@ const PackagePage = () => {
                   <div className="cycle-plan" id="cycle-plan">
                     {cycle &&
                       cycle.map((item) => (
-                        <>
+                        <Container>
                           <div className="div-days">
                             <h1>{item.cycleName}</h1>
                             <h3>{`£${item.price}`}</h3>
@@ -172,6 +177,9 @@ const PackagePage = () => {
                             <div>
                               <a href="#delivery-row">
                                 <Button
+                                  className={
+                                    color === "GREEN" ? "green" : "red"
+                                  }
                                   key={item._id}
                                   variant="success"
                                   name="cycleId"
@@ -192,7 +200,7 @@ const PackagePage = () => {
                               </div>
                             </div>
                           </div>
-                        </>
+                        </Container>
                       ))}
                   </div>
                 </Row>
@@ -222,7 +230,7 @@ const PackagePage = () => {
                       <h1>8 am</h1>
                       <a href="#addtocard">
                         <Button
-                          className={color === "BLACK" ? "Black" : "red"}
+                          className={color === "GREEN" ? "green" : "red"}
                           variant="success"
                           name="deliveryTime"
                           value={formData.deliveryTime}
@@ -237,8 +245,8 @@ const PackagePage = () => {
                       <h1>10 am</h1>{" "}
                       <a href="#addtocard">
                         <Button
+                          className={color === "GREEN" ? "green" : "red"}
                           variant="success"
-                          className="deliveryTime"
                           value={formData.deliveryTime}
                           onClick={() =>
                             handleOnClickTime10(console.log("10am"))
@@ -254,7 +262,7 @@ const PackagePage = () => {
                       <a href="#addtocard">
                         <Button
                           variant="success"
-                          className="deliveryTime"
+                          className={color === "GREEN" ? "green" : "red"}
                           value={formData.deliveryTime}
                           onClick={() => handleOnClickTime1(console.log("1pm"))}
                         >

@@ -1331,8 +1331,8 @@ a {
 }
 .cycle-plan {
   display: flex;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 
   justify-content: space-between;
 }
@@ -1384,7 +1384,7 @@ a {
 }
 .content-cylce {
   text-align: left;
-  padding-top: 30px;
+  padding-top: 70px;
   padding-left: 50px;
   vertical-align: inherit;
   color: #246404;
@@ -1425,7 +1425,7 @@ a {
   top: -60px;
   left: 20px;
 }
-.combo-title {
+#combo-title {
   margin: 20px;
 
   border-radius: 10px;
@@ -1530,8 +1530,8 @@ a {
 .red {
   background-color: red;
 }
-.Black {
-  background-color: black;
+.Green {
+  background-color: green;
   color: white;
 }
 
