@@ -65,16 +65,16 @@ const PackagePage = () => {
 
   const handleOnClickTime8 = () => {
     setFormData({ ...formData, deliveryTime: "8am" });
-    setColor("orange");
+    setColor("8am");
   };
   const handleOnClickTime10 = () => {
     setFormData({ ...formData, deliveryTime: "10am" });
-    setColor("orange");
+    setColor("10am");
   };
 
   const handleOnClickTime1 = () => {
     setFormData({ ...formData, deliveryTime: "1pm" });
-    setColor("orange");
+    setColor("1pm");
   };
   console.log("cycleform", formData);
 
@@ -153,13 +153,12 @@ const PackagePage = () => {
                             />
                             <a href="#cycle-row">
                               <Button
-                                variant="success"
+                                variant="outline-success"
                                 className={
                                   link[packageItem._id] === active
-                                    ? "orange"
-                                    : ""
+                                    ? "orange combo-title"
+                                    : "combo-title"
                                 }
-                                id="combo-title"
                                 name={packageItem._id}
                                 value={formData.packageId}
                                 onClick={() => handleOnClick(packageItem._id)}
@@ -195,30 +194,32 @@ const PackagePage = () => {
                       cycle.map((item) => (
                         <Container>
                           <div className="div-days">
-                            <h1>{item.cycleName}</h1>
-                            <h3>{`£${item.price}`}</h3>
+                            <a href="#delivery-row">
+                              <Button
+                                className={
+                                  linkCycle[item._id] === activeCycle
+                                    ? "orange combo-title"
+                                    : "combo-title"
+                                }
+                                key={item._id}
+                                variant="outline-success"
+                                name="cycleId"
+                                value={formData.cycleId}
+                                onClick={() => handleOnClickCycle(item._id)}
+                              >
+                                {item.cycleName}
+                              </Button>
+                            </a>
+
+                            <div
+                              style={{
+                                fontSize: "60px",
+                                marginTop: "30px",
+                                fontWeight: "600",
+                              }}
+                            >{`£ ${item.price}`}</div>
 
                             <div>
-                              <a href="#delivery-row">
-                                <Button
-                                  className={
-                                    linkCycle[item._id] === activeCycle
-                                      ? "orange"
-                                      : ""
-                                  }
-                                  key={item._id}
-                                  variant="success"
-                                  name="cycleId"
-                                  value={formData.cycleId}
-                                  onClick={() => handleOnClickCycle(item._id)}
-                                >
-                                  {" "}
-                                  <FontAwesomeIcon
-                                    icon="calendar-week"
-                                    size="3x"
-                                  />
-                                </Button>
-                              </a>
                               <div className="content-cylce">
                                 <li>Pay by the package.</li>{" "}
                                 <li> Drink will be delivery to you</li>
@@ -253,49 +254,46 @@ const PackagePage = () => {
 
                   <div className="delivery-time">
                     <div className="div-time">
-                      <h1>8 am</h1>
-                      <a href="#addtocard">
-                        <Button
-                          className={color === null ? "" : "orange"}
-                          variant="success"
-                          name="deliveryTime"
-                          value={formData.deliveryTime}
-                          onClick={() => handleOnClickTime8(console.log("8am"))}
-                        >
-                          {" "}
-                          <FontAwesomeIcon icon="clock" size="3x" />
-                        </Button>
-                      </a>
+                      <Button
+                        className={
+                          color !== "8am" ? "combo-title" : "combo-title orange"
+                        }
+                        variant="outline-success"
+                        name="deliveryTime"
+                        value={formData.deliveryTime}
+                        onClick={() => handleOnClickTime8(console.log("8am"))}
+                      >
+                        {" "}
+                        8:00 AM
+                      </Button>
                     </div>
                     <div className="div-time">
-                      <h1>10 am</h1>{" "}
-                      <a href="#addtocard">
-                        <Button
-                          className={color === null ? "" : "orange"}
-                          variant="success"
-                          value={formData.deliveryTime}
-                          onClick={() =>
-                            handleOnClickTime10(console.log("10am"))
-                          }
-                        >
-                          {" "}
-                          <FontAwesomeIcon icon="clock" size="3x" />
-                        </Button>
-                      </a>
+                      <Button
+                        className={
+                          color !== "10am"
+                            ? "combo-title"
+                            : "combo-title orange"
+                        }
+                        variant="outline-success"
+                        value={formData.deliveryTime}
+                        onClick={() => handleOnClickTime10(console.log("10am"))}
+                      >
+                        {" "}
+                        10:00 AM
+                      </Button>
                     </div>
                     <div className="div-time">
-                      <h1>1 pm</h1>{" "}
-                      <a href="#addtocard">
-                        <Button
-                          variant="success"
-                          className={color === null ? "" : "orange"}
-                          value={formData.deliveryTime}
-                          onClick={() => handleOnClickTime1(console.log("1pm"))}
-                        >
-                          {" "}
-                          <FontAwesomeIcon icon="clock" size="3x" />
-                        </Button>
-                      </a>
+                      <Button
+                        variant="outline-success"
+                        className={
+                          color !== "1pm" ? "combo-title" : "combo-title orange"
+                        }
+                        value={formData.deliveryTime}
+                        onClick={() => handleOnClickTime1(console.log("1pm"))}
+                      >
+                        {" "}
+                        1:00 PM
+                      </Button>
                     </div>
                   </div>
                   <div className="addtocard" id="addtocard">
@@ -312,21 +310,20 @@ const PackagePage = () => {
                 </Row>
 
                 <div className="faqs">
-                  {" "}
-                  <a href="#faqs" class="faqs-button">
+                  <div style={{ fontSize: "15px", marginRight: "1 0px" }}>
+                    Change any information before the next drink delivery date 1
+                    day
+                  </div>
+                  <div style={{ color: "#fa6400" }}>
                     <svg
-                      height="50pt"
+                      height="30pt"
                       viewBox="0 0 100 100"
-                      width="50pt"
+                      width="30pt"
                       src="http://www.w3.org/2000/svg"
                     >
                       <FontAwesomeIcon icon="question-circle" />
                     </svg>
-                  </a>
-                  <p id="faqs">
-                    Change any information before the next drink delivery date 1
-                    day.
-                  </p>
+                  </div>
                 </div>
               </Container>
             </Form>

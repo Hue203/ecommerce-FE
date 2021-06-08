@@ -16,18 +16,19 @@ const Packages = ({ packageProduct, handleClick }) => {
                 className="img-package"
               />
             }
-            <div onClick={() => handleClick(packageProduct._id)}>
-              <div className="package-content">
-                <div>
-                  <ul>
-                    <h5>With:</h5>
-                    <p>
-                      {packageProduct.products.map((item) => (
-                        <ul>{`1 ${item.productId.name}`}</ul>
-                      ))}
-                    </p>
-                  </ul>
-                </div>
+            <div
+              className="package-content"
+              onClick={() => handleClick(packageProduct._id)}
+            >
+              <div>
+                <ul>
+                  <h5>With:</h5>
+                  <p>
+                    {packageProduct.products.map((item) => (
+                      <ul>{`1 ${item.productId.name}`}</ul>
+                    ))}
+                  </p>
+                </ul>
               </div>
             </div>
           </div>

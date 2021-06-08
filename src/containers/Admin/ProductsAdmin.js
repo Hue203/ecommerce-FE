@@ -70,6 +70,7 @@ const ProductsAdmin = () => {
           loading={loading}
         />
       </div>
+
       <Container>
         <Row>
           <Col xs={2}>
@@ -83,7 +84,23 @@ const ProductsAdmin = () => {
             ) : (
               <Container className="table-product" fluid>
                 <Row>
-                  <Table striped bordered hover variant="dark">
+                  <Col style={{ paddingLeft: 0 }}>
+                    <Button variant="success" onClick={handleOnclickAdd}>
+                      ADD
+                    </Button>
+                  </Col>
+                  <Col>
+                    <PaginationBar
+                      pageNum={pageNum}
+                      setPageNum={setPageNum}
+                      totalPageNum={totalPageNum}
+                      loading={loading}
+                    />
+                  </Col>
+                </Row>
+
+                <Row>
+                  <Table striped bordered hover className="cart-table">
                     <thead>
                       <tr>
                         <th
@@ -123,21 +140,13 @@ const ProductsAdmin = () => {
                         >
                           <FontAwesomeIcon icon="sort" size="sm" /> Service
                         </th>
-                        <th
+                        {/*  <th
                           className="mouse-hover"
                           onClick={() => handleSort("catagories")}
                         >
                           <FontAwesomeIcon icon="sort" size="sm" /> Catagories
-                        </th>
-                        <th>
-                          Actions{" "}
-                          <Button
-                            variant="outline-success"
-                            onClick={handleOnclickAdd}
-                          >
-                            ADD
-                          </Button>
-                        </th>
+                        </th> */}
+                        <th>Actions </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -158,13 +167,12 @@ const ProductsAdmin = () => {
                               <img
                                 src={item.images[0].imageUrl}
                                 alt="product-img"
-                                width="90px"
-                                height="60px"
+                                width="80px"
                               />
                             </td>
                             <td>{item.service}</td>
-                            <td>{item.catagories}</td>
-                            <th className="btn">
+                            {/* <td>{item.catagories}</td> */}
+                            <td className="action-btn">
                               <Button
                                 variant="outline-success"
                                 onClick={() => handleOnclickEdit(item._id)}
@@ -172,15 +180,13 @@ const ProductsAdmin = () => {
                                 EDIT
                               </Button>
 
-                              <br />
-
                               <Button
                                 variant="outline-success"
                                 onClick={() => handleOnclickDelete(item._id)}
                               >
                                 DELETE
                               </Button>
-                            </th>{" "}
+                            </td>{" "}
                           </tr>
                         ))}
                     </tbody>{" "}
@@ -202,12 +208,6 @@ const ProductsAdmin = () => {
             )}
           </Col>
         </Row>
-        <PaginationBar
-          pageNum={pageNum}
-          setPageNum={setPageNum}
-          totalPageNum={totalPageNum}
-          loading={loading}
-        />
       </Container>
     </>
   );

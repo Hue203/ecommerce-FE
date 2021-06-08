@@ -80,7 +80,7 @@ const OrdersAdmin = () => {
             {orders !== undefined && (
               <>
                 <Row>
-                  <Table striped bordered hover>
+                  <Table striped bordered hover className="cart-table">
                     <thead>
                       <tr>
                         <th
@@ -119,12 +119,12 @@ const OrdersAdmin = () => {
                         >
                           Discount <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
-                        <th
+                        {/* <th
                           className="mouse-hover"
                           onClick={() => handleSort("catagories")}
                         >
                           Catagories <FontAwesomeIcon icon="sort" size="sm" />
-                        </th>
+                        </th> */}
                         <th
                           className="mouse-hover"
                           onClick={() => handleSort("createdAt")}
@@ -139,7 +139,7 @@ const OrdersAdmin = () => {
                         <>
                           {orders.map((item) => (
                             <tr key={item._id}>
-                              <td>{` OrderId ${item._id}`}</td>
+                              <td>{item._id}</td>
                               <td>
                                 {item?.productList?.map(
                                   (product) => product.productId.name
@@ -149,23 +149,20 @@ const OrdersAdmin = () => {
                               <td>{item.statusOrder}</td>
                               <td>{item.totalPrice}</td>
                               <td>{item.discount}</td>
-                              <td>
+                              {/* <td>
                                 {item?.productList?.map(
                                   (product) => product.productId.catagories
                                 )}
-                              </td>
+                              </td> */}
                               <td>{item?.createdAt.substring(0, 10)}</td>
-                              <th>
-                                <span>
-                                  <Button
-                                    variant="success"
-                                    onClick={() => handleOnclickEdit(item._id)}
-                                  >
-                                    EDIT
-                                  </Button>
-                                </span>
-                                <span></span>
-                              </th>{" "}
+                              <td className="action-btn">
+                                <Button
+                                  variant="outline-success"
+                                  onClick={() => handleOnclickEdit(item._id)}
+                                >
+                                  EDIT
+                                </Button>
+                              </td>{" "}
                             </tr>
                           ))}
                         </>

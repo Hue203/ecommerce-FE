@@ -97,17 +97,30 @@ const CartPage = () => {
           </div>
         ) : (
           <section className="cart-part">
-            <h2>{`SHOPPING CART `}</h2>
-
             <Container fluid>
+              <Row>
+                <Col xs="1"></Col>
+                <Col>
+                  <h2
+                    style={{
+                      fontSize: "40px",
+                      color: "#246404",
+                      fontWeight: "700",
+                      marginBottom: "30px",
+                    }}
+                  >{`SHOPPING CART `}</h2>
+                </Col>
+              </Row>
+
               {selectedUser && (
                 <>
                   <Row>
-                    <Col>
+                    <Col xs="1"></Col>
+                    <Col xs="7">
                       <Row>
                         <Table className="cart-table" striped bordered hover>
                           <thead>
-                            <tr className="cart-table">
+                            <tr>
                               <th>Product</th>
                               <th>Price</th>
                               <th>Quantity</th>
@@ -128,15 +141,19 @@ const CartPage = () => {
                                 ))}
                               </>
                             ) : (
-                              <p>There are no Products in cart</p>
+                              <tr>
+                                <td>There are no Products in cart</td>
+                                <td></td>
+                                <td></td>
+                              </tr>
                             )}
                           </tbody>
                         </Table>
                       </Row>
                       <Row className="package-row">
-                        <Table className="package-table" striped bordered hover>
+                        <Table className="cart-table" striped bordered hover>
                           <thead>
-                            <tr className="cart-table">
+                            <tr>
                               <th>Package</th>
                               <th>Price</th>
                               <th>Delivery time</th>
@@ -160,14 +177,110 @@ const CartPage = () => {
                                 </tr>
                               </>
                             ) : (
-                              <p>There are no Package in cart</p>
+                              <tr>
+                                <td>There are no Package in cart</td>
+                                <td></td>
+                                <td></td>
+                              </tr>
                             )}
                           </tbody>
                         </Table>
                       </Row>
+                      <Card className="shipping-detail">
+                        <Card.Title className="shipping-cart">
+                          Shipping Detail
+                        </Card.Title>
+                        <Card.Body>
+                          <Form onSubmit={handleSubmit}>
+                            <Form.Group>
+                              <Form.Control
+                                type="email"
+                                placeholder="Enter email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                              />
+                            </Form.Group>
+
+                            <Form.Group>
+                              <Form.Control
+                                type="text"
+                                placeholder="12 Nguyen Van Linh, dist 7"
+                                name="address1"
+                                value={formData.address1}
+                                onChange={handleChange}
+                              />
+                            </Form.Group>
+
+                            <Form.Group>
+                              <Form.Control
+                                type="text"
+                                placeholder="Apart, floor,.."
+                                name="address2"
+                                value={formData.address2}
+                                onChange={handleChange}
+                              />
+                            </Form.Group>
+
+                            <Form.Group>
+                              <Form.Control
+                                placeholder="Phone Number"
+                                type="text"
+                                name="phone"
+                                value={formData.phone}
+                                onChange={handleChange}
+                              />
+                            </Form.Group>
+
+                            <Form.Group>
+                              <Form.Control
+                                placeholder="Ho Chi Minh City"
+                                type="text"
+                                name="city"
+                                value={formData.city}
+                                onChange={handleChange}
+                              />
+                            </Form.Group>
+
+                            <Form>
+                              <Form.Check
+                                type="radio"
+                                label="COD"
+                                defaultChecked
+                                name="paymentMethod"
+                              ></Form.Check>
+                            </Form>
+                            <p>Shipping Fee : 0</p>
+
+                            {loading ? (
+                              <Button
+                                className="btn-block"
+                                variant="success"
+                                type="button"
+                                disabled
+                              >
+                                <span
+                                  className="spinner-border spinner-border-sm"
+                                  role="status"
+                                  aria-hidden="true"
+                                ></span>
+                                Loading...
+                              </Button>
+                            ) : (
+                              <Button
+                                className="btn-Continue"
+                                type="submit"
+                                variant="success"
+                              >
+                                Check Out
+                              </Button>
+                            )}
+                          </Form>
+                        </Card.Body>
+                      </Card>
                     </Col>
 
-                    <Col>
+                    <Col xs="3">
                       <Card>
                         <Card.Body className="card-provi">
                           <Row>
@@ -185,112 +298,13 @@ const CartPage = () => {
                         </Card.Body>
                       </Card>
                     </Col>
+                    <Col xs="1"></Col>
                   </Row>
                 </>
               )}
             </Container>
           </section>
         )}
-
-        <Container>
-          <Card className="shipping-detail">
-            <Card.Title className="shipping-cart">Shipping Detail</Card.Title>
-            <Card.Body>
-              <Form onSubmit={handleSubmit}>
-                <Row className="mb-3">
-                  <Form.Group>
-                    <Form.Label>Email</Form.Label>
-                    <Form.Control
-                      type="email"
-                      placeholder="Enter email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </Form.Group>
-                </Row>
-                <Form.Group>
-                  <Form.Label>Address</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="1234 Nguyen Van Linh, dist 7"
-                    name="address1"
-                    value={formData.address1}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-
-                <Form.Group>
-                  <Form.Label>Address 2</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Apart,floor,.."
-                    name="address2"
-                    value={formData.address2}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-
-                <Form.Group>
-                  <Form.Label>Phone Number </Form.Label>
-                  <Form.Control
-                    placeholder="Phone Number"
-                    type="text"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-
-                <Form.Group>
-                  <Form.Label>City </Form.Label>
-                  <Form.Control
-                    placeholder="Ho Chi Minh City"
-                    type="text"
-                    name="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                  />
-                </Form.Group>
-
-                <Form>
-                  <Form.Label>Payment Method</Form.Label>
-                  <Form.Check
-                    type="radio"
-                    label="COD"
-                    defaultChecked
-                    name="paymentMethod"
-                  ></Form.Check>
-                </Form>
-                <p>Shipping Fee : 0</p>
-
-                {loading ? (
-                  <Button
-                    className="btn-block"
-                    variant="success"
-                    type="button"
-                    disabled
-                  >
-                    <span
-                      className="spinner-border spinner-border-sm"
-                      role="status"
-                      aria-hidden="true"
-                    ></span>
-                    Loading...
-                  </Button>
-                ) : (
-                  <Button
-                    className="btn-Continue"
-                    type="submit"
-                    variant="success"
-                  >
-                    Check Out
-                  </Button>
-                )}
-              </Form>
-            </Card.Body>
-          </Card>
-        </Container>
       </Container>
       <FooterPublic />
     </section>

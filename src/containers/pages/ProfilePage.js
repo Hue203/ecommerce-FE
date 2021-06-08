@@ -11,6 +11,7 @@ import {
   Nav,
   Card,
   Container,
+  Table,
 } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { authActions } from "../../redux/actions/auth.actions";
@@ -91,7 +92,7 @@ const ProfilePage = () => {
 
   return (
     <>
-      <Container className="profile-container ">
+      <div className="profile-container ">
         <div className="container">
           <Tab.Container id="left-tabs-example" defaultActiveKey="first">
             <Row>
@@ -128,6 +129,7 @@ const ProfilePage = () => {
                                       src={formData.avatarUrl}
                                       className="avatar-lg"
                                       alt="avatar"
+                                      style={{ width: "5rem" }}
                                     />
                                   </div>
 
@@ -143,7 +145,11 @@ const ProfilePage = () => {
                                 <br />
                               </Form.Group>
                               <Form.Group as={Row}>
-                                <Form.Label column sm="2">
+                                <Form.Label
+                                  column
+                                  sm="2"
+                                  className="profile-label"
+                                >
                                   Name
                                 </Form.Label>
                                 <Col>
@@ -160,7 +166,11 @@ const ProfilePage = () => {
                               </Form.Group>
                               <br />
                               <Form.Group as={Row}>
-                                <Form.Label column sm="2">
+                                <Form.Label
+                                  column
+                                  sm="2"
+                                  className="profile-label"
+                                >
                                   Email
                                 </Form.Label>
                                 <Col>
@@ -243,7 +253,7 @@ const ProfilePage = () => {
                           />
                         </div>
                       ) : (
-                        <table className="table-profile">
+                        <Table className="cart-table">
                           <thead>
                             <tr>
                               <th>ID</th>
@@ -268,7 +278,7 @@ const ProfilePage = () => {
                                       : "No"}
                                   </td>
                                   <td>
-                                    {order.statusOrder
+                                    {order.statusOrder === "Delivery"
                                       ? order.statusOrder.substring(0, 10)
                                       : "No"}
                                   </td>
@@ -286,7 +296,7 @@ const ProfilePage = () => {
                                 </tr>
                               ))}
                           </tbody>
-                        </table>
+                        </Table>
                       )}
 
                       <ModalOrderPage
@@ -300,7 +310,7 @@ const ProfilePage = () => {
             </Row>
           </Tab.Container>
         </div>
-      </Container>
+      </div>
       <FooterPublic />
     </>
   );

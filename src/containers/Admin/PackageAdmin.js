@@ -72,10 +72,22 @@ const PackageAdmin = () => {
             <SideMenuAdmin page={"packages"} />
           </Col>
           <Col xs={10}>
+            <Row style={{ textAlign: "right", marginBottom: "10px" }}>
+              <div style={{ paddingRight: "0" }}>
+                <Button
+                  variant="success"
+                  onClick={() => handleOnclickAdd()}
+                  style={{ marginRight: "0" }}
+                >
+                  ADD
+                </Button>
+              </div>
+            </Row>
+
             {packages !== undefined && (
               <>
                 <Row>
-                  <Table striped bordered hover>
+                  <Table striped bordered hover className="cart-table">
                     <thead>
                       <tr>
                         <th
@@ -116,16 +128,6 @@ const PackageAdmin = () => {
                           onClick={() => handleSort("createdAt")}
                         >
                           DATE
-                        </th>
-                        <th>
-                          <span>
-                            <Button
-                              variant="success"
-                              onClick={() => handleOnclickAdd()}
-                            >
-                              ADD
-                            </Button>
-                          </span>
                         </th>
                       </tr>
                     </thead>
@@ -173,10 +175,26 @@ const PackageAdmin = () => {
         <Row>
           <Col xs={2}></Col>
           <Col xs={10}>
+            <Row style={{ textAlign: "right", marginBottom: "10px" }}>
+              <div style={{ paddingRight: "0" }}>
+                <Button
+                  variant="success"
+                  onClick={() => handleOnclickAddCycle()}
+                >
+                  ADD
+                </Button>
+              </div>
+            </Row>
             {cycle && cycle !== undefined && (
               <>
                 <Row>
-                  <Table striped bordered hover>
+                  <Table
+                    striped
+                    bordered
+                    hover
+                    className="cart-table"
+                    style={{ textAlign: "center" }}
+                  >
                     <thead>
                       <tr>
                         <th
@@ -191,16 +209,6 @@ const PackageAdmin = () => {
                         >
                           Price <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
-
-                        <th>
-                          {" "}
-                          <Button
-                            variant="success"
-                            onClick={() => handleOnclickAddCycle()}
-                          >
-                            ADD
-                          </Button>
-                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -210,14 +218,14 @@ const PackageAdmin = () => {
                             <tr key={item._id}>
                               <td>{item.cycleName}</td>
                               <td>{item.price}</td>
-                              <th>
-                                <span></span>
-                              </th>{" "}
                             </tr>
                           ))}
                         </>
                       ) : (
-                        <p>There are no cycle</p>
+                        <tr>
+                          <td>There are no cycle</td>
+                          <td></td>
+                        </tr>
                       )}
                     </tbody>
                   </Table>
