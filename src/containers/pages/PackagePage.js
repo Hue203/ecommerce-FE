@@ -19,6 +19,7 @@ const PackagePage = () => {
   const [pageNum, setPageNum] = useState(1);
   const [searchInput, setSearchInput] = useState("");
   const [color, setColor] = useState("GREEN");
+
   const [formData, setFormData] = useState({
     packageId: "",
     cylceId: "",
@@ -27,6 +28,12 @@ const PackagePage = () => {
   });
   const [sortBy, setSortBy] = useState({ key: "", ascending: -1 });
   const [query, setQuery] = useState("");
+  const [link, setLink] = useState({
+    "60bce5cd439197228c9cb82e": "60bce5cd439197228c9cb82e",
+    "60bce5b2439197228c9cb82a": "60bce5b2439197228c9cb82a",
+    "60bce55e439197228c9cb826": "60bce55e439197228c9cb826",
+  });
+  const [active, setActive] = useState(null);
   const loading = useSelector((state) => state.package.loading);
   const packages = useSelector((state) => state.package.packages);
   const cycle = useSelector((state) => state.cycle.cycle);
@@ -36,6 +43,7 @@ const PackagePage = () => {
 
   const handleOnClick = (id) => {
     setFormData({ ...formData, packageId: id });
+    setActive(id);
   };
 
   const handleOnClickCycle = (id) => {
@@ -64,6 +72,7 @@ const PackagePage = () => {
     dispatch(cycleActions.getCycle());
   }, [dispatch, pageNum, query]);
 
+  console.log("linkkkk", link);
   const handleClickOnPackage = (id) => {
     history.push(`/packages/${id}`);
   };
@@ -130,9 +139,13 @@ const PackagePage = () => {
                             <a href="#cycle-row">
                               <Button
                                 variant="success"
-                                className={color === "GREEN" ? "green" : "red"}
+                                className={
+                                  link[packageItem._id] === active
+                                    ? "orange"
+                                    : ""
+                                }
                                 id="combo-title"
-                                name="packageId"
+                                name={packageItem._id}
                                 value={formData.packageId}
                                 onClick={() => handleOnClick(packageItem._id)}
                                 key={packageItem._id}

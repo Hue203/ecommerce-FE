@@ -1528,10 +1528,12 @@ a {
   .carousel-caption .content-carousel {
   }
 }
-.red {
-  background-color: red;
+.orange {
+  background-color: #fadd77 !important;
+  color: black !important;
+  border: none !important;
 }
-.Green {
+.green {
   background-color: green;
   color: white;
 }
