@@ -1346,10 +1346,8 @@ a {
 }
 .cycle-plan {
   display: flex;
-  width: 400px;
-  height: 400px;
-
   justify-content: space-between;
+  margin-top: 40px;
 }
 
 .choose-package {
@@ -1374,7 +1372,7 @@ a {
 }
 .select-text {
   text-align: center;
-  padding-top: 50px;
+  padding-top: 80px;
   vertical-align: inherit;
   color: #246404;
   font-size: 50px;
