@@ -108,13 +108,6 @@ const PackageAdmin = () => {
                         >
                           Types <FontAwesomeIcon icon="sort" size="sm" />
                         </th>
-                        <th
-                          className="mouse-hover"
-                          onClick={() => handleSort("statusOrder")}
-                        >
-                          Delivery Time{" "}
-                          <FontAwesomeIcon icon="sort" size="sm" />
-                        </th>
 
                         <th
                           className="mouse-hover"
@@ -144,7 +137,7 @@ const PackageAdmin = () => {
                                   )}
                                 </td>
                                 <td>{item.packageType}</td>
-                                <td>{item.deliveryTime}</td>
+
                                 <td>
                                   <img
                                     src={item.images[0].imageUrl}

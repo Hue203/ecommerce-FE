@@ -1485,23 +1485,19 @@ a {
   border-radius: 50px !important;
   border: solid 1px #246404;
   color: #246404;
-  margin: 30px;
+  margin-left: 30px;
   font-weight: 300;
   padding-left: 100px;
-  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 3px 1px #246404;
 }
 .detox-text {
   font-size: 40px;
   font-weight: 700;
   color: #fa6400;
 }
-/* .video {
+.video {
   padding-top: 30px;
-  width: 1280px;
-  height: 520px;
-  border-radius: 50px !important;
-  border: solid 1px #246404;
-} */
+}
 
 .carousel-caption .content-carousel {
   display: inline-block;
