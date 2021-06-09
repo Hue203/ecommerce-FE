@@ -69,11 +69,9 @@ const ProductSlider = () => {
 
           <Carousel.Caption>
             <div>
-              <h1 className="content-amination">
-                Fresh your day with fruity juice
-              </h1>
+              <h1 className="content-amination"></h1>
               <div className="content-carousel">
-                Nulla vitae elit libero, a pharetra augue mollis interdum.
+                Fresh your day with Fruity Juice
               </div>
             </div>
             <a href="/products" target="_parent" className="btn-arrow white">
@@ -170,13 +168,8 @@ const ProductSlider = () => {
           </div>
 
           <Carousel.Caption>
-            <h1 className="content-amination">Drink Juice and Stay Safe</h1>
-            <div className="content-carousel">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div>
-            <a href="/products" target="_parent" className="btn-arrow white">
-              Shop now
-            </a>
+            <h1 className="content-amination"></h1>
+            <div className="content-carousel">Drink Juice and Stay Safe</div>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item className="owl-item">
@@ -240,15 +233,10 @@ const ProductSlider = () => {
           </div>
 
           <Carousel.Caption>
-            <h1 className="content-amination">
-              Drink The Life Like A Glass Of Juice
-            </h1>
+            <h1 className="content-amination"></h1>
             <div className="content-carousel">
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+              Drink The Life Like A Glass Of Juice
             </div>
-            <a href="/products" target="_parent" className="btn-arrow white">
-              Shop now
-            </a>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

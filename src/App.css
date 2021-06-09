@@ -771,12 +771,11 @@ element.style {
     transform: scale3d(1, 1, 1);
   }
 }
+
 .btn-arrow {
   color: #fff;
   border: 2px solid #fff;
   line-height: 38px;
-}
-.btn-arrow {
   display: inline-block;
   height: 40px;
   line-height: 40px;
@@ -786,7 +785,7 @@ element.style {
   position: relative;
   background: transparent;
   transition: all 0.5s ease-out 0s;
-  -webkit-transition: all 0.5s ease-out 0s;
+
   background-color: #246404;
 }
 
@@ -1325,7 +1324,7 @@ a:hover {
   font-size: 50px;
   font-family: "Pacifico", cursive;
   text-align: center;
-  padding-bottom: 50px;
+  padding-bottom: 200px;
   color: #246404 !important;
 }
 a {
@@ -1507,7 +1506,7 @@ a {
   border-radius: 20px;
   font-weight: 500;
   font-size: 30px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
 }
 .vitamintext {
   font-family: "Pacifico", cursive;
