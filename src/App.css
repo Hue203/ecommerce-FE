@@ -154,6 +154,7 @@ body {
   width: 350px;
   height: 350px;
   margin-top: 40px;
+  border-radius: 10px;
 }
 .packageConatiner {
   display: flex;
