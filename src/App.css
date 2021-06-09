@@ -1262,7 +1262,6 @@ a:hover {
   font-weight: 500;
 }
 .content-video {
-  padding: 10px;
   background-image: url(https://nutritous.7uptheme.net/wp-content/uploads/2018/07/adv2.jpg?id=630) !important;
 }
 .table-product {
@@ -1481,16 +1480,17 @@ a {
   text-align: center;
 }
 .content-video {
-  padding: 30px;
+  padding: 20px;
   border-radius: 50px !important;
   border: solid 1px #246404;
   color: #246404;
   margin-left: 30px;
   font-weight: 300;
-  padding-left: 100px;
+
   box-shadow: 2px 2px 3px 1px #246404;
 }
 .detox-text {
+  text-align: center;
   font-size: 40px;
   font-weight: 700;
   color: #fa6400;
@@ -1512,6 +1512,7 @@ a {
 .vitamintext {
   font-family: "Pacifico", cursive;
   font-size: 40px;
+  text-align: center;
 }
 .greenText {
   font-family: "Pacifico", cursive;

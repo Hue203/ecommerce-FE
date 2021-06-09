@@ -189,13 +189,12 @@ const HomePage = () => {
                   <VideoDetox />
                 </Col>
                 <Col className="content-video">
-                  <h5>REGULAR PACKAGE</h5>
-                  <div className="detox-text">Detox Box</div>
+                  <div className="detox-text">Detox Package</div>
                   <h4 className="vitamintext">Vitamin for life</h4>
                   <h3>Detox Box with 3 No</h3>
                   <h5>
-                    <li>Do not add diluent water </li>
-                    <li>No refined sugar No Additives</li>
+                    <li>Do more water added</li>
+                    <li>No refined sugar - No Additives</li>
                     <li> Preservatives</li>
                   </h5>
 
