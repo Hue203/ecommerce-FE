@@ -42,7 +42,7 @@ Admin can top-up balance for user.
 
 Users
 Standard fields, email/pass/etc
-Proflie fields: Orders, history orders, Delivery process, favorite drinks/Cereal. 5. Landing Page 6. High-Level Sprint Planning
+Proflie fields: Orders, history orders, Delivery process, favorite drinks/Cereal.
 
 ###### Key Functionality.
 
@@ -64,3 +64,9 @@ Admin Dashboard with business indicator tools.
 Admin can check order.
 Admin can add, edit, delete products.
 Admin can top-up balance for user.
+
+##### Techincal :
+
+###### Front-end: React JS
+
+###### Back-end: NodeJs, ExpressJs, MongoDB
