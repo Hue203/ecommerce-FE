@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+### Project Brief: Detox Box
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1.Inspire
+Nowaday, people focus on take care of their health more than ever during the COVID-19 pandemic by eat clean and do more work out fitness.
+Vietnamese’s breakfast behaviour : Rice,noodle are main Vietnamese material making all the foods,this is also the reason caused with Diabetes mellitus and another diseases with height cacbohydrat in rice and noodles.Threfore, with a lot of benefit of detox drink and nutrional seeds (cereal) such as weight loss, flat belly and cleanse those things make me come up with this idea with Helathy & Yummy - This is the website sell detox drink (made by fresh and dry vegetable + fruit ) and Cereal (Mixed nutrional seeds).
 
-## Available Scripts
+2.Motivations + Problems
+Problems:
+It’s not easy to drink
+People can make their own at home
+Breakfast - Snack behaviour of Vietnamese people
+People choose us because:
+Tasty => We will mixed with some more fruit and honey based on customer’s choice
+Convenience => Diversity drink / A weekly package for customer (3 bottles of drink a day) delivery to their door everyday.Customer can do their own drink or cereal by choose the vegetabel, fruit or seeds for their own, we can make as required
+Nutrion expert advise.
+Fitness work out basic video daily
+3.Key Features and Technical Implementation Plan
+User
+Filtering / Searching
+React + API hooks for filter by category, search by keywords, sort products by attributes.
+Users can see product details, add to cart.
+Users can edit cart, delete Cart.
+User’s order is saved until paid or deleted.
+User’s can tracing process for their weight loss
+User can ask for Nutrion expert advise
+User can make their own drink / Cereal
+User can see products list with 3 main products (1. Detox drink -Make Fresh and dry | 2. Cereal products |3. Nutrion information and advise recipe )
+Admin
+Admin can see all users’ detail, carts, top-up balance requests.
+Admin Dashboard with business indicator tools.
+Admin can check order.
+Admin can add, edit, delete products.
+Admin can top-up balance for user.
+… 4. Key Models
+Users
+Standard fields, email/pass/etc
+Proflie fields: Orders, history orders, Delivery process, favorite drinks/Cereal. 5. Landing Page 6. High-Level Sprint Planning
 
-In the project directory, you can run:
+1. Key Functionality.
 
-### `npm start`
+#### User
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Users can register and sign up with Email, Facebook, Google for the site.
+Users can create a profile
+Filtering / Searching
+React + API hooks for filter by category, search by keywords, sort products by attributes.
+Users can see product details, add to cart.
+Users can edit cart, delete Cart.
+User’s order is saved until paid or deleted.
+User can give review, react to the products
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+##### Admin
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Admin can see all users’ detail, carts, top-up balance requests.
+Admin Dashboard with business indicator tools.
+Admin can check order.
+Admin can add, edit, delete products.
+Admin can top-up balance for user.

@@ -100,7 +100,7 @@ const PackagePage = () => {
             <div className="content-avocado">
               <div className="greenText">Green living - Skin Regeneration</div>
               <br />
-              <h3>Are you ready to feel you 18 again?</h3>
+              <h3>Are you ready to feel 18 again?</h3>
 
               <h5>
                 Solutions to improve health and change habits from the roots of
