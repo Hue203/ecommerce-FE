@@ -1,22 +1,20 @@
-### Project Brief: Detox Box
+# CoderSchool FTW - _ Detox Box _
 
-##### 1.Inspire
+Created with love by: Hue Nguyen
+
+View online at: https://detoxbox.netlify.app/
 
 Nowaday, people focus on take care of their health more than ever during the COVID-19 pandemic by eat clean and do more work out fitness.
 Vietnamese’s breakfast behaviour : Rice,noodle are main Vietnamese material making all the foods,this is also the reason caused with Diabetes mellitus and another diseases with height cacbohydrat in rice and noodles.Threfore, with a lot of benefit of detox drink and nutrional seeds (cereal) such as weight loss, flat belly and cleanse those things make me come up with this idea with Helathy & Yummy - This is the website sell detox drink (made by fresh and dry vegetable + fruit ) and Cereal (Mixed nutrional seeds).
 
-##### 2.Motivations + Problems
+Video Walkthrough
+Here's a walkthrough of implemented user stories.
 
-##### Problems:
+<!-- To create a GIF, use LiceCap, RecordIt, or Loom, and link the image here in the markdown.
 
-It’s not easy to drink
-People can make their own at home
-Breakfast - Snack behaviour of Vietnamese people
-People choose us because:
-Tasty => We will mixed with some more fruit and honey based on customer’s choice
-Convenience => Diversity drink / A weekly package for customer (3 bottles of drink a day) delivery to their door everyday.Customer can do their own drink or cereal by choose the vegetabel, fruit or seeds for their own, we can make as required
+<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' /> -->
 
-##### 3.Key Features and Technical Implementation Plan
+##### Key Features and Technical Implementation Plan
 
 ###### User
 
@@ -38,7 +36,7 @@ Admin can check order.
 Admin can add, edit, delete products.
 Admin can top-up balance for user.
 
-##### 4. Key Models
+##### Key Models
 
 Users
 Standard fields, email/pass/etc
@@ -70,3 +68,22 @@ Admin can top-up balance for user.
 ###### Front-end: React JS
 
 ###### Back-end: NodeJs, ExpressJs, MongoDB
+
+List anything else that you can get done to improve the page!
+Time Spent and Lessons Learned
+Time spent: 170 hours spent in total.
+
+License
+Copyright [2021] [Hue Nguyen]
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
