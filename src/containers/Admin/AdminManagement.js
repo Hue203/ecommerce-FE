@@ -38,12 +38,7 @@ const AdminManagement = () => {
                   <FontAwesomeIcon icon="users" size="sm" /> Customers
                 </Nav.Link>
               </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="packages">
-                  {" "}
-                  <FontAwesomeIcon icon="shopping-cart" size="sm" /> Packages
-                </Nav.Link>
-              </Nav.Item>
+
               <Nav.Item>
                 <Nav.Link eventKey="blogs">
                   {" "}
