@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Card, Col, Row, Container } from "react-bootstrap";
+
 import Moment from "react-moment";
 
 const BlogCard = ({ blog, handleClick }) => {

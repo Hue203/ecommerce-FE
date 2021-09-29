@@ -18,7 +18,7 @@ const NavbarAdmin = () => {
 
   const authLinks = (
     <Nav bg="dark">
-      <Nav.Link as={Link} to="/admin/products">
+      <Nav.Link as={Link} to="/admin/management">
         <FontAwesomeIcon icon="user" size="sm" /> Dashboard
       </Nav.Link>
 

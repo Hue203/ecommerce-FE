@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, Card, Container } from "react-bootstrap";
+import { Card, Container } from "react-bootstrap";
 import { ClipLoader } from "react-spinners";
 import { Col, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import { blogActions } from "../../redux/actions/blog.action";
-import SearchItem from "../../components/SearchItem";
+
 import Moment from "react-moment";
 import FooterPublic from "../../components/FooterPublic";
 
@@ -15,7 +15,6 @@ const BlogDetailPage = () => {
   const dispatch = useDispatch();
   const singleBlog = useSelector((state) => state.blog.selectedBlog);
   const loading = useSelector((state) => state.blog.loading);
-  const history = useHistory();
 
   useEffect(() => {
     if (params?.id) {

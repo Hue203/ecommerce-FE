@@ -4,7 +4,7 @@ import { Modal, Col, Row, Form, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 
 import { packageActions } from "../redux/actions/package.action";
-const ModalAddPackage = ({ showModal, setShowModal }) => {
+const ModalAddPackage = ({ showModal, setShowModal, fullscreen }) => {
   const handleClose = () => setShowModal(false);
 
   const [formData, setFormData] = useState({
@@ -47,10 +47,10 @@ const ModalAddPackage = ({ showModal, setShowModal }) => {
   };
   return (
     <div>
-      <Modal show={showModal} onHide={handleClose}>
+      <Modal show={showModal} onHide={handleClose} fullscreen={fullscreen}>
         <Form onSubmit={handleSubmit}>
           <Modal.Header closeButton>
-            <Modal.Title>Add Package</Modal.Title>
+            <Modal.Title className="modalTitle">Add Package</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Row>

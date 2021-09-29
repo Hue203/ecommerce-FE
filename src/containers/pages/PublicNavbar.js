@@ -9,35 +9,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const PublicNavbar = () => {
   const history = useHistory();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const loading = useSelector((state) => state.auth.loading);
+
+  const selectedUser = useSelector((state) => state.user.selectedUser);
+  console.log("selectedUser", selectedUser);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(authActions.logout());
     history.push("/");
   };
-  const role = useSelector((state) => state.auth.user.role);
+  const role = useSelector((state) => state.auth.role);
 
   const authLinks = (
     <Nav bg="dark" responsive="sm">
       <Nav.Link as={Link} to="/user/profile">
-        <FontAwesomeIcon icon="user" size="sm" />
+        <FontAwesomeIcon icon="user" size="lg" />
       </Nav.Link>
       <Nav.Link as={Link} to="/cart/checkout">
-        <FontAwesomeIcon icon="shopping-basket" size="sm" />
+        {" "}
+        {selectedUser && selectedUser.cart?.length ? (
+          <span className="number-cart">
+            {selectedUser.cart.reduce((a, b) => a + b.quantity, 0)}
+          </span>
+        ) : (
+          ""
+        )}
+        <FontAwesomeIcon icon="shopping-cart" size="lg" />
       </Nav.Link>
       <Nav.Link onClick={handleLogout}>
-        <FontAwesomeIcon icon="sign-out-alt" size="sm" />
+        <FontAwesomeIcon icon="sign-out-alt" size="lg" />
       </Nav.Link>
     </Nav>
   );
   const adminAuthLinks = (
     <Nav bg="dark" responsive="sm">
-      <Nav.Link as={Link} to="/admin/products">
-        <FontAwesomeIcon icon="user" size="sm" /> Dashboard
+      <Nav.Link as={Link} to="/admin/management">
+        <FontAwesomeIcon icon="user" size="lg" /> Dashboard
       </Nav.Link>
 
       <Nav.Link onClick={handleLogout}>
-        <FontAwesomeIcon icon="sign-out-alt" size="sm" /> Logout
+        <FontAwesomeIcon icon="sign-out-alt" size="lg" /> Logout
       </Nav.Link>
     </Nav>
   );
@@ -86,15 +96,12 @@ const PublicNavbar = () => {
                 Mixed Cereals
               </NavDropdown.Item> */}
             </Nav>
-            {!loading && (
-              <>
-                {isAuthenticated
-                  ? role === "user"
-                    ? authLinks
-                    : adminAuthLinks
-                  : publicLinks}
-              </>
-            )}
+
+            {isAuthenticated && role
+              ? role === "user"
+                ? authLinks
+                : adminAuthLinks
+              : publicLinks}
           </Navbar.Collapse>
         </Container>
       </Navbar>

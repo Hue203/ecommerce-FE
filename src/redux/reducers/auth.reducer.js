@@ -22,6 +22,13 @@ const authReducer = (state = initialState, action) => {
     case types.REGISTER_SUCCESS:
       return { ...state, loading: false };
     case types.LOGIN_SUCCESS:
+      return {
+        ...state,
+        user: payload,
+        loading: false,
+        isAuthenticated: true,
+        role: payload.role,
+      };
     case types.UPDATE_PROFILE_SUCCESS:
       return {
         ...state,

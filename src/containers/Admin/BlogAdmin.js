@@ -116,9 +116,9 @@ const BlogAdmin = () => {
 
   return (
     <>
-      <Container fluid className="container-blogs">
+      <Container className="table-product" fluid>
         <Row>
-          <Table striped bordered hover>
+          <Table striped bordered hover className="cart-table">
             <thead>
               <tr>
                 <th>Title</th>
@@ -165,7 +165,7 @@ const BlogAdmin = () => {
       </Container>
       <Container>
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
+          <Col>
             <Form onSubmit={handleSubmit}>
               <div className="text-center mb-3">
                 <h1 className="text-primary">{addOrEdit} blog</h1>
@@ -201,7 +201,7 @@ const BlogAdmin = () => {
                     key={formData.blogImage}
                     width="90px"
                     height="60px"
-                    alt="blog images"
+                    alt=""
                   ></img>
                 )}
                 <Button variant="success" onClick={uploadWidget}>

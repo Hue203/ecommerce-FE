@@ -2,18 +2,18 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import BlogCard from "../../components/BlogCard";
-import { Row, Col, Container } from "react-bootstrap";
+import { Container } from "react-bootstrap";
 import { blogActions } from "../../redux/actions/blog.action";
 import BeforeAfter from "../../components/BeforeAfter";
 import { ClipLoader } from "react-spinners";
 import PaginationBar from "../../components/PaginationBar";
-import CardTest from "../../components/CartTest";
+
 import FooterPublic from "../../components/FooterPublic";
 const BlogPage = () => {
   const [pageNum, setPageNum] = useState(1);
   const loading = useSelector((state) => state.product.loading);
   const blogs = useSelector((state) => state.blog.blogs);
-  const totalPageNum = useSelector((state) => state.package.totalPageNum);
+  const totalPageNum = useSelector((state) => state.blog.totalPageNum);
   const dispatch = useDispatch();
   const history = useHistory();
 

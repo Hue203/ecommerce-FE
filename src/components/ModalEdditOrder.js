@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Col, Row, Form, Button, Table } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
-import { productActions } from "../redux/actions/product.actions";
-import { ClipLoader } from "react-spinners";
+
 import { orderActions } from "../redux/actions/order.actions";
 
 const ModalEdditOrder = ({ showModal, setShowModal }) => {
   const handleClose = () => setShowModal(false);
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.order.loading);
+
   const selectedOrder = useSelector((state) => state.order.selectedOrder);
 
   const [formData, setFormData] = useState({

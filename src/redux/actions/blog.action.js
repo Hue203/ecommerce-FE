@@ -14,7 +14,7 @@ const blogsRequest =
       }
       let sortByString = "";
       if (sortBy?.key) {
-        sortByString = `&sortBy[${sortBy.key}]=${sortBy.ascending}`;
+        sortByString = `&sortB[${sortBy.key}]=${sortBy.ascending}`;
       }
       const res = await api.get(
         `/blogs?page=${pageNum}&limit=${limit}${queryString}${sortByString}`

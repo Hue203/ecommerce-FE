@@ -3,9 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { ClipLoader } from "react-spinners";
 import { productActions } from "../../redux/actions/product.actions";
-import { Row, Col, Container, Tabs, Tab, Button } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import ProductCard from "../../components/ProductCard";
-import Packages from "../../components/Packages";
+
 import ProductSlider from "../../components/ProductSlider";
 import { blogActions } from "../../redux/actions/blog.action";
 import { packageActions } from "../../redux/actions/package.action";
@@ -15,15 +15,13 @@ import VideoDetox from "../../components/VideoDetox";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
-  const { loading, loadingBlog, loadingPackage } = useSelector((state) => ({
+  const { loading } = useSelector((state) => ({
     loading: state.product.loading,
     loadingBlog: state.blog.loading,
     loadingPackage: state.package.loading,
   }));
 
   const products = useSelector((state) => state.product.products);
-
-  const packages = useSelector((state) => state.package.packages);
 
   const dispatch = useDispatch();
   const history = useHistory();

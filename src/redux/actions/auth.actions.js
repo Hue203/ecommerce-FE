@@ -26,7 +26,7 @@ const loginRequest = (email, password) => async (dispatch) => {
     const name = res.data.data.user.name;
     localStorage.setItem("role", res.data.data.user.role);
     localStorage.setItem("accessToken", res.data.data.token);
-    dispatch({ type: types.LOGIN_SUCCESS, payload: res.data.data });
+    dispatch({ type: types.LOGIN_SUCCESS, payload: res.data.data.user });
     toast.success(`Welcome ${name}`);
     api.defaults.headers.common["authorization"] =
       "Bearer " + res.data.data.token;

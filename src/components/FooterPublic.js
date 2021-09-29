@@ -1,7 +1,6 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Link } from "react-router-dom";
 
 const FooterPublic = () => {
   return (
@@ -36,24 +35,7 @@ const FooterPublic = () => {
                 </li>
               </ul> */}
             </div>
-            <div className="col-lg-2 col-md-6">
-              {/* <h5 className="text-white mb-3">Contact Us</h5>
-              <ul className="list-unstyled text-muted">
-                <li as={Link} to="/user/profile">
-                  <FontAwesomeIcon icon="facebook" size="sm" />
-                  FaceBook
-                </li>
-                <li>
-                  <a href="/">Instagram</a>
-                </li>
-                <li>
-                  <a href="/products">Now Delivery</a>
-                </li>
-                <li>
-                  <a href="/">FAQ</a>
-                </li>
-              </ul>{" "} */}
-            </div>
+            <div className="col-lg-2 col-md-6"></div>
 
             <div className="col-lg-4 col-md-6">
               <h5 className="text-white mb-3">Newsletter</h5>

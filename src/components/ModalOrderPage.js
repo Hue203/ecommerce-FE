@@ -1,10 +1,9 @@
-import React, { useEffect } from "react";
-import { Modal, Col, Row, Form, Button, Table } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { orderActions } from "../redux/actions/order.actions";
+import React from "react";
+import { Modal, Button, Table } from "react-bootstrap";
+import { useSelector } from "react-redux";
+
 import { ClipLoader } from "react-spinners";
 const ModalOrderPage = ({ showModal, setShowModal, product }) => {
-  const dispatch = useDispatch();
   const loading = useSelector((state) => state.order.loading);
   const selectedOrder = useSelector((state) => state.order.selectedOrder);
 

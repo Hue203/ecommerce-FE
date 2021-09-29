@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Routes from "./containers/Routes/layouts/index";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import "react-datetime/css/react-datetime.css";
+import "react-calendar/dist/Calendar.css";
 //Slider import
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -31,9 +32,6 @@ import {
   faChartLine,
   faSignOutAlt,
   faSignInAlt,
-  faArrowRight,
-  faAngleUp,
-  faAngleDown,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { fas } from "@fortawesome/free-solid-svg-icons";

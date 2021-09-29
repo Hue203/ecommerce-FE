@@ -13,11 +13,18 @@ const initialState = {
 const userReducer = (state = initialState, action) => {
   const { type, payload } = action;
   switch (type) {
+    case types.GET_CUSTOMERS_REQUEST:
     case types.ADD_CART_REQUEST:
     case types.GET_CURRENT_CART_REQUEST:
     case types.UPDATE_BILLINGADDRESS_REQUEST:
       return { ...state, loading: true };
 
+    case types.GET_CUSTOMERS_SUCCESS:
+      return {
+        ...state,
+        users: payload,
+        loading: false,
+      };
     case types.ADD_CART_SUCCESS:
     case types.GET_CURRENT_CART_SUCCESS:
     case types.UPDATE_BILLINGADDRESS_SUCCESS:
@@ -26,7 +33,7 @@ const userReducer = (state = initialState, action) => {
         selectedUser: payload,
         loading: false,
       };
-
+    case types.GET_CUSTOMERS_FAILURE:
     case types.GET_CURRENT_CART_FAILURE:
     case types.ADD_CART_FAILURE:
     case types.UPDATE_BILLINGADDRESS_FAILURE:

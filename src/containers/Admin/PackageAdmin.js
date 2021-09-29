@@ -16,6 +16,7 @@ import ModalAddCycle from "../../components/AddCycleModal";
 
 const PackageAdmin = () => {
   const [showModal, setShowModal] = useState(false);
+
   const [showModalCycle, setShowModalCycle] = useState(false);
   const [pageNum, setPageNum] = useState(1);
   const [searchInput, setSearchInput] = useState("");

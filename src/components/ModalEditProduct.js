@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Col, Row, Form, Button } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { productActions } from "../redux/actions/product.actions";
 
@@ -8,7 +8,7 @@ const ModalEditProduct = ({ showModal, setShowModal }) => {
   const handleClose = () => setShowModal(false);
 
   const dispatch = useDispatch();
-  const loading = useSelector((state) => state.product.loading);
+
   const selectedProduct = useSelector((state) => state.product.selectedProduct);
 
   const [formData, setFormData] = useState({

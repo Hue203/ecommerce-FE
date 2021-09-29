@@ -73,10 +73,10 @@ const OrdersAdmin = () => {
       <br />
       <Container>
         <Row>
-          <Col xs={2}>
+          {/* <Col xs={2}>
             <SideMenuAdmin page={"orders"} />
-          </Col>
-          <Col xs={10}>
+          </Col> */}
+          <Col xs={12}>
             {orders !== undefined && (
               <>
                 <Row>

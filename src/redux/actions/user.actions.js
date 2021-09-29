@@ -209,7 +209,22 @@ const removePackageFromCart =
       toast.error("Something went wrong");
     }
   };
+const getAllCustomers = () => async (dispatch) => {
+  try {
+    dispatch({ type: types.GET_CUSTOMERS_REQUEST, payload: null });
+    const res = await api.get(`users`);
+    dispatch({
+      type: types.GET_CUSTOMERS_SUCCESS,
+      payload: res.data.data,
+    });
+    toast.success("Get All Customers Success");
+  } catch (err) {
+    dispatch({ type: types.GET_CUSTOMERS_FAILURE, payload: err });
+    toast.error("Something went wrong");
+  }
+};
 export const userActions = {
+  getAllCustomers,
   addCartRequest,
   getCartRequest,
   updateBillingAddress,

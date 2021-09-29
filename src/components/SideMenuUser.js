@@ -26,36 +26,6 @@ const SideMenuUser = () => {
             Orders
           </Nav.Link>
         </Nav.Item>
-        {/* <Nav.Item>
-          <Nav.Link
-            as={NavLink}
-            to="/user/orders/payments"
-            activeClassName="active"
-            strict={true}
-          >
-            Payments
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            as={NavLink}
-            to="/admin/products"
-            activeClassName="active"
-            strict={true}
-          >
-            Products
-          </Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link
-            as={NavLink}
-            to="/admin/messenger"
-            activeClassName="active"
-            strict={true}
-          >
-            Messenger
-          </Nav.Link>
-        </Nav.Item> */}
       </div>
     </Nav>
   );

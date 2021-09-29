@@ -6,17 +6,19 @@ import OrdersAdmin from "../../Admin/OrdersAdmin";
 import { Container, Col, Row } from "react-bootstrap";
 import SideMenuAdmin from "../../../components/SideMenuAdmin";
 import ProductsAdmin from "../../Admin/ProductsAdmin";
-import AdminDashboard from "../../Admin/AdminDashboard";
+import AdminManagement from "../../Admin/AdminManagement";
 import { useHistory } from "react-router-dom";
 import BlogAdmin from "../../Admin/BlogAdmin";
 import { useSelector } from "react-redux";
 import NavbarAdmin from "../../pages/NavbarAdmin";
 import PackageAdmin from "../../Admin/PackageAdmin";
+import Dashboard from "../../Admin/Dashboard";
 
 const AdminLayout = () => {
   const role = useSelector((state) => state.auth.role);
   const history = useHistory();
   if (role !== "admin") {
+    console.log("hahahah", role);
     history.push("/");
   }
 
@@ -25,7 +27,8 @@ const AdminLayout = () => {
       <AlertMsg />
       <NavbarAdmin />
       <Switch>
-        <Route exact path="/admin/management" component={AdminDashboard} />
+        <Route exact path="/admin/management" component={AdminManagement} />
+        <Route exact path="/admin/dashboard" component={Dashboard} />
         <Route exact path="/admin/products" component={ProductsAdmin} />
         <Route exact path="/admin/orders" component={OrdersAdmin} />
         <Route exact path="/admin/blogs" component={BlogAdmin} />
