@@ -72,9 +72,9 @@ const CustomersAdmin = () => {
                         <th className="mouse-hover">
                           <FontAwesomeIcon icon="sort" size="sm" /> Email
                         </th>
-                        <th className="mouse-hover">
+                        {/* <th className="mouse-hover">
                           <FontAwesomeIcon icon="sort" size="sm" /> Full Name
-                        </th>
+                        </th> */}
                         <th className="mouse-hover">
                           <FontAwesomeIcon icon="sort" size="sm" /> Address
                         </th>
@@ -91,7 +91,7 @@ const CustomersAdmin = () => {
                           <tr key={item._id}>
                             <td>{item.name}</td>
                             <td>{item.email}</td>
-                            <td>{item.billingDetails?.fullname}</td>
+                            {/* <td>{item.billingDetails?.fullname}</td> */}
                             <td>{item.billingDetails?.address1}</td>
                             <td>{item.billingDetails?.phone}</td>
                             <td className="action-btn"></td>{" "}
